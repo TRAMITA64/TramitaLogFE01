@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/MigracionAplicativos/!svn/ver/111/Portal_App_AGR/App_Code
+END
+clsUsuarios.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/MigracionAplicativos/!svn/ver/111/Portal_App_AGR/App_Code/clsUsuarios.cs
+END
+wsMenu.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/MigracionAplicativos/!svn/ver/111/Portal_App_AGR/App_Code/wsMenu.cs
+END
+clsGeneral.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/MigracionAplicativos/!svn/ver/111/Portal_App_AGR/App_Code/clsGeneral.cs
+END
+clsConexion.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/MigracionAplicativos/!svn/ver/46/Portal_App_AGR/App_Code/clsConexion.cs
+END
+clsEncriptacion.cs.exclude
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/MigracionAplicativos/!svn/ver/12/Portal_App_AGR/App_Code/clsEncriptacion.cs.exclude
+END
+clsEncriptacionSim.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/MigracionAplicativos/!svn/ver/111/Portal_App_AGR/App_Code/clsEncriptacionSim.cs
+END

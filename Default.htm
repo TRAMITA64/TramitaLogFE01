@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Portal CO</title>
+    <script type="text/javascript" language ="javascript" >
+        function CargaMapa() {
+                window.open('Login/Login.aspx', '', 'top=0, left=0,' + 'height=' + screen.height + ', width=' + screen.width + ', toolbar=yes, status=no, scrollbars=yes, location=no, menubar=no, directories=no, resizable=yes, toolbar = no, titlebar=no');
+                window.opener = self;
+                self.window.close(true);
+            }
+    </script>
+</head>
+<body>
+     <table>
+        <tr>
+            <td colspan="2" style="width:450px; width:80px;">&nbsp;</td>
+        </tr>
+        <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input id="isbSubmit" type="submit" value="Login" onclick="CargaMapa();" style="font-size: small" />
+                </td>
+            </tr>
+    </table>
+</body>
+</html>

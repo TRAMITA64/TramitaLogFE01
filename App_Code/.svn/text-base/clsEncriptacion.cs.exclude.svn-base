@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Security.Cryptography;
+using System.Text;
+
+/// <summary>
+/// Descripción breve de clsEncriptacion
+/// </summary>
+public class clsEncriptacion
+{
+    private RSACryptoServiceProvider objRSA = null;
+    string strPrivada = string.Empty;
+    string strPublica = string.Empty;
+    public clsEncriptacion()
+    {
+        this.objRSA = new RSACryptoServiceProvider(1024);
+    }
+
+    public string LlavePublica() {
+        return this.objRSA.ToXmlString(false);
+    }
+
+    public string LlavePrivada() {
+        return this.objRSA.ToXmlString(true);
+    }
+
+    public string Encriptar(string strCadena)
+    {
+        byte[] bytCadena = null;
+        string strEncriptado = "";
+        try
+        {
+            strPrivada = LlavePrivada();
+            strPublica = LlavePublica();
+            objRSA.FromXmlString(strPublica);            
+            bytCadena = objRSA.Encrypt(Encoding.UTF8.GetBytes(strCadena), true);
+            //strEncriptado = Encoding.UTF8.GetString(bytCadena);
+            strEncriptado = Convert.ToBase64String(bytCadena);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+
+        return strEncriptado;
+       
+    }
+     
+    public string DesEncriptar(string strCadena)
+    {
+        this.objRSA.FromXmlString(LlavePrivada());
+        //return Encoding.UTF8.GetString(this.objRSA.Decrypt(Convert.FromBase64String(strCadena), false));
+        return Convert.ToBase64String(this.objRSA.Decrypt(Convert.FromBase64String(strCadena), true));
+
+    }
+
+}
