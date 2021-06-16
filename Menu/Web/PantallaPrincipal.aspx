@@ -90,7 +90,7 @@
     <a class="nav-link" href="#">Seguimiento</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Otro</a>
+    <a class="nav-link" href="#">Empleado</a>
   </li>
 
   <li class="nav-item">
