@@ -90,6 +90,10 @@
     <a class="nav-link" href="#">Seguimiento</a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="#">Otro</a>
+  </li>
+
+  <li class="nav-item">
     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Salir</a>
   </li>
 </ul>
