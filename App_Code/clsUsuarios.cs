@@ -33,10 +33,8 @@ public class clsUsuarios
         {
             Cn.clsAbrirConexion(strConexion);
 
-            strConsulta = "select emp_rfccor, concat(emp_nomemp,' ',emp_apepat,' ',emp_apemat) as Nombre, tblcatalc.alc_nomalc as Admin " +
-                " from dbo.tblcatemp " +
-                " left join tblcatalc on emp_cvealc = alc_cvealc " +
-                "where emp_rfcemp = @strRFC ";
+            strConsulta = "select rfc as emp_rfccor, concat(nombre,' ',apellido_paterno,' ',apellido_materno) as Nombre, 'campo' as Admin " +
+                "from cat_empleados where rfc=@strRFC";
             Cn.clsAgregarParametro("@strRFC", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, strRFC, null);
             Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
             strResultado = Cn.clsCadenaTabla(dtsDatos);

@@ -38,7 +38,7 @@ public class clsConexion
         }
         catch (Exception e)
         {
-            throw e;
+            throw new Exception(e.Message);
         }
     }
     public void clsCerrarConexion()

@@ -85,7 +85,7 @@ public class wsMenu : System.Web.Services.WebService
             Session["RFC"] = strRFC;
 
             clsUsuarios objUsuario = new clsUsuarios();
-            objUsuario.Conexion = ConfigurationManager.ConnectionStrings["Plantilla"].ConnectionString;
+            objUsuario.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
             //objUsuario.RFC = Session["RFC"].ToString();
             objUsuario.RFC = strRFC;
             strResultado = objUsuario.clsObtenerUsuario();
