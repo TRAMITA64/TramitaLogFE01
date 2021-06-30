@@ -28,7 +28,7 @@ public class clsUsuarios
         string strConsulta = "";
         clsConexion Cn = new clsConexion();
         DataSet dtsDatos = new DataSet();
-        
+
         try
         {
             Cn.clsAbrirConexion(strConexion);
@@ -39,12 +39,14 @@ public class clsUsuarios
             Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
             strResultado = Cn.clsCadenaTabla(dtsDatos);
 
-            return strResultado;          
+            return strResultado;
         }
-        catch (Exception ex){
+        catch (Exception ex)
+        {
             throw new Exception(ex.Message);
         }
-        finally {
+        finally
+        {
             Cn.clsCerrarConexion();
         }
     }

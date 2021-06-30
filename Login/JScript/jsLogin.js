@@ -28,9 +28,10 @@ changedata
 function firmar(event) {
     if (validate()) {
         var numSerie = obtieneNumSerie();
-
         var co = document.getElementById("tokenuuid").value + "|" + document.getElementById("rfc").value + "|" + numSerie;
+        
         var laFirma = generaFirma(document.getElementById("privateKeyPassword").value, co);
+       
         if (laFirma != 'SIN_FIRMA') {
             var token = Base64.encode(Base64.encode(co) + "#" + laFirma);
             document.getElementById("token").value = token;

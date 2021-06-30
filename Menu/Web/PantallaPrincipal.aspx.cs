@@ -11,6 +11,7 @@ public partial class Menu_Web_PantallaPrincipal : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
         try
         {
             Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));

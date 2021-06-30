@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="PantallaPrincipal.aspx.cs" Inherits="Menu_Web_PantallaPrincipal" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Municipios.aspx.cs" Inherits="PageMunicipios" %>
 
 <!DOCTYPE html  html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -23,7 +23,29 @@
     
    
     <!-- Script de Pagina-->
-    <script src="../JScript/jsPantallaPrincipal.js" type="text/javascript"></script>
+    <script src="../JScript/Municipios.js" type="text/javascript"></script>
+
+     <style>
+#div1 {
+  width: 180px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+#div2 {
+  width: 180px;
+  height: 70px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
+}
+</style>
+<script>
+    
+
+    
+
+</script>
+  
 
 </head>
 
@@ -81,7 +103,7 @@
     <a class="nav-link active" aria-current="page" href="#">Inicio</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../PageCatalogos/Municipios.aspx">Municipios</a>
+    <a class="nav-link" href="#">Municipios</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Plantillas</a>
@@ -97,11 +119,41 @@
   <li class="nav-item">
     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Salir</a>
   </li>
-  <li><input type="text" id="myRFC" value="txt" /> </li>
-    <li><input type="text" id="btnNombre" value="txt" /> </li>
+  
     
 </ul>
+    <div class="container-fluid">
+        <div class="row">
+               <div  class="col-xs-2 well"><p>Municipios</p> <span id="idNumMunicipios"></span><span id="idListMunicipios"></span>  </div>
+               <div  class="col-xs-2  well"><p>Municipios sin atencion</p><span id="idNumSinAtMunicipios"></span> <span id="idMpiosSinAtt"></span> </div>
+               <div  class="col-xs-2 well">
+                   <p>Municipios que atienden</p><span id="idNumQueAtMunicipios"></span>
+                   <span id="idMpiosQueAtt"></span> 
+<p>Municipio de atencion</p>                   
+<div id="div1" ondrop="dropAtiende(event)" ondragover="allowDrop(event)">
+    <ul  id="idAtiende">
+        <li>Arrastra aqui</li>
+    </ul>
+</div>
+<p>Municipios que atiende</p>
+<div id="div2" ondrop="dropAtendidos(event)" ondragover="allowDrop(event)">
+    <ul  id="idAtendidos">
+        <li>Arrastra aqui</li>
+    </ul>
+ </div>
+<div><button class="btn btn-default btn-block btn-primary" id="idEnviar" onclick="onEnviarMunicipioAtiende(event)" >Enviar</button></div>
+               </div>
+               <div class="col-xs-2  well"><p>Municipios con atencion</p><span id="idNumConAtMunicipios"></span> <span id="idMpiosConAtt"></span> </div>
+               <div  class="col-xs-2  well"><p>Municipios que atienden</p><div id="idS1"></div>  </div>
+               <div  class="col-xs-2  well"><p>Municipios con atiende</p><div id="idMpio"></div>  </div>
 
+               <!--
+                <div  class="col-xs-6 well"><p>Municipios</p> <span id="idNumMunicipios"></span><span id="idListMunicipios"></span>  </div>                               
+                <div  class="col-xs-6 well"><p>Municipios</p> <span id="idNumMpiosRadio"></span><span id="idRadioMpios"></span>  </div>                               
+                <div  class="col-xs-2  well"></div>
+                   -->
+        </div>
+    </div>
 
 </body>
 </html>

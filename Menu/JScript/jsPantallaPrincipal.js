@@ -5,8 +5,11 @@
 $(document).ready(function () {
     $.support.cors = true;
     try{
-       strParam = window.location.href.split("?")[1].split("Param=")[1];
-//        strParam = "2FbK/Obx698YyBh2BvOCtcYI1b538dxKayLTwxyyeb0=";
+        var arrParam = window.location.href.split("?");
+        if (arrParam.length>1)
+            strParam = arrParam[1].split("Param=")[1]
+        else
+            strParam = "Sv5h2hmEvQFr8oXxaPEAKw==";
  //       alert(strParam);
         fnDesEncriptaParametros(strParam);
      }
@@ -22,6 +25,7 @@ $(document).ready(function () {
 });
 
 function fnAbrePantalla(strAplicativo, strParametros) {
+    
     var strURL;
 
     switch (strAplicativo) {        
@@ -41,13 +45,15 @@ function fnAbrePantalla(strAplicativo, strParametros) {
 }
 
 function fnSalir() {
+    
     //alert("entra a funcion");
     //parent.close();
     window.close();
 }
 
 function fnEncriptaParametros(strAplicativo) {
-    var strRFC = $("#hdnRFC").val();
+    
+    
     $.ajax({
         type: "POST",
         url: "../WebServices/wsMenu.asmx/EncriptaTexto",
@@ -56,6 +62,7 @@ function fnEncriptaParametros(strAplicativo) {
         dataType: "json",
         success: function (response) {
             var result = response.d;
+            
             fnAbrePantalla(strAplicativo, result);
         },
         failure: function (response) {
@@ -74,7 +81,6 @@ function fnDesEncriptaParametros(strParametros) {
         success: function (response) {
             var result = response.d;
             //fnAbrePantalla(strAplicativo, result);           
-            //alert(result);
             fnObtenerUsuario(result);
         },
         failure: function (response) {
@@ -84,6 +90,7 @@ function fnDesEncriptaParametros(strParametros) {
 }
 
 function fnObtenerUsuario(strRFC) {
+    
     $.ajax({
         type: "POST",
         url: "../WebServices/wsMenu.asmx/wsObtenerUsuario",
@@ -91,16 +98,13 @@ function fnObtenerUsuario(strRFC) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            //alert(response.d);
             var result = response.d;
-            //alert(result.length);
-
             if (result.length > 0) {
                 arrResultado = new Array();
                 arrResultado = result.split("|");
 
                 //$("#btnNombre").text(arrResultado[1]);
-                $("#btnNombre").html(arrResultado[1] + "&nbsp;&nbsp; <span class='fa fa-angle-double-down' aria-hidden='true'></span>&nbsp;");
+                $("#btnNombre").value=arrResultado[1] ;
                 $("#ADR").text(arrResultado[2]);
                 GetVariablesSesion();
             }
@@ -129,7 +133,6 @@ function GetVariablesSesion() {
             if (result.length > 0) {
                 var objRes = jQuery.parseJSON(result);
                 document.getElementById("hdnRFC").value = objRes;
-               
             }
         },
         failure: function (response) {

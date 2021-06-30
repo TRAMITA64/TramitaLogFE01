@@ -101,6 +101,7 @@
 
                         <span class="input-group-btn" style="vertical-align: bottom">
                             <button type="button" onclick="limpiarMsgs();" class="btn btn-default" id="btnCertificate" name="btnCertificate">Buscar</button>
+                                
                         </span>
                     </div>
                     <span id="msgErrorCert" style="display: none; color: #D0021B; font-size: 11px; font-weight: initial;">Este campo es obligatorio.</span>
