@@ -178,4 +178,29 @@ public class CatWebService : System.Web.Services.WebService
             throw new Exception(ex.Message);
         }
     }
+    [WebMethod(EnableSession = true)]
+    public string updateMunicipioAtiende(string param1, string param2)//update lista de municipio que atiende, municipios que son atendidos 
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.updateMpioAtencion(param1, param2);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
 }

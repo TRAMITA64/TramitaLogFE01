@@ -32,7 +32,7 @@ public class ClsCatalogos
         {
             Cn.clsAbrirConexion(strConexion);
 
-            strConsulta = "select id_municipio,nombre from [dbo].[cat_municipios]";
+            strConsulta = "exec spq_Municipios";
             Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
             strResultado = Cn.clsCadenaTabla(dtsDatos);
 
@@ -50,6 +50,7 @@ public class ClsCatalogos
     }
     public string getMpioAtiende(string param)
     {
+        
         string strResultado = string.Empty;
         string strConsulta = "";
         clsConexion Cn = new clsConexion();
@@ -59,10 +60,10 @@ public class ClsCatalogos
         {
             Cn.clsAbrirConexion(strConexion);
 
-            strConsulta = "SELECT [c1].[nombre] as m1,[c0].[nombre] as m2 FROM [cat_municipio_atencion] AS [c] "+
-                            "INNER JOIN[cat_municipios] AS[c0] ON[c].[id_municipio] = [c0].[id_municipio] "+
-                            "left join[cat_municipios] as [c1]  on [c].id_mpio_atencion = [c1].id_municipio "+
-                            "where [c].[id_mpio_atencion] = "+ param;
+            
+            strConsulta = "exec spq_MpioAtiende @param1";
+            Cn.clsAgregarParametro("@param1", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param, null);
+            
             Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
             strResultado = Cn.clsCadenaTabla(dtsDatos);
 
@@ -88,9 +89,7 @@ public class ClsCatalogos
         {
             Cn.clsAbrirConexion(strConexion);
 
-            strConsulta = "select [id_mpio_atencion],[c1].[nombre] from [cat_municipio_atencion] as [c0]"+
-                            "INNER JOIN[cat_municipios] as [c1] ON[c0].[id_mpio_atencion] =[c1].[id_municipio]"+
-                                "group by c0.[id_mpio_atencion],[c1].[nombre]";
+            strConsulta = "exec spq_MpiosQueAtienden";
             Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
             strResultado = Cn.clsCadenaTabla(dtsDatos);
 
@@ -116,9 +115,7 @@ public class ClsCatalogos
         {
             Cn.clsAbrirConexion(strConexion);
 
-            strConsulta = "select [c1].[id_municipio],[c1].[nombre],[c0].[id_mpio_atencion] from "+
-                "[cat_municipio_atencion] as [c0] "+
-                "INNER JOIN[cat_municipios] as [c1] ON[c0].[id_municipio] =[c1].[id_municipio]";
+            strConsulta = "exec spq_MpiosConAtencion";
             Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
             strResultado = Cn.clsCadenaTabla(dtsDatos);
 
@@ -144,10 +141,7 @@ public class ClsCatalogos
         {
             Cn.clsAbrirConexion(strConexion);
 
-            strConsulta = "select id_municipio, nombre from[dbo].[cat_municipios] "+
-                "WHERE id_municipio NOT IN(select[c1].[id_municipio] "+
-                "from[cat_municipio_atencion] as [c0] INNER JOIN " +
-                "[cat_municipios] as [c1] ON[c0].[id_municipio] =[c1].[id_municipio])";
+            strConsulta = "exec spq_MpiosSinAtencion";
             Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
             strResultado = Cn.clsCadenaTabla(dtsDatos);
 
@@ -174,6 +168,34 @@ public class ClsCatalogos
             Cn.clsAbrirConexion(strConexion);
 
             strConsulta = "exec spi_MpioAtencion @param1,@param2";
+            Cn.clsAgregarParametro("@param1", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param1, null);
+            Cn.clsAgregarParametro("@param2", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param2, null);
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+    public string updateMpioAtencion(string param1, string param2)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+
+            strConsulta = "exec spu_MpioAtencion @param1,@param2";
             Cn.clsAgregarParametro("@param1", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param1, null);
             Cn.clsAgregarParametro("@param2", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param2, null);
             Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
