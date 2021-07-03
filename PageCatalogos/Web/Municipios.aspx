@@ -9,19 +9,27 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"/>
+
+  
     <link rel="stylesheet" href="../../Content/css/main.css"/>
     <link rel="stylesheet" href="../../Content/css/skin.css"/>
-    <link rel="stylesheet" href="../../Content/css/bootstrap.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
 
+    
+    
+    
+    
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="../../Content/js/bootstrap.bundle.js"></script>
+    
     <script src="../../Content/script/index.js"></script>
 
     <!--JQuery-->
     <script type="text/javascript" src="../../ScriptsJQ/JQuery/Jquery-v3.5.1.js"></script>
-    
+
+
    
     <!-- Script de Pagina-->
     <script src="../JScript/Municipios.js" type="text/javascript"></script>
@@ -39,6 +47,14 @@
   padding: 10px;
   border: 1px solid #aaaaaa;
 }
+        .list-group-atiende{
+            min-height : 9rem;
+            background : white;
+        }
+         .list-group-atendidos {
+             min-height : 20rem;
+             background : white;
+         }
 </style>
 <script>
     
@@ -124,51 +140,46 @@
     
 </ul>
     <div class="container-fluid">
+        <div class="row-cols-auto">
         <div class="col">
-               <div  class="col-md-2 well"><p>Municipios</p>
-                <span id="idNumMunicipios"></span><span id="idListMunicipios"></span>  </div>
-               <div  class="col-md-2  well"><p>Municipios sin atencion</p><span id="idNumSinAtMunicipios"></span> <span id="idMpiosSinAtt"></span> </div>
+               
+               <div  class="col-md-4  well">
+                   <h4>Municipios sin atencion <span id="idNumSinAtMunicipios"></span></h4>
+                   
+                   <span id="idMpiosSinAtt" class="list-group">
+                        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">Municipios sin atencion</button>
+                   </span> 
+               </div>
                <div  class="col-md-4 well">
-                   <p>Alta municipios que atienden</p><span id="idNumQueAtMunicipios"></span>
-                   <span id="idMpiosQueAtt"></span> 
-<p>Municipio de atencion</p>                   
-<div id="div1" class="list-group" ondrop="dropAtiende(event)" ondragover="allowDrop(event)">
-    <ul  id="idAtiende">
-        <li>Arrastra aqui</li>
-    </ul>
-</div>
-<p>Municipios que atiende</p>
-<div id="div2" class="list-group" ondrop="dropAtendidos(event)" ondragover="allowDrop(event)">
-    <ul  id="idAtendidos">
-        <li>Arrastra aqui</li>
-    </ul>
- </div>
-<div><button class="btn btn-default  btn-primary" id="idEnviar" onclick="onEnviarMunicipioAtiende(event)" >Enviar</button>&nbsp;
-    <button class="btn btn-default  btn-primary" id="idCancelar" onclick="onCancelarMunicipioAtiende(event)" >Cancelar</button>
-</div>
+                   <h4>Alta municipios que atienden</h4><span id="idNumQueAtMunicipios"></span>
+                    <div id="idAtiende" class="list-group list-group-atiende" ondrop="dropAtiende(event)" ondragover="allowDrop(event)">
+                         <button type="button" class="list-group-item list-group-item-action active" aria-current="true" disabled>
+                        Municipio que Atiende
+                      </button>
+                        <button type="button" class="list-group-item list-group-item-action">Arrastra aqui</button>
+                    </div>
+                    <br />
+                    <div id="idAtendidos" class="list-group list-group-atendidos" ondrop="dropAtendidos(event)" ondragover="allowDrop(event)">
+                         <button type="button" class="list-group-item list-group-item-action active" aria-current="true" disabled>
+                        Municipios atendidos
+                      </button>
+                        <button type="button" class="list-group-item list-group-item-action">Arrastra aqui</button>
+    
+                    </div>
+                    <div>
+                        <br />
+                        <button class="btn btn-default  btn-primary" id="idEnviar" onclick="onEnviarMunicipioAtiende(event)" >Enviar</button>&nbsp;
+                        <button class="btn btn-default  btn-primary" id="idCancelar" onclick="onCancelarMunicipioAtiende(event)" >Cancelar</button>
+                    </div>
                    
                </div>
-               <div class="col-md-2  well">
-                    <p>Municipios con atencion</p>
-                    <span id="idNumConAtMunicipios" ></span> 
-                    <span id="idMpiosConAtt"></span> 
-
-                    <div class="acoordion " id="accordionExample">
-                     </div>
-                    
-
+               <div class="col-md-4  well">
+                    <h4>Municipios con atencion <span id="idNumConAtMunicipios" ></span> </h4>
+                    <div class="acoordion " id="accordionExample"></div>
                </div>
-               <div  class="col-md-2  well"><p>Municipios que atienden</p><div id="idS1"></div> <div id="idMpio"> </div>
-               
-
-               <!--
-                <div  class="col-md-6 well"><p>Municipios</p> <span id="idNumMunicipios"></span><span id="idListMunicipios"></span>  </div>                               
-                <div  class="col-md-6 well"><p>Municipios</p> <span id="idNumMpiosRadio"></span><span id="idRadioMpios"></span>  </div>                               
-                <div  class="col-md-2  well"></div>
-                   -->
+        </div>
         </div>
     </div>
-</div>
 </body>
 </html>
 

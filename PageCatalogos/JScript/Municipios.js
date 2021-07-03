@@ -5,15 +5,8 @@ let g_arrMunicipios=[];
 
 //Funcion inicial de la pagina
 $(document).ready(function () {
-    
-    
     fnGetMunicipiosList();
-    
-    
-
-    
-    
-});
+ });
 
 
 
@@ -76,8 +69,8 @@ function fnMpiosQueAtienden()
         success: function (response) {
             var result = response.d;
 
-            let nlength = fnCreateList("idMpiosQueAtt", result);
-            document.getElementById('idNumQueAtMunicipios').innerHTML = nlength;
+            //let nlength = fnCreateList("idMpiosQueAtt", result);
+            let nlength = document.getElementById('idNumQueAtMunicipios').innerHTML = nlength;
             fnCreateSelectMunicipiosList(result);
         },
         failure: function (response) {
@@ -116,7 +109,8 @@ function fnMpiosSinAtienden() {
         success: function (response) {
             var result = response.d;
 
-            let nlength = fnCreateListDraggable("idMpiosSinAtt", result);
+            //let nlength = fnCreateListDraggable("idMpiosSinAtt", result);
+            let nlength = fnCreateListButtonDraggable("idMpiosSinAtt", result);
             document.getElementById('idNumSinAtMunicipios').innerHTML = nlength;
         },
         failure: function (response) {
@@ -146,7 +140,7 @@ function fnGetMunicipiosList() {
             fnMpiosConAtencion();
             fnMpiosSinAtienden();
             
-            nlength = fnCreateList("idListMunicipios", result);
+            //nlength = fnCreateList("idListMunicipios", result);
             document.getElementById('idNumMunicipios').innerHTML = nlength;
             
         },
@@ -174,6 +168,35 @@ function fnCreateListDraggable(idElement, result) {
                 "<i class='fa fa-remove fa-1x' onclick=borrarItem(this)></i ></div ></li>";
         }
         strList += "</ul>"
+        document.getElementById(idElement).innerHTML = strList;
+    }
+    catch (err) {
+        alert("-E- fnCreayteList " + idElement);
+    }
+    return iLength;
+}
+
+function fnCreateListButtonDraggable(idElement, result) {
+
+    let arrMunicipios = result.split('$');
+    let arrayNameId;
+    let iLength;
+    let sClass = "class= 'list-group-item list-group-item-action'";
+    let title = "<button type='button' class='list-group-item list-group-item-action active' aria-current='true' disabled>Municipios sin Atencion</button>";
+    iLength = arrMunicipios.length;
+    try {
+
+        let strList = "<div id='" + idElement + "0' class='list-group' >";
+        strList += title;
+        for (let iIndex = 0; arrMunicipios.length > iIndex; iIndex++) {
+
+            arrayNameId = arrMunicipios[iIndex].split("|");
+
+            strList += "<button draggable='true' ondragstart='drag(event)' id='" + idElement + "-" + arrayNameId[0] + "' " + sClass+" >" + arrayNameId[1] +
+                        "<div class='pull-right hidden' id='idX-" + arrayNameId[0] + "'>" +
+                         "<i class='fa fa-remove fa-1x' onclick=borrarItem(this)></i ></div ></button>";
+        }
+        strList += "</div>"
         document.getElementById(idElement).innerHTML = strList;
     }
     catch (err) {
@@ -219,6 +242,7 @@ function drag(ev) {
 }
 
 function dropAtendidos(ev) {
+    
     ev.preventDefault();
     if (document.getElementById("idAtiende").children.length == 1) {
         alert("Primero arrastra el municipio que atiende");
@@ -230,8 +254,6 @@ function dropAtendidos(ev) {
         itemBorrar.className = "pull-right"
         document.getElementById("idAtendidos").appendChild(document.getElementById(data));
         
-        document.getElementById("div2").style.height = (document.getElementById("idAtendidos").children.length + 1) * 30;
-        
         document.getElementById("idNumSinAtMunicipios").innerHTML = document.getElementById("idMpiosSinAtt0").children.length;
     }
 
@@ -239,30 +261,37 @@ function dropAtendidos(ev) {
 
 function dropAtiende(ev) {
     let strText = ev.dataTransfer.getData("text");
+    
     let IdAtiende;
+    if (document.getElementById("idAtiende").children.length >= 3) {
+        alert("Cancela para limpiar las cajas");
+        return;
+    }
     if (strText.indexOf("itemAcoor") != -1) {//caso de todo un grupo
         IdAtiende = strText.split("-")[1];
         let listElement = document.getElementById("list-" + IdAtiende);
         let municipio;
+        
         for (let iIndex = 0; listElement.children.length ; ) {
 
             //alert("Atendidos-->" + listElement.children.length);
             municipio = listElement.children[iIndex].id.split("-")[1]
             let itemBorrar = document.getElementById("idXAcoor-" + municipio);
-            itemBorrar.className = "pull-right"
-            if (IdAtiende != municipio)
+            
+            
+            if (IdAtiende != municipio) {
                 document.getElementById("idAtendidos").appendChild(listElement.children[iIndex]);
-            else
+                itemBorrar.className = "pull-right"
+            }
+            else {
                 document.getElementById("idAtiende").appendChild(listElement.children[iIndex]);
-            
-            document.getElementById("div2").style.height = (document.getElementById("idAtendidos").children.length + 1) * 15;
-            //alert("Atendidos2-->" + listElement.children[iIndex].id);
-            
+                itemBorrar.className = "pull-right hidden"
+            }
         }
-        
         return;
     }
-    if (document.getElementById("idAtiende").children.length < 2) {
+
+    if (document.getElementById("idAtiende").children.length < 3) {
         ev.preventDefault();
         var data = ev.dataTransfer.getData("text");
         let municipio = data.split("-")[1];
@@ -279,10 +308,11 @@ function onCancelarMunicipioAtiende(event) {
     let arr = [];
     let arr2 = [];
     let itemBorrar;
+    
     if (!document.getElementById("idAtiende").children.length>1)
         return;
-    if (document.getElementById("idAtiende").children[1].id.indexOf("SinAt") != -1) {
-       // alert("caso de lista sin atencion");
+    if (document.getElementById("idAtiende").children[2].id.indexOf("SinAt") != -1) {
+        
         let el = document.getElementById("idAtendidos");
         let arrayId = [];
         let municipio;
@@ -300,10 +330,10 @@ function onCancelarMunicipioAtiende(event) {
         for (let jIndex = 0; arrayId.length > jIndex; jIndex++) {
             document.getElementById("idMpiosSinAtt0").appendChild(document.getElementById(arrayId[jIndex]));
         }
-        municipio = document.getElementById("idAtiende").children[1].id.split("-")[1];
+        municipio = document.getElementById("idAtiende").children[2].id.split("-")[1];
         itemBorrar = document.getElementById("idX-" + municipio);
         itemBorrar.className = "pull-right hidden"
-        document.getElementById("idMpiosSinAtt0").appendChild(document.getElementById(document.getElementById("idAtiende").children[1].id));
+        document.getElementById("idMpiosSinAtt0").appendChild(document.getElementById(document.getElementById("idAtiende").children[2].id));
     
         return //caso de lista sin atencion
     }
@@ -323,9 +353,9 @@ function onCancelarMunicipioAtiende(event) {
             arr2 = document.getElementById("idAtendidos").children[jIndex].id.split("-");
             itemBorrar = document.getElementById("idXAcoor-" + arr2[1]);
             itemBorrar.className = "pull-right hidden"
-            document.getElementById("list-"+arr[1]).appendChild(document.getElementById("idAtendidos").children[jIndex]);
+            document.getElementById("list-" + arr[1]).appendChild(document.getElementById("idAtendidos").children[jIndex]);
+            jIndex = 0;
         }
-        jIndex = 0;
     }
 }
 
@@ -358,18 +388,27 @@ function onEnviarMunicipioAtiende(event) {
     fnEnviarMunicipioAtiende(param1, param2, isAcoor );
     
         
-    clearParent("idAtiende");
-    clearParent("idAtendidos");
+    clearParent("idAtiende", "Municipio que Atiende");
+    clearParent("idAtendidos","Municipios atendidos");
 }
 
-function clearParent(strID) {
+function clearParent(strID,title) {
     let parent = document["getElementById"](strID);
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild)
     }
-    var node = document["createElement"]("LI");                 // Create a <li> node
-    var textnode = document["createTextNode"]("Arrastra aqui");         // Create a text node
-    node["appendChild"](textnode);                              // Append the text to <li>
+    var node = document["createElement"]("button"); 
+    var textnode = document["createTextNode"](title);         
+    node["appendChild"](textnode);                              
+    node["className"] = "list-group-item list-group-item-action active";
+    node["type"] ="buttom"
+    document["getElementById"](strID)["appendChild"](node);
+
+    node = document["createElement"]("button");
+    textnode = document["createTextNode"]("Arrastra aqui");
+    node["appendChild"](textnode);
+    node["className"] = "list-group-item list-group-item-action";
+    node["type"] = "buttom"
     document["getElementById"](strID)["appendChild"](node);
     
 }
@@ -431,13 +470,17 @@ function fnCreateListAcordeon(idElement, result) {
             
             numero++;
             arrayNameId = arrMunicipios[iIndex].split("|");
-            strList += "<li  id='idLiAcoor-" + arrayNameId[0] + "'>" + arrayNameId[1] + "<div class='pull-right hidden' id='idXAcoor-" +
-                arrayNameId[0] + "'><i class='fa fa-remove fa-1x' onclick='borrarItem(this)'></i></div></li>";
+            /*strList += "<li  id='idLiAcoor-" + arrayNameId[0] + "'>" + arrayNameId[1] + "<div class='pull-right hidden' id='idXAcoor-" +
+                arrayNameId[0] + "'><i class='fa fa-remove fa-1x' onclick='borrarItem(this)'></i></div></li>";*/
+            
+            strList += "<button type='button' class='list-group-item list-group-item-action' id='idLiAcoor-" + arrayNameId[0] + "'>" + arrayNameId[1] + "<div class='pull-right hidden' id='idXAcoor-" +
+                    arrayNameId[0] + "'><i class='fa fa-remove fa-1x' onclick='borrarItem(this)'></i></div></button>";
             if (strAnt != arrayNameId[2]) {
                 
                 strAcoordeon = "<div class='accordion-item' draggable='true' ondragstart='drag(event)' id='itemAcoor-";
-                strAcoordeon += arrayNameId[2] + strAcoordeon1 + arrayNameId[2] + strAcoordeon2 + arrayNameId[2] + strAcoordeon3 + arrayNameId[1] + strAcoordeon4 +
-                    g_arrMunicipios[arrayNameId[2]] + strAcoordeon5 + arrayNameId[2] +  strAcoordeon51 + arrayNameId[2] + strAcoordeon6 + "<lu id='list-" + arrayNameId[2]+"'></lu>" +    strAcoordeon7;
+                strAcoordeon += arrayNameId[2] + strAcoordeon1 + arrayNameId[2] + strAcoordeon2 + arrayNameId[2] + strAcoordeon3 +
+                    arrayNameId[1] + strAcoordeon4 + g_arrMunicipios[arrayNameId[2]] + strAcoordeon5 + arrayNameId[2] + strAcoordeon51 +
+                    arrayNameId[2] + strAcoordeon6 + "<span id='list-" + arrayNameId[2] + "'></span>" + strAcoordeon7;
                 strAcoordeonFin += strAcoordeon;
                 objList["key"]=  "list-" + arrayNameId[2];
                 
@@ -483,7 +526,7 @@ function borrarItem(Element) {
     let arrayIdmove = [];
     if (Element.parentNode.parentNode.id.indexOf("idLiAcoor") != -1) {
         let el = document.getElementById("idAtiende");
-        arrayId = el.children[1].id.split("-");
+        arrayId = el.children[2].id.split("-");
         //alert(Element.parentNode.parentNode.id + "<-->" + el.children[1].id)
         if (Element.parentNode.parentNode.id != el.children[1].id) {
             let itemBorrar = document.getElementById("idXAcoor-" + Element.parentNode.parentNode.id.split("-")[1]);
