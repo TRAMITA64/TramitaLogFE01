@@ -203,4 +203,231 @@ public class CatWebService : System.Web.Services.WebService
             throw new Exception(ex.Message);
         }
     }
+    [WebMethod(EnableSession = true)]
+    public string getMpiosYsedes(string param1)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.spqGetMpiosYsedes(param1);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    [WebMethod(EnableSession = true)]
+    public string insertaSede(string SedeName, string Direccion, string Name, string ApellidoP, string ApellidoM, string Correo, string Telefono,string Municipio)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.insertaSede(SedeName, Direccion, Name, ApellidoP, ApellidoM, Correo, Telefono, Municipio);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+    [WebMethod(EnableSession = true)]
+    public string updateSede(string SedeName, string Direccion, string Name, string ApellidoP, string ApellidoM, string Correo, string Telefono, string sede)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.updateSede(SedeName, Direccion, Name, ApellidoP, ApellidoM, Correo, Telefono, sede);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    
+    [WebMethod(EnableSession = true)]
+    public string deleteSede(string param1,string param2)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.deleteSede( param1, param2);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+    
+    [WebMethod(EnableSession = true)]
+    public string EnviaGrupoDeAtencion(string param1, string param2, string param3, string param4, string param5)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.insertaGrupoDeAtencion(param1, param2, param3, param4, param5);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+
+    }
+    [WebMethod(EnableSession = true)]
+    public string NombresGruposDeAtencion(string param1)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.nombresGrupoDeAtencion(param1);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+
+    [WebMethod(EnableSession = true)]
+    public string GruposAtencionAll(string param1)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+         
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+         
+            strResultado = objCatalogos.GrupoDeAtencionAll(param1);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    [WebMethod(EnableSession = true)]
+    public string borrarGrupoDeAtencion(string param1,string user)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+
+            strResultado = objCatalogos.deleteGrupoDeAtencion(param1,user);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+    [WebMethod(EnableSession = true)]
+    public string updateGrupoDeAtencion(string param1, string param2, string param3, string param4, string param5)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.updateGrupoDeAtencion(param1, param2, param3, param4, param5);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
 }

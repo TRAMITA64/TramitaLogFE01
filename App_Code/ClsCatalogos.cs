@@ -212,4 +212,277 @@ public class ClsCatalogos
             Cn.clsCerrarConexion();
         }
     }
+    public string spqGetMpiosYsedes(string param1)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+
+            strConsulta = "exec spq_catSedesXMunicipio @param1";
+            Cn.clsAgregarParametro("@param1", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param1, null);
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+
+    }
+    public string insertaSede(string SedeName, string Direccion, string Name, string ApellidoP, string ApellidoM, string Correo, string Telefono, string municipio)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+
+            strConsulta = "exec spi_catSedes @SedeName, @Direccion, @Name, @ApellidoP, @ApellidoM, @Correo, @Telefono,@municipio";
+            Cn.clsAgregarParametro("@SedeName", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, SedeName, null);
+            Cn.clsAgregarParametro("@Direccion", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, Direccion, null);
+            Cn.clsAgregarParametro("@Name", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, Name, null);
+            Cn.clsAgregarParametro("@ApellidoP", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, ApellidoP, null);
+            Cn.clsAgregarParametro("@ApellidoM", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, ApellidoM, null);
+            Cn.clsAgregarParametro("@Correo", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, Correo, null);
+            Cn.clsAgregarParametro("@Telefono", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, Telefono, null);
+            Cn.clsAgregarParametro("@municipio", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, municipio, null);
+
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+
+    public string updateSede(string SedeName, string Direccion, string Name, string ApellidoP, string ApellidoM, string Correo, string Telefono,string sede)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+
+            strConsulta = "exec spu_catSedes @SedeName, @Direccion, @Name, @ApellidoP, @ApellidoM, @Correo, @Telefono,@sede";
+            Cn.clsAgregarParametro("@SedeName", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, SedeName, null);
+            Cn.clsAgregarParametro("@Direccion", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, Direccion, null);
+            Cn.clsAgregarParametro("@Name", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, Name, null);
+            Cn.clsAgregarParametro("@ApellidoP", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, ApellidoP, null);
+            Cn.clsAgregarParametro("@ApellidoM", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, ApellidoM, null);
+            Cn.clsAgregarParametro("@Correo", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, Correo, null);
+            Cn.clsAgregarParametro("@Telefono", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, Telefono, null);
+            Cn.clsAgregarParametro("@sede", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, sede, null);
+
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+    public string deleteSede(string sede,string usuario)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+
+            strConsulta = "exec spd_catSedes @sede,@usuario";
+            Cn.clsAgregarParametro("@sede", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, sede, null);
+            Cn.clsAgregarParametro("@usuario", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, sede, null);
+
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+    public string insertaGrupoDeAtencion(string param1, string param2, string param3, string param4, string param5)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+
+            strConsulta = "exec spi_grupoDeAtencion @nombre,@descripcion,@minicipios,@sedes,@usuario";
+            Cn.clsAgregarParametro("@nombre", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param1, null);
+            Cn.clsAgregarParametro("@descripcion", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param2, null);
+            Cn.clsAgregarParametro("@minicipios", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param3, null);
+            Cn.clsAgregarParametro("@sedes", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param4, null);
+            Cn.clsAgregarParametro("@usuario", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param5, null);
+
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+
+    public string nombresGrupoDeAtencion(string param1)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+
+            strConsulta = "exec spq_getNombresGruposDeAtencion @usuario";
+            Cn.clsAgregarParametro("@usuario", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param1, null);
+
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+
+    public string GrupoDeAtencionAll(string param1)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+
+            strConsulta = "exec spq_getGruposDeAtencionAll @usuario";
+            Cn.clsAgregarParametro("@usuario", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param1, null);
+
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+
+    public string deleteGrupoDeAtencion(string param1, string user)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+
+            strConsulta = "exec spd_gruposDeAtencion @param1,@usuario";
+            Cn.clsAgregarParametro("@param1", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param1, null);
+            Cn.clsAgregarParametro("@usuario", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, user, null);
+
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+
+    public string updateGrupoDeAtencion(string param1,string param2,string param3,string  param4,string param5)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+
+            strConsulta = "exec spu_grupoDeAtencion @nombre,@descripcion,@minicipios,@sedes,@usuario";
+            Cn.clsAgregarParametro("@nombre", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param1, null);
+            Cn.clsAgregarParametro("@descripcion", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param2, null);
+            Cn.clsAgregarParametro("@minicipios", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param3, null);
+            Cn.clsAgregarParametro("@sedes", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param4, null);
+            Cn.clsAgregarParametro("@usuario", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param5, null);
+
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+
 }

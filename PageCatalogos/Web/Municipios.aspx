@@ -175,7 +175,7 @@
                </div>
                <div class="col-md-4  well">
                     <h4>Municipios con atencion <span id="idNumConAtMunicipios" ></span> </h4>
-                    <div class="acoordion " id="accordionExample"></div>
+                    <div class="acoordion " id="accordionConAtencion"></div>
                </div>
         </div>
         </div>
