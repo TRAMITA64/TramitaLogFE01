@@ -31,19 +31,19 @@ catGen.catUtility = (function (catUtility, $, undefined) {
     }
 
 
-    hiddenAlert:function hiddenAlert() {
-        document.getElementById("idAlertGrupo").innerText = "";
-        document.getElementById("idAlertGrupo").hidden = true;
+    hiddenAlert: function hiddenAlert(idAlert) {
+        document.getElementById(idAlert).innerText = "";
+        document.getElementById(idAlert).hidden = true;
     }
 
-    showAlert:function showAlert(strText) {
-        document.getElementById("idAlertGrupo").innerText = strText;
-        document.getElementById("idAlertGrupo").hidden = false;
+    showAlert: function showAlert(idAlert,strText) {
+        document.getElementById(idAlert).innerText = strText;
+        document.getElementById(idAlert).hidden = false;
     }
 
-    fireAlert:function fireAlert(strText) {
-        setTimeout(function () { showAlert(strText); }, 500);
-        setTimeout(function () { hiddenAlert(); }, 3000);
+    fireAlert:function fireAlert(idAlert,strText,time) {
+        setTimeout(function () { showAlert(idAlert,strText); }, 500);
+        setTimeout(function () { hiddenAlert(idAlert); }, time);
     }
 
     fnclearListAcordeon:function fnclearListAcordeon(idclear) {
@@ -59,6 +59,7 @@ catGen.catUtility = (function (catUtility, $, undefined) {
         for (iIndex = 0; arrayInput.length > iIndex; iIndex++) {
             valueInput = document.getElementById(arrayInput[iIndex]).value;
             if (valueInput == "" || valueInput == undefined) {
+                console.log("validaInputs::-w- "+arrayInput[iIndex]);
                 document.getElementById(strFormName).classList.add("was-validated");
                 return false
             }
@@ -67,10 +68,11 @@ catGen.catUtility = (function (catUtility, $, undefined) {
         return true;
     }
 
-    disableInput:function disableInput(valor, listInput) {
+    disableInput: function disableInput(valor, listInput) {
         for (let iIndex = 0; g_arrayInput.length > iIndex; iIndex++) {
-            if (listInput == "")
+            if (listInput == "") {
                 document.getElementById(g_arrayInput[iIndex]).disabled = valor;
+            }
             else {
                 if (listInput.indexOf(g_arrayInput[iIndex]) != -1)
                     document.getElementById(g_arrayInput[iIndex]).disabled = valor;
@@ -89,11 +91,12 @@ catGen.catUtility = (function (catUtility, $, undefined) {
         this.eventFire(document.getElementById("idAlerDialog"), "click");
     }
 
-    fnCreateSelectMunicipiosList:function fnCreateSelectMunicipiosList(result) {
+    fnCreateSelectList:function fnCreateSelectList(idSelect,title,result) {
         let strMunicipios = result;
         let arrMunicipios;
+        let strListselect = "";
         try {
-            let strListselect = "<select id='idMunicipios'>";
+            strListselect = "<select class='form-select' aria-label='" + title+"' id='" + idSelect +"'>";
             arrMunicipios = strMunicipios.split("$");
             let parMubicipio = [];
             for (let iIndex = 0; arrMunicipios.length > iIndex; iIndex++) {
@@ -101,12 +104,10 @@ catGen.catUtility = (function (catUtility, $, undefined) {
                 strListselect += "<option value='" + parMubicipio[0] + "'>" + parMubicipio[1] + "</option>";
             }
             strListselect += "</select>";
-            document.getElementById("idSelectMunicipio").innerHTML = strListselect;
-            document["getElementById"]("idMunicipios")["addEventListener"]("change", fnSelectChangeMunicipio);
-            catGen.catUtility.requestMpioAtiendeList(document.getElementById("idMunicipios").value);
         } catch (err) {
             alert(err);
         }
+        return strListselect;
     }
 
     fnCreateListButtonDraggable: function fnCreateListButtonDraggable(idElement, result, boxTitle) {
@@ -276,13 +277,67 @@ catGen.catUtility = (function (catUtility, $, undefined) {
             for (let jIndex = 0; arrList.length > jIndex; jIndex++) {
 
                 document.getElementById(arrList[jIndex].key).innerHTML = arrList[jIndex].list;
-                document.getElementById(strID + "badge-" + arrList[jIndex].key.split("-")[1]).innerHTML = arrList[jIndex].size;
+                if (arrList[jIndex].size == 1 && arrList[jIndex].list.indexOf("LiAcoor-0") != -1) {
+                    document.getElementById(strID + "badge-" + arrList[jIndex].key.split("-")[1]).innerHTML = "0";
+                } else {
+                    document.getElementById(strID + "badge-" + arrList[jIndex].key.split("-")[1]).innerHTML = arrList[jIndex].size;
+                }
             }
         }
         catch (err) {
             alert("-E- fnCreateListAcordeon " + idElement);
         }
         return iLength;
+    }
+
+    fnCreatefloatingSelect: function fnCreatefloatingSelect(idElemento, result, strTitle,selectItem) {
+        
+        let arrIdName = result.split("$");
+        if (arrIdName.length>0) {
+            let strText = "";
+            let selOption= "selected";
+            let strfloatingSelect = "<select class='form-select' id='id" + idElemento + "' aria-label='" + strTitle+"'>";
+            let strfloatingSelect1 = "<option value='";
+            let strfloatingSelect2 = "' ";
+            let strfloatingSelect21 =  ">";
+            let strfloatingSelect3 = "</option>";
+            let arrMpio=[];
+            for (let iIndex = 0; arrIdName.length > iIndex; iIndex++) {
+                arrMpio = arrIdName[iIndex].split("|");
+                if ((selectItem == 0 && strText.length == 0) || (selectItem == arrMpio[0])) 
+                    strText += strfloatingSelect1 + arrMpio[0] + strfloatingSelect2 + selOption + strfloatingSelect21 + arrMpio[1] + strfloatingSelect3;
+                else
+                    strText += strfloatingSelect1 + arrMpio[0] + strfloatingSelect2 + strfloatingSelect21 + arrMpio[1] + strfloatingSelect3;
+            }
+            document.getElementById(idElemento).innerHTML = strfloatingSelect + strText + "</select><label for='id" + idElemento+"'>" + strTitle + "</label>";
+        }
+    }
+
+    getSelectOptionID: function getSelectOptionID(strIdSelect) {
+        let returnValue = 0;
+        let fsLement = document.getElementById(strIdSelect);
+        for (let iItem = 0; fsLement.children.length > iItem; iItem++) {
+            if (fsLement.children[iItem].selected == true) {
+                returnValue=fsLement.children[iItem].value;
+                break;
+            }
+        }
+        return returnValue;
+    }
+    fnCreateMultipleSelect: function fnCreateMultipleSelect(idElemento, result, pos, strTitle, selectItem) {
+        let arrSelect = result.split("$");
+        let strMultselect1 = "<select class='form-select' id='id" + pos + idElemento + "' multiple aria-label='" + strTitle + "'>";
+        let strText = "";
+        let strMultselect2 = "<option value='";
+        let strMultselect3 = "'>";
+        let strMultselect4 = "</option > ";
+        let strMultselect5 = "</select>";
+        let arrElement = [];
+        for (let iIndex = 0; arrSelect.length > iIndex; iIndex++) {
+            arrElement = arrSelect[iIndex].split("|");
+            strText += strMultselect2 + arrElement[0] + strMultselect3 + arrElement[1] + strMultselect4
+        }
+        return strMultselect1 + strText + strMultselect5;
     }
     /*-----------------------------------------------------------------------------------------------------------------------------------------------------------*/
     requestMunicipiosList:function requestMunicipiosList(onQueryDataMunicipios) {
@@ -573,6 +628,75 @@ catGen.catUtility = (function (catUtility, $, undefined) {
         });
     }
 
+    requestEmpleados: function requestEmpleados(dataParam, onQueryDataEmpleados) {
+        $.ajax({
+            type: "POST",
+            url: "../WebServices/CatWebService.asmx/Empleados",
+            data: dataParam,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                var result = response.d;
+                onQueryDataEmpleados(result);
+            },
+            failure: function (response) {
+                alert(response.d);
+            }
+        });
+    }
+
+    requestStatusEmpleados: function requestStatusEmpleados(dataParam, onQueryDataStatusEmpleados) {
+        
+        $.ajax({
+            type: "POST",
+            url: "../WebServices/CatWebService.asmx/StatusEmpleados",
+            data: dataParam,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                var result = response.d;
+                onQueryDataStatusEmpleados(result);
+            },
+            failure: function (response) {
+                alert(response.d);
+            }
+        });
+    }
+
+    requestInsertEmpleado: function requestInsertEmpleado(dataParam, onQueryDataInsertEmpleado)
+    {
+        $.ajax({
+            type: "POST",
+            url: "../WebServices/CatWebService.asmx/insertaEmpleado",
+            data: JSON.stringify(dataParam),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                var result = response.d;
+                onQueryDataInsertEmpleado(result);
+            },
+            failure: function (response) {
+                alert(response.d);
+            }
+        });
+    }
+    requestUpdateEmpleado: function requestUpdateEmpleado(dataParam, onQueryDataUpdateEmpleado) {
+        $.ajax({
+            type: "POST",
+            url: "../WebServices/CatWebService.asmx/updateEmpleado",
+            data: JSON.stringify(dataParam),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                var result = response.d;
+                onQueryDataUpdateEmpleado(result);
+            },
+            failure: function (response) {
+                alert(response.d);
+            }
+        });
+    }
+
     return {
         eventFire: eventFire,
         fireAlert: fireAlert,
@@ -583,12 +707,15 @@ catGen.catUtility = (function (catUtility, $, undefined) {
         fnCreateListButtonDraggable: fnCreateListButtonDraggable,
         fnCreateListAcordeonCehckBox: fnCreateListAcordeonCehckBox,
         fnCreateListAcordeon: fnCreateListAcordeon,
-        fnCreateSelectMunicipiosList: fnCreateSelectMunicipiosList,
+        fnCreateSelectList: fnCreateSelectList,
+        fnCreatefloatingSelect: fnCreatefloatingSelect,
+        fnCreateMultipleSelect, fnCreateMultipleSelect,
 
         getNameMunicipio: getNameMunicipio,
         getArrNameMunicipio: getArrNameMunicipio,
         getNameGruposDeAtencion: getNameGruposDeAtencion,
         getArrNameGruposDeAtencion: getArrNameGruposDeAtencion,
+        getSelectOptionID: getSelectOptionID,
 
         requestMunicipiosList: requestMunicipiosList,
         requestMpioAtiendeList: requestMpioAtiendeList,
@@ -604,7 +731,11 @@ catGen.catUtility = (function (catUtility, $, undefined) {
         requestCreateGrupoDeAtencion: requestCreateGrupoDeAtencion,
         requestBorraGrupoDeAtencion: requestBorraGrupoDeAtencion,
         requestBorraSede: requestBorraSede,
-        requestSedesInsertUpdate: requestSedesInsertUpdate
+        requestSedesInsertUpdate: requestSedesInsertUpdate,
+        requestEmpleados: requestEmpleados,
+        requestStatusEmpleados: requestStatusEmpleados,
+        requestInsertEmpleado: requestInsertEmpleado,
+        requestUpdateEmpleado: requestUpdateEmpleado
 
     }
 

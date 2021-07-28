@@ -484,5 +484,131 @@ public class ClsCatalogos
             Cn.clsCerrarConexion();
         }
     }
+    public string getEmpleados(string param1, string param2)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
 
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+
+            strConsulta = "exec spq_empleados @param,@usuario";
+            Cn.clsAgregarParametro("@param", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param1, null);
+            Cn.clsAgregarParametro("@usuario", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param2, null);
+            
+
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+    public string getStatusEmpleados(string param1, string param2)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+
+            strConsulta = "exec spq_statusEmpleado @param,@usuario";
+            Cn.clsAgregarParametro("@param", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param1, null);
+            Cn.clsAgregarParametro("@usuario", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param2, null);
+
+
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+
+    public string insertEmpleado(string idEmp,string rfc, string n1, string ap, string am, string co, string fa, string idM, string idS, string st, string us)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+            strConsulta = "exec spi_Empleado @idEmp,@rfc,@n1,@ap,@am,@co,@fa,@idM,@idS,@st,@us";
+            Cn.clsAgregarParametro("@idEmp", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, idEmp, null);
+            Cn.clsAgregarParametro("@rfc",clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, rfc,null);
+            Cn.clsAgregarParametro("@n1",clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, n1,null);
+            Cn.clsAgregarParametro("@ap",clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, ap,null);
+            Cn.clsAgregarParametro("@am",clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, am,null);
+            Cn.clsAgregarParametro("@co",clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, co,null);
+            Cn.clsAgregarParametro("@fa",clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, fa,null);
+            Cn.clsAgregarParametro("@idM",clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, idM,null);
+            Cn.clsAgregarParametro("@idS",clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, idS,null);
+            Cn.clsAgregarParametro("@st",clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN,st,null);
+            Cn.clsAgregarParametro("@us",clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN,us,null);
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+    public string updateEmpleado(string idEmp, string rfc, string n1, string ap, string am, string co, string fa, string idM, string idS, string st, string us)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+            strConsulta = "exec spu_Empleado @idEmp,@rfc,@n1,@ap,@am,@co,@fa,@idM,@idS,@st,@us";
+            Cn.clsAgregarParametro("@idEmp", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, idEmp, null);
+            Cn.clsAgregarParametro("@rfc", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, rfc, null);
+            Cn.clsAgregarParametro("@n1", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, n1, null);
+            Cn.clsAgregarParametro("@ap", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, ap, null);
+            Cn.clsAgregarParametro("@am", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, am, null);
+            Cn.clsAgregarParametro("@co", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, co, null);
+            Cn.clsAgregarParametro("@fa", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, fa, null);
+            Cn.clsAgregarParametro("@idM", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, idM, null);
+            Cn.clsAgregarParametro("@idS", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, idS, null);
+            Cn.clsAgregarParametro("@st", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, st, null);
+            Cn.clsAgregarParametro("@us", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, us, null);
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
 }

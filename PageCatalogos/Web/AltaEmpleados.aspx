@@ -98,147 +98,116 @@
     
 
     <div class="container-fluid">
-        <form class="needs-validation" id="formGposAtencion" novalidate>
+        
         <div class="row">
                    <div  class="col-md-4">
                        <h4>Municipios que atienden</h4>
-                       <span id="idMunicipiosQueAtienden"></span>
+                       <span id="idMpiosQueAtienden"></span>
                    </div>
                    <div  class="col-md-4 well">
-                       <h4>Alta Empleados</h4>
-                        <div class="input-group mb-3">
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputRfc">RFC</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputRfc" style="text-transform:uppercase" required/>
-                                <div class="invalid-feedback" id="inputRequiredRfc">
-                                Por favor ingrese un RFC valido.
+                       <div class="alert alert-danger" role="alert" id="idAlertEmp" hidden>
+                          ......
+                        </div>
+                       <form class="needs-validation" id="formEmpleados" novalidate>
+                           <h4>Alta Empleados</h4>
+                            <div class="input-group mb-3">
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputRfc">RFC</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputRfc" style="text-transform:uppercase" required/>
+                                    <div class="invalid-feedback" id="inputRequiredRfc">
+                                    Por favor ingrese un RFC valido.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="input-group mb-3">
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputNombre">Nombre</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputName" required/>
-                                <div class="invalid-feedback" id="inputRequiredNombre">
-                                    Por favor ingrese un Nombre valido.
+                            <div class="input-group mb-3">
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputNombre">Nombre</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputName" required />
+                                    <div class="invalid-feedback" id="inputRequiredNombre">
+                                        Por favor ingrese un Nombre valido.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="input-group mb-3">
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputResponsable">Apellidos</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputApellidoP" required/>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputApellidoM" required/>
-                                <div class="invalid-feedback" id="inputRequiredName">
-                                    Por favor ingrese un Nombre valido.
+                            <div class="input-group mb-3">
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputResponsable">Apellidos</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputApellidoP" required />
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputApellidoM" required />
+                                    <div class="invalid-feedback" id="inputRequiredName">
+                                        Por favor ingrese un Nombre valido.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="input-group mb-3">
-                            <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputCorreo">Correo</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputCorreo" style="text-transform:uppercase" required/>
-                                <div class="invalid-feedback" id="inputRequiredCorreo">
-                                Por favor ingrese un Correo valido.
+                            <div class="input-group mb-3">
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputCorreo">Correo</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputCorreo" style="text-transform:uppercase" required/>
+                                    <div class="invalid-feedback" id="inputRequiredCorreo">
+                                    Por favor ingrese un Correo valido.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputAlta">Fecha Alta</span>
+                                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputAlta" style="text-transform:uppercase" disabled/>
+                                    <span class="input-group-text" id="inputEstado">Estado</span>
 
-                        <div class="row g-2">
-                          <div class="col-md">
-                            <div class="form-floating">
-                          <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                            <option selected>Abasolo</option>
-                                <option value="1">Cortazar</option>
-                                <option value="2">Celaya</option>
-                                <option value="3">Irapuato</option>
-                          </select>
-                          <label for="floatingSelect">Seleccione municipio </label>
-                        </div>
-                          </div>
-                          <div class="col-md">
-                            <div class="form-floating">
-                              <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                <option selected>Plaza dorada</option>
-                                <option value="1">Constituyentes</option>
-                              </select>
-                              <label for="floatingSelectGrid">Seleccione sede</label>
+                                    <div   id="sttatusEmp">
+                                      ------------------
+                                    </div>
+
+                                </div>
                             </div>
-                          </div>
-                        </div>
-                       <br />&nbsp;<br />
 
-                        <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idEnviar" onclick="onEnviarGrupo(event)" >Enviar</button>&nbsp;
-                       <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idActualizar" onclick="onActualizar(event)" >Actualizar</button>&nbsp;
-                       <button class="btn btn-default btn-xs  btn-primary" type="button" id="idBorrar" onclick="onBorrarSede(event)" >Borrar</button>&nbsp;
-                       <button class="btn btn-default btn-xs btn-primary" type="button" id="idLimpiar" onclick="onLimpiar(this)" >Limpiar</button>
+                            <div class="row g-2">
+                                  <div class="col-md">
+                                        <div class="form-floating" id="fsMpiosQueAtienden"><!--floating Select municipios-->
+                                          ...........
+                                        </div>
+                                  </div>
+                                  <div class="col-md">
+                                        <div class="form-floating" id="fsSedesMunicipio"><!--floating Select sedes-->
+                                            ..........
+                                        </div>
+                                  </div>
+                            </div>
+                           <br />&nbsp;<br />
+
+                            <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idEnviar" onclick="onEnviar(event)" >Enviar</button>&nbsp;
+                           <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idActualizar" onclick="onActualizar(event)" >Actualizar</button>&nbsp;
+                           <button class="btn btn-default btn-xs btn-primary" type="button" id="idLimpiar" onclick="onLimpiar(this)" >Limpiar</button>
                        
                         
-                       
-                    </div>
+                           </form>   
+                        </div>
                     
                    <div class="col-md-4  well">
                        <h4>Empleados</h4>
-<div class="input-group has-validation">
-    <span class="input-group-text" id="inputBuscar">Empleado</span>
-    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputBuscar" style="text-transform:uppercase" />
-    <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idBuscar" onclick="onBuscar(event)" >Buscar</button>&nbsp;
-</div>
-<select class="form-select" multiple aria-label="multiple select example">
-  <option >Alberto Sahagun Arias</option>
-  <option value="1">Ricardo Castro Perez</option>
-  <option value="2">Verenice Longoria Perez</option>
-  <option value="3">Claudia Lopez Gonzales</option>
-    <option value="4">Jimena Gonzales Perez</option>
-    <option value="5">Catalina Hinojosa Gonzales</option>
-</select>
+                       <div class="alert alert-primary" role="alert" id="idAlertGrupo" hidden>
+                          ......
+                        </div>
+
+                    <div class="input-group">
+                        <span class="input-group-text" id="inputBuscar">Filtrar</span>
+                        <input type="text" class="form-control" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-default" id="idInputBuscar" style="text-transform:uppercase" />
+                    </div>
+                    <div id="msEmpleados">
+                        --------------------
+                    </div>
                      <br />&nbsp;<br />
-                       <h4>Municipio Celaya</h4>
-                    <div class="input-group mb-3">
-
-</div>
-                       <div class="accordion-item" draggable="true" ondragstart="dragStart(event)" id="id3itemAcoor-2000">
-                           <h2 class="accordion-header" id="id3h2-2000">
-                               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#id3Collapse-2000" aria-expanded="false" aria-controls="Collapse-Celaya">Plaza dorada&nbsp;&nbsp;<span class="badge bg-primary  rounded-pill" style="color:white" id="id3badge-2000">3</span></button>
-
-                           </h2><div id="id3Collapse-2000" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#idAccordionGrupos" style="">
-                               <div class="accordion-body"><span id="id3list-2000">
-                                   <button type="button" class="list-group-item list-group-item-action" ondblclick="ondblclickSede(this)" id="id3idLiAcoor-undefined">Alberto Sahagun Arias<div class="pull-right" hidden="" id="id3XAcoor-6"><i class="fa fa-remove fa-1x" onclick="borrarItem(this)"></i></div></button>
-                                   <button type="button" class="list-group-item list-group-item-action" ondblclick="ondblclickSede(this)" id="id3idLiAcoor-undefined">Ricardo Castro Perez<div class="pull-right" hidden="" id="id3XAcoor-13"><i class="fa fa-remove fa-1x" onclick="borrarItem(this)"></i></div>
-                                   </button><button type="button" class="list-group-item list-group-item-action" ondblclick="ondblclickSede(this)" id="id3idLiAcoor-undefined">Verenice Longoria Perez<div class="pull-right" hidden="" id="id3XAcoor-15"><i class="fa fa-remove fa-1x" onclick="borrarItem(this)"></i></div></button></span></div></div></div>
+                       <h4 id="idTitleMunicipio">-------</h4>
+                        <div class="acoordion " id="idAccordionSedeEmpleado">----</div>    
+                  
                    </div>
             
-            
-         </form>
+            </div>
+         
     </div>
-    <div class="container">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#alertModal" hidden id="idAlerDialog">
-        Launch demo modal
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="alertModalLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="idMessageAlertDlg">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="onClickModal(1)">Continuar</button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="onClickModal(2)" id="idBtnCancelar">Cancelar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
+    <div id="includeModal"></div>
     <script src="../JScript/catUtility.js?v=1"></script>
 </body>
 </html>

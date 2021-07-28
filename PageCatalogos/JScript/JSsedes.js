@@ -179,15 +179,15 @@ function onClickModal(valor) {
         switch (g_enviarOpcion) {
             case 'BORRAR':
                 borrarGrupoAtencion();
-                catGen.catUtility.fireAlert("Se Borro el grupo de atencion " + nombreSede + "!");
+                catGen.catUtility.fireAlert("idAlertGrupo", "Se Borro el grupo de atencion " + nombreSede + "!", 3000);
                 break;
             case 'INSERTAR':
                 crearAtualizarGrupoAtencion();
-                catGen.catUtility.fireAlert("Se creo el grupo de atencion " + nombreSede + "!");
+                catGen.catUtility.fireAlert("idAlertGrupo", "Se creo el grupo de atencion " + nombreSede + "!", 3000);
                 break;
             case 'ACTUALIZAR':
                 crearAtualizarGrupoAtencion();
-                catGen.catUtility.fireAlert("Se actualizo el grupo de atencion " + nombreSede + "!");
+                catGen.catUtility.fireAlert("idAlertGrupo", "Se actualizo el grupo de atencion " + nombreSede + "!", 3000);
                 break;
         }
     }

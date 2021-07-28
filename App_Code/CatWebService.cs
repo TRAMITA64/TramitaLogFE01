@@ -430,4 +430,106 @@ public class CatWebService : System.Web.Services.WebService
             throw new Exception(ex.Message);
         }
     }
+    [WebMethod(EnableSession = true)]
+    public string Empleados(string param1, string param2)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.getEmpleados(param1, param2);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+    [WebMethod(EnableSession = true)]
+    public string StatusEmpleados(string param1, string param2)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.getStatusEmpleados(param1, param2);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+    [WebMethod(EnableSession = true)]
+    public string insertaEmpleado(string idEmp, string rfc, string n1,string ap,string am, string co, string fa, string idM, string idS, string st, string us)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.insertEmpleado(idEmp, rfc, n1, ap, am, co, fa, idM, idS, st, us);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+    [WebMethod(EnableSession = true)]
+    public string updateEmpleado(string idEmp, string rfc, string n1, string ap, string am, string co, string fa, string idM, string idS, string st, string us)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.updateEmpleado(idEmp, rfc, n1, ap, am, co, fa, idM, idS, st, us);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
 }
+
+

@@ -297,15 +297,15 @@ function onClickModal(valor) {
         switch (g_enviarOpcion) {
             case "BORRAR":
                 borrarMunicipioQueatiende();
-                catGen.catUtility.fireAlert("Se Borro el grupo de atencion " + nombreSede + "!");
+                catGen.catUtility.fireAlert("idAlertGrupo", "Se Borro el grupo de atencion " + nombreSede + "!", 3000);
                 break;
             case "INSERTAR":
                 crearMunicipioQueAtiende();
-                catGen.catUtility.fireAlert("Se creo el grupo de atencion " + nombreSede + "!");
+                catGen.catUtility.fireAlert("idAlertGrupo", "Se creo el grupo de atencion " + nombreSede + "!", 3000);
                 break;
             case "ACTUALIZAR":
                 atualizarMunicipioQueAtiende();
-                catGen.catUtility.fireAlert("Se actualizo el grupo de atencion " + nombreSede + "!");
+                catGen.catUtility.fireAlert("idAlertGrupo", "Se actualizo el grupo de atencion " + nombreSede + "!", 3000);
                 break;
         }
     }
@@ -423,10 +423,10 @@ function onQueryDataMpioAtiende(result) {
 }
 function onQueryDataMpiosConAtencion(result) {
     let nlength = 0;
-    if (result.length != 0) {
-        
+    
+    if (result.length != 0) 
         nlength = catGen.catUtility.fnCreateListAcordeon("accordionConAtencion", result, 0, catGen.catUtility.getNameMunicipio);
-    } else
+    else
         catGen.catUtility.fnclearListAcordeon("accordionConAtencion");
     document.getElementById('idNumConAtMunicipios').innerHTML = nlength;
 }

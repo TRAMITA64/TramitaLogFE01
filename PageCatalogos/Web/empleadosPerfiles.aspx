@@ -152,13 +152,11 @@
 
                         <div class="input-group mb-3">
                             <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputResponsable">Empleado</span>
+                                <span class="input-group-text" id="inputEmpleado">Empleado</span>
                                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputName" disabled value="Alberto"/>
                                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputApellidoP" disabled value="Sahagun"/>
                                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputApellidoM" disabled value="Arias"/>
-                                <div class="invalid-feedback" id="inputRequiredName">
-                                    Por favor ingrese un Nombre valido.
-                                </div>
+                                
                             </div>
                         </div>
 
@@ -166,6 +164,15 @@
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputSede">Sede</span>
                                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputSede"   disabled value="Plaza dorada"/>
+                                
+                            </div>
+                        </div>
+                       <div class="input-group mb-3">
+                            <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputResponsable">Alta</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputAlta" disabled value="2021-02-28"/>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputStatus" disabled value="Estatus"/>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputStatus01" disabled value="Activo"/>
                                 
                             </div>
                         </div>
