@@ -1,7 +1,7 @@
 ﻿let g_arrMunicipios = [];
 let g_arrayInput = ["idEnviar",  "idLimpiar", "idActualizar"];
-let g_arrMunicipiosSedes = []; //{ id: , n1: , d1: , r1: , idS: , c1: , t1:  }
-let g_arrEmpleados = []; //{ idEmp: , rfc: , n1: , ap: , am: , idM: , idS: , fa: , st:, co: }
+
+
 let g_arrInputs = ["idInputRfc", "idInputName", "idInputApellidoP", "idInputApellidoM", "idInputCorreo", "idInputCorreo", "idInputAlta"];
 let g_enviarOpcion = 'NADA'
 let g_strParam = "";
@@ -17,68 +17,49 @@ $(function () {
     $("#includeModal").load("modal.html");
 });
 
-function SelectEmpleado(idEmpleado) {
-    let arrTemp = g_arrEmpleados.filter(value => value.idEmp == idEmpleado)
+function SelectEmpleado(idEmpleado,accor) {
+    let arrTemp = catGen.catUtility.getArrEmpleados().filter(value => value.idEmp == idEmpleado);
     let objEmpleado = arrTemp[0];
 
     llenaInputs(objEmpleado, 1);
-
-    onChangeMunicipio(objEmpleado.idM, objEmpleado.idS);
-
-    onChangeSedeEmpleado(objEmpleado.idM, objEmpleado.idS);
+    if (accor != 1) {
+        onChangeMunicipio(objEmpleado.idM, objEmpleado.idS);
+        onChangeSedeEmpleado(objEmpleado.idM, objEmpleado.idS);
+    }
     catGen.catUtility.disableInput(true, "");
     catGen.catUtility.disableInput(false, "idActualizar,idLimpiar");
     g_strParam = getParamCompara();
 }
 
 function fnSelectEmpleado() {
-    SelectEmpleado(catGen.catUtility.getSelectOptionID(this.id));
+    SelectEmpleado(catGen.catUtility.getSelectOptionID(this.id),0);
+}
+
+function fnSelectEmpleadoClick() {
+    
+    SelectEmpleado(catGen.catUtility.getSelectOptionID(this.parentNode.id),0);
+}
+function fndblclickSedeEmpleado() {
+    let idElement = this.id.split("-")[1];
+    if (idElement >= 5000) {//empleado
+        SelectEmpleado(idElement,1);
+    }
 }
 
 function ondblclickSede(obj) {
-    SelectEmpleado(obj.id.split("-")[1]);
+    SelectEmpleado(obj.id.split("-")[1],0);
 }
 
 function onChangeSedeEmpleado(idMSelect, idSedeSelect) {
+    catGen.catUtility.fnCreateAcoorSedesEmpleados("idAccordionSedeEmpleado", idMSelect, fndblclickSedeEmpleado);
     
-    let arrSedes = g_arrMunicipiosSedes.filter(val => val.id == idMSelect);
-    let result3 = "";
-    let arrSedesName=[];
-    function getNameSedes(value) {
-        return arrSedesName[value]
-    }
-    let arrEmp;
-    let empleado;
-    let arrSede;
-    for (let iIndex = 0; arrSedes.length > iIndex; iIndex++) {
-        
-        arrEmp = g_arrEmpleados.filter(value => value.idS == arrSedes[iIndex].idS);
-        if (arrEmp.length) {//si tengo empleados en la se
-            for (let jIndex = 0; arrEmp.length > jIndex; jIndex++) {
-                
-                empleado = arrEmp[jIndex];
-                arrSede = g_arrMunicipiosSedes.filter(value => value.idS == arrSedes[iIndex].idS);
-                arrSedesName[empleado.idS] = arrSede[0].n1;
-                result3 += (result3 == "" ? "" : "$") + empleado.idEmp + "|" + empleado.n1 + " " + empleado.ap + " " + empleado.am + "|" + empleado.idS;
-            }
-            
-        } else {
-            //si no tengo que hago??
-            let arrSede = g_arrMunicipiosSedes.filter(value => value.idS == arrSedes[iIndex].idS);
-            arrSedesName[arrSedes[iIndex].idS] = arrSede[0].n1;
-            result3 += (result3 == "" ? "" : "$") + "0|No tenemos empleados en esta sede|" + arrSedes[iIndex].idS;
-            nlength = catGen.catUtility.fnCreateListAcordeon("idAccordionSedeEmpleado", result3, 0, getNameSedes);//izq abajo
-        }
-    }
-    
-    nlength = catGen.catUtility.fnCreateListAcordeon("idAccordionSedeEmpleado", result3, 0, getNameSedes);//izq abajo
     putTitleMunicipioSedes();
 }
 
 function fnChangeMunicipio() {
     
     let idSelect = catGen.catUtility.getSelectOptionID(this.id);
-    let arrTemp = g_arrMunicipiosSedes.filter(value => value.id == idSelect)
+    let arrTemp = catGen.catUtility.getArrMunicipiosSedes().filter(value => value.id == idSelect)
     let result2 = "";
     for (let iIndex = 0; arrTemp.length > iIndex; iIndex++) {
         result2 += (result2 == "" ? "" : "$") + arrTemp[iIndex].idS + "|" + arrTemp[iIndex].n1;
@@ -87,7 +68,7 @@ function fnChangeMunicipio() {
 
     catGen.catUtility.fnCreatefloatingSelect("fsSedesMunicipio", result2, "Selecciona la sede", 0)//centro sedes
 
-    let arrTemp2 = g_arrEmpleados.filter(value => value.idM == idSelect)
+    let arrTemp2 = catGen.catUtility.getArrEmpleados().filter(value => value.idM == idSelect)
     if (arrTemp2.length > 0) {
         let objEmpleado = arrTemp2[0];
         
@@ -155,10 +136,31 @@ function onLimpiar(obj) {
     document.getElementById("idTitleMunicipio").innerHTML = "";
     document.getElementById("idAccordionSedeEmpleado").innerHTML = "";
     catGen.catUtility.disableInput(true, "");
+    
+    catGen.catUtility.disableInput(false, "idEnviar,idLimpiar");
     document.getElementById("formEmpleados").classList.remove("was-validated");
+
+    document.getElementById("idInputFiltrar").value = "";
+    catGen.catUtility.eventFire(document.getElementById("idInputFiltrar"), "keyup");
 }
 
 function onEnviar(event) {
+    let nombreEmpleado = document.getElementById("idInputName").value + " " + document.getElementById("idInputApellidoP").value;
+    let idSelect1 = catGen.catUtility.getSelectOptionID("idSelectStatusEmp");
+    let idSelect2 = catGen.catUtility.getSelectOptionID("idfsMpiosQueAtienden");
+    let idSelect3 = catGen.catUtility.getSelectOptionID("idfsSedesMunicipio")
+    if ((idSelect1 * idSelect2 * idSelect3) == 0) {
+
+        if (idSelect1 == 0) {
+            catGen.catUtility.fireAlert("idAlertEmp", "Selecceione un estado para el empleado " + nombreEmpleado + "!", 5000);
+            return;
+        }
+        if (idSelect2 == 0) {
+            catGen.catUtility.fireAlert("idAlertEmp", "Selecceione un municipio para el empleado " + nombreEmpleado + "!", 5000);
+            return;
+        }
+    }
+        
     if (catGen.catUtility.validaInputs("formEmpleados", g_arrInputs) == true) {
         g_enviarOpcion = 'INSERTAR';
         let botones = 0;
@@ -176,7 +178,7 @@ function onActualizar(ev) {
             let text = 'El empleado con el nombre ' + nombreEmpleado + ' va ser actualizado en el sistema ¿Desea continuar?';
             catGen.catUtility.alertDlg(botones, 'Alerta tramita', text);
         } else {
-            catGen.catUtility.fireAlert("idAlertEmp", "No hay cambios para el empleado" + nombreEmpleado + "!", 5000);
+            catGen.catUtility.fireAlert("idAlertEmp", "No hay cambios para el empleado " + nombreEmpleado + "!", 5000);
         }
     } 
 }
@@ -198,8 +200,8 @@ function onClickModal(valor) {
 function getParamInsertarEmpleado() {
     let currentRFC = document.getElementById("idInputRfc").value;
     let idEmp  = 0;
-    let arrEMP=g_arrEmpleados.filter(val => val.rfc == currentRFC)
-    if (g_arrEmpleados.length > 0)
+    let arrEMP = catGen.catUtility.getArrEmpleados().filter(val => val.rfc == currentRFC)
+    if (arrEMP.length > 0)
         idEmp = arrEMP[0].idEmp
     let today = new Date().toLocaleDateString();
     
@@ -244,113 +246,63 @@ function fnLimpiaYcargaEmpleados()
     llenaInputs(objEmpleado, 0);
 
     paramValue = "{param1:'',param2:'yo mero'}";
-    catGen.catUtility.requestEmpleados(paramValue, onQueryDataEmpleados);
+    let idSelect = catGen.catUtility.getSelectOptionID("idfsMpiosQueAtienden");
+    
+    catGen.catUtility.requestEmpleados(paramValue, onQueryDataEmpleados, idSelect);
 }
 
 function fnChangeFiltrar() {
     //
     this.value = this.value.toUpperCase();
     let strFiltro = this.value;
-    let arrEmpleadosFiltro = g_arrEmpleados.filter(val => (val.n1 + val.ap + val.am + val.rfc).indexOf(strFiltro) != -1);
-    let strTextResult = "";
     
-    let empleado;
-    for (iIndex = 0; arrEmpleadosFiltro.length > iIndex; iIndex++) {
-        empleado = arrEmpleadosFiltro[iIndex];
-        strTextResult += (strTextResult == "" ? "" : "$") + empleado.idEmp + "|" + empleado.n1 + " " + empleado.ap + " " + empleado.am;
-    }
-
-    if (strTextResult.length > 0) {
-        let strText = catGen.catUtility.fnCreateMultipleSelect("msEmpleados", strTextResult, "0", "Empleados", 0);
-        document.getElementById("msEmpleados").innerHTML = strText;
-        document.getElementById("id0msEmpleados").addEventListener("change", fnSelectEmpleado);
-    } else {
-        let strText = catGen.catUtility.fnCreateMultipleSelect("msEmpleados", "0|No  hay coincidencias", "0", "Empleados", 0);
-        document.getElementById("msEmpleados").innerHTML = strText;
-    }
-        
+    catGen.catUtility.fnFiltrarEmpleados("msEmpleados", "Empleados", strFiltro, fnSelectEmpleado, fnSelectEmpleadoClick );
 }
 
-
-/*----------------------------------------------QueryData-------------------------------------*/
-function onQueryDataMunicipios(result) {
-    paramValue = "{param:'nada'}";
-    catGen.catUtility.requestMpiosQueAtienden(paramValue, onQueryDataMpiosQueAtienden);
-}
-
-function onQueryDataMpiosQueAtienden(result) {
-
-    catGen.catUtility.fnCreateListButtonDraggable("idMpiosQueAtienden", result, "Municipios que atienden");//lado izq
-    catGen.catUtility.fnCreatefloatingSelect("fsMpiosQueAtienden", result, "Selecciona el municipo", 0)//centro municipios
-    document.getElementById("idfsMpiosQueAtienden").addEventListener("change", fnChangeMunicipio);
-    document.getElementById("idInputBuscar").addEventListener("keyup", fnChangeFiltrar);
-    paramValue = "{param1:''}";
-    catGen.catUtility.requestGrupoTodosMpiosYsedes(paramValue, onQueryDataGrupoTodosMpiosYsedes);
-}
-
-function onQueryDataGrupoTodosMpiosYsedes(result) {
-    let tmp = result;
-    
-    g_arrMunicipiosSedes = [];//limpiamos el arreglo
-    let arrTmp = tmp.split("$");
-    let arrTmp2 = [];
-    for (let iIndex = 0; arrTmp.length > iIndex; iIndex++) {
-        arrTmp2 = arrTmp[iIndex].split("|");
-        g_arrMunicipiosSedes.push({ id: arrTmp2[0], n1: arrTmp2[1], d1: arrTmp2[3], r1: arrTmp2[4], idS: arrTmp2[5], c1: arrTmp2[6], t1: arrTmp2[7] });
-    }
-    let idSelect = catGen.catUtility.getSelectOptionID("idfsMpiosQueAtienden");
-    onChangeMunicipio(idSelect,0);
-    
-    paramValue = "{param1:'',param2:'yo mero'}";
-    catGen.catUtility.requestEmpleados(paramValue, onQueryDataEmpleados);
-
-    let today = new Date().toLocaleDateString()
-    document.getElementById("idInputAlta").value= today;
-}
-
-function onChangeMunicipio(idSelect,idSede) {
-    let arrTemp = g_arrMunicipiosSedes.filter(value => value.id == idSelect)
+function onChangeMunicipio(idSelect, idSede) {
+    let arrTemp = catGen.catUtility.getArrMunicipiosSedes().filter(value => value.id == idSelect)
     let result2 = "";
     for (let iIndex = 0; arrTemp.length > iIndex; iIndex++) {
         result2 += (result2 == "" ? "" : "$") + arrTemp[iIndex].idS + "|" + arrTemp[iIndex].n1;
     }
     catGen.catUtility.fnCreatefloatingSelect("fsSedesMunicipio", result2, "Selecciona la sede", idSede)//centro sedes
 }
+/*----------------------------------------------QueryData-------------------------------------*/
+function onQueryDataMunicipios(result) {
+    //01 municipios
+    paramValue = "{param:'nada'}";
+    catGen.catUtility.requestMpiosQueAtienden(paramValue, onQueryDataMpiosQueAtienden);
+}
+
+function onQueryDataMpiosQueAtienden(result) {
+    //02 municipios que atienden 
+    catGen.catUtility.fnCreateListButtonDraggable("idMpiosQueAtienden", result, "Municipios que atienden");//lado izq
+    catGen.catUtility.fnCreatefloatingSelect("fsMpiosQueAtienden", result, "Selecciona el municipo", 0)//centro municipios
+    document.getElementById("idfsMpiosQueAtienden").addEventListener("change", fnChangeMunicipio);
+    document.getElementById("idInputFiltrar").addEventListener("keyup", fnChangeFiltrar);
+    paramValue = "{param1:''}";
+    catGen.catUtility.requestGrupoTodosMpiosYsedes(paramValue, onQueryDataGrupoTodosMpiosYsedes);
+}
+
+function onQueryDataGrupoTodosMpiosYsedes(result) {
+    //03 todos los municipios y sedes
+    let idSelect = catGen.catUtility.getSelectOptionID("idfsMpiosQueAtienden");
+    onChangeMunicipio(idSelect,0);
+    
+    paramValue = "{param1:'',param2:'yo mero'}";
+    idSelect = catGen.catUtility.getSelectOptionID("idfsMpiosQueAtienden");
+    catGen.catUtility.requestEmpleados(paramValue, onQueryDataEmpleados, idSelect);
+
+    let today = new Date().toLocaleDateString()
+    document.getElementById("idInputAlta").value= today;
+}
 
 function onQueryDataEmpleados(result) {
-    
-    let arrEmpleados = result.split("$");
-    let arrCampos = [];
-    let strTextResult = "";
-    let result3 = "";
-    let empleado = {};
-    let arrSedes = [];
-    function getNameSedes(value) {
-        return arrSedes[value]
-    }
-    let idSelect = catGen.catUtility.getSelectOptionID("idfsMpiosQueAtienden");
-    g_arrEmpleados = [];
-    let arrSede;
-    for (let iIndex = 0; arrEmpleados.length > iIndex; iIndex++) {
-        arrCampos = arrEmpleados[iIndex].split("|");
-        empleado = { idEmp: arrCampos[0], rfc: arrCampos[1], n1: arrCampos[2], ap: arrCampos[3], am: arrCampos[4], idM: arrCampos[5], idS: arrCampos[6], fa: arrCampos[9], st: arrCampos[11], co: arrCampos[12]};
-        g_arrEmpleados.push(empleado);
-        strTextResult += (strTextResult == "" ? "" : "$") + empleado.idEmp + "|" + empleado.n1 + " " + empleado.ap + " " + empleado.am;
-        if (idSelect == empleado.idM) {
-            arrSede = g_arrMunicipiosSedes.filter(value => value.idS == empleado.idS);
-            arrSedes[empleado.idS] = arrSede[0].n1;
-            result3 += (result3 == "" ? "" : "$") + empleado.idEmp + "|" + empleado.n1 + " " + empleado.ap + " " + empleado.am + "|" + empleado.idS;
-        }
-    }
-    nlength = catGen.catUtility.fnCreateListAcordeon("idAccordionSedeEmpleado", result3, 0, getNameSedes);//izq abajo
-    putTitleMunicipioSedes();
-    
-    let strText = catGen.catUtility.fnCreateMultipleSelect("msEmpleados", strTextResult, "0", "Empleados", 0);
-    document.getElementById("msEmpleados").innerHTML = strText;
-    document.getElementById("id0msEmpleados").addEventListener("change", fnSelectEmpleado);
-
+    catGen.catUtility.fnCreateMsEmpleados(result, "msEmpleados", "Empleados", 0, fnSelectEmpleado, fnSelectEmpleadoClick);
+    catGen.catUtility.fnCreateAcoorSedesEmp(result, "idAccordionSedeEmpleado", fndblclickSedeEmpleado);
     let paramValue = "{param1:'',param2:'yo mero'}";
     catGen.catUtility.requestStatusEmpleados(paramValue, onQueryDataStatusEmpleados)
+    putTitleMunicipioSedes();
 }
 
 function onQueryDataStatusEmpleados(result) {

@@ -70,7 +70,6 @@
     </nav>
     <!--------->
 
-
 <!-- Menú -->
     <table style="width:100%">
         <tr>
@@ -92,11 +91,8 @@
 
     </table>
     <!---------->
-
     <br />
     <br />
-    
-
     <div class="container-fluid">
         
         <div class="row">
@@ -180,8 +176,6 @@
                             <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idEnviar" onclick="onEnviar(event)" >Enviar</button>&nbsp;
                            <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idActualizar" onclick="onActualizar(event)" >Actualizar</button>&nbsp;
                            <button class="btn btn-default btn-xs btn-primary" type="button" id="idLimpiar" onclick="onLimpiar(this)" >Limpiar</button>
-                       
-                        
                            </form>   
                         </div>
                     
@@ -192,8 +186,8 @@
                         </div>
 
                     <div class="input-group">
-                        <span class="input-group-text" id="inputBuscar">Filtrar</span>
-                        <input type="text" class="form-control" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-default" id="idInputBuscar" style="text-transform:uppercase" />
+                        <span class="input-group-text" id="inputFiltrar">Filtrar</span>
+                        <input type="text" class="form-control" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-default" id="idInputFiltrar" style="text-transform:uppercase" />
                     </div>
                     <div id="msEmpleados">
                         --------------------
@@ -201,11 +195,8 @@
                      <br />&nbsp;<br />
                        <h4 id="idTitleMunicipio">-------</h4>
                         <div class="acoordion " id="idAccordionSedeEmpleado">----</div>    
-                  
                    </div>
-            
-            </div>
-         
+             </div>
     </div>
     <div id="includeModal"></div>
     <script src="../JScript/catUtility.js?v=1"></script>

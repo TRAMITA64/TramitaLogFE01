@@ -611,4 +611,81 @@ public class ClsCatalogos
             Cn.clsCerrarConexion();
         }
     }
+    public string getCatalogoPerfiles(string param1)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+            strConsulta = "exec spq_catPerfiles @param1";
+            Cn.clsAgregarParametro("@param1", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param1, null);
+     
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+    public string getEmpleadoPerfiles(string param1)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+            strConsulta = "exec spq_empleado_perfiles @param1";
+            Cn.clsAgregarParametro("@param1", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, param1, null);
+
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
+    public string updateEmpleadoPerfiles(string idEmp, string perfiles, string user)
+    {
+        string strResultado = string.Empty;
+        string strConsulta = "";
+        clsConexion Cn = new clsConexion();
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            Cn.clsAbrirConexion(strConexion);
+            strConsulta = "exec spu_empleado_perfiles @idEmp, @perfiles, @user";
+            Cn.clsAgregarParametro("@idEmp", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, idEmp, null);
+            Cn.clsAgregarParametro("@perfiles", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, perfiles, null);
+            Cn.clsAgregarParametro("@user", clsConexion.typeSqlServer.V_VARCHAR2, clsConexion.directionParam.PARAM_IN, user, null);
+
+            Cn.clsLlenaTabla(strConsulta, "Datos", clsConexion.typeQuery.Query, ref dtsDatos);
+            strResultado = Cn.clsCadenaTabla(dtsDatos);
+            return strResultado;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            Cn.clsCerrarConexion();
+        }
+    }
 }

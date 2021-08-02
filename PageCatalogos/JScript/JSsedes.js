@@ -34,8 +34,7 @@ function fnCreateSelectMunicipiosList(result) {
         strListselect += "</select>";
         
         document.getElementById('idS1').innerHTML = strListselect;
-        document['getElementById']('idMunicipios')['addEventListener']('change', fnSelectChangeMunicipio);
-        //alert(document.getElementById('idMunicipios').addEventListener('change', fnSelectChangeMunicipio));
+        
 
         getMpioAtiendeList(document.getElementById('idMunicipios').value);
     } catch (err) {
@@ -68,12 +67,12 @@ function dragStart(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
-function ondblclickSede(obj) {
-    let element = document.getElementById(obj.id);
-    g_idSede=obj.id.split("-")[1];
+function ondblclickSede() {
+    let element = document.getElementById(this.id);
+    g_idSede=this.id.split("-")[1];
     let idEle = element.parentNode.id.split("-")[1];
     let arrTemp = g_arrMunicipiosSedes.filter(value => value.id == idEle)
-    let arrSede = arrTemp.filter(value => value.idS == obj.id.split("-")[1]);
+    let arrSede = arrTemp.filter(value => value.idS == this.id.split("-")[1]);
     document.getElementById("idMunicipioName").innerHTML = catGen.catUtility.getNameMunicipio(idEle);
     if (element.parentNode.id.indexOf("id0list") == -1) {
         document.getElementById("idInputSedeName").value = arrSede[0]["n1"];
@@ -269,7 +268,7 @@ function onQueryDataGrupoTodosMpiosYsedes(result) {
     }
     
     if (result.length != 0) {
-        nlength = catGen.catUtility.fnCreateListAcordeon("idAccordionTodosMpioSedes", result, 1, catGen.catUtility.getNameMunicipio);
+        nlength = catGen.catUtility.fnCreateListAcordeon("idAccordionTodosMpioSedes", result, 1, catGen.catUtility.getNameMunicipio, ondblclickSede);
     } 
 
     document.getElementById('idNumConAtMunicipios').innerHTML = nlength;

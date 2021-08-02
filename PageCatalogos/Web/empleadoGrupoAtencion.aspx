@@ -39,17 +39,58 @@
               justify-content:center;
               height:100%;
             }
+            #contenedor{
+              background: #00f;
+              padding:50px;
+              border-radius:6px;
+            }
             .box-pri{
-              background: #000;
-              width:100px;
-              height:100px; 
+              background: #00f;
+              width:550px;
+              margin: auto;
+            }
+            #text{
+                font-size:22px;
+            }
+            #quote-author{
+
+                text-align:end;
+                padding:15px 0px 15px 0px;
+            }
+            #author{
+                font-size:15px;
+                opacity:0.7;
+            }
+            .btn_cls{
+                padding:0.755rem 1.456rem;
+                font-size:1.7rem;
+                background:#fff;
+                color:#0d6efd;
+                
+                border-radius:3px:
+
+            }
+            .contentButton{
+                display:grid;
+                grid-template-columns:0.16fr 0.0135fr 0.16fr 1fr 0.31fr;
+
             }
       </style>
   </head>
   <body>
-          <div id="quote-box" class="box-pri">box
-              <div id="text"></div>
-              <div id="author"></div>
-          </div>
+     <div id="contenedor"> 
+        <div id="quote-box" class="box-pri">
+            <div id="quote-text"><span id="text">Aqui va le texto Aqui va le texto Aqui va le texto Aqui va le texto Aqui va le texto</span></div>
+            
+            <div id="quote-author"><span id="author">-Alberto Sahagun</span> </div>
+            <div id="contentButton" class="contentButton">
+                <button id="tweet-quote" class="btn btn-default btn-primary btn_cls"><i class="fa fa-twitter"></i></button>
+                <div class="emptyDiv"></div>
+                <button id="tumblr-quote" class="btn btn-default btn-primary btn_cls"><i class="fa fa-tumblr"></i></button>
+                <div class="emptyDiv"></div>
+                <button id="new-quote" class="btn btn-default btn-primary btn_cls">New Quote</button>
+            </div>
+        </div>
+    </div>   
   </body>
 </html>

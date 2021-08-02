@@ -10,11 +10,6 @@ $(function () {
     $("#includeModal").load("modal.html");
 });
 
-function fnSelectChangeMunicipio(paramSelect) {
-    
-    catGen.catUtility.requestMpioAtiendeList(paramSelect['target']['value'])
-}
-
 
 function allowDrop(ev) {
     
@@ -264,6 +259,11 @@ function ondblclickAt(obj) {
     ondblclickSinAt(obj, "");
 }
 
+function ondblclickAtencion() {
+    //no se usa pero dejamos la fn
+    //alert("ondblclickAtencion");
+}
+
 function ondblclickSinAt(object,parent) {
     let municipio;
     municipio = object.id.split("-")[1];
@@ -425,7 +425,7 @@ function onQueryDataMpiosConAtencion(result) {
     let nlength = 0;
     
     if (result.length != 0) 
-        nlength = catGen.catUtility.fnCreateListAcordeon("accordionConAtencion", result, 0, catGen.catUtility.getNameMunicipio);
+        nlength = catGen.catUtility.fnCreateListAcordeon("accordionConAtencion", result, 0, catGen.catUtility.getNameMunicipio, ondblclickAtencion);
     else
         catGen.catUtility.fnclearListAcordeon("accordionConAtencion");
     document.getElementById('idNumConAtMunicipios').innerHTML = nlength;

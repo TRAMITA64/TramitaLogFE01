@@ -282,7 +282,11 @@ function onLimpiar(obj) {
 
 
 function ondblclickAt(obj, parent) {
-    //alert("ondblclickAt");
+    alert("ondblclickAt");
+}
+function ondblclickGrupos() {
+    //no se usa pero debe existir la fn
+    //alert("ondblclickGrupos");
 }
 
 function onBorrarSede(obj) {
@@ -416,14 +420,12 @@ function onQueryGruposAtencionALL(result) {
         ant = arrTemp2[1];
     }
     
-    catGen.catUtility.fnCreateListAcordeon("idAccordionGrupos", strCadena, 3, catGen.catUtility.getNameGruposDeAtencion);
+    catGen.catUtility.fnCreateListAcordeon("idAccordionGrupos", strCadena, 3, catGen.catUtility.getNameGruposDeAtencion, ondblclickGrupos);
 
 }
 
 
 function onQueryDataMpioYsedes(result) {
-    let nlength = 0;
-
     if (result.length != 0) {
         nlength = catGen.catUtility.fnCreateListAcordeonCehckBox("idAccordionMpioSedes", result, 1, "", catGen.catUtility.getArrNameMunicipio());
     }

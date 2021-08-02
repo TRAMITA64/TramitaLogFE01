@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../../ScriptsJQ/JQuery/Jquery-v3.5.1.js"></script>
    
     <!-- Script de Pagina-->
-    <script src="../JScript/jsEmpleadosperFiles.js" type="text/javascript"></script>
+    <script src="../JScript/jsPerfillesEmpleado.js" type="text/javascript"></script>
 
 
   
@@ -32,19 +32,75 @@
 
    
      <style>
-        .box-title {
-            font-size: 13px;
-            background: #00f;
-            color: #fff;
-            font-weight: bold;
-            font-family: 'Fuente-Principal' !important;
-            height:3rem;
-            text-align:center;
-            padding-bottom:3px;
+         
+
+        
+        .containerCheck{
+            
+            display:grid;
+            grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows:auto 1fr ;
+            grid-template-areas:
+                "header header header header header1"
+                "Empty content content content content";
+                
         }
-        .box-title > h5 {
-            padding-top:10px;
+        .itemCheckPrincipal{
+            
+            grid-area:header;
         }
+        .DivCheckEmpty{
+            
+            grid-area:Empty;
+            grid-column:1/5;
+        }
+        .itemChecSecundario{
+            
+            grid-area:content;
+        }
+        .itemCheckBtn{
+            grid-area:header1;
+        }
+         .btn_check_perfiles {
+             top: .65rem;
+             right: .65rem;
+             z-index: 10;
+             font-size: .65em;
+             color: #0d6efd;
+             background-color: #fff;
+             border: 1px solid;
+             border-radius: .25rem;
+         }
+         .cajaPerfilDetalle{
+             display:flex;
+             flex-direction:column;
+             border: solid 1px transparent;
+             border-radius:6px;
+             box-shadow:0 2px 5px rgb(0 0 0 / 14%);
+             margin: 10px;
+             min-height:10rem;
+         }
+         .cajaPerfilHeader{
+             background:#0d6efd;
+             text-align:center;
+             padding-top:5px;
+             color:#fff;
+             border-radius:6px;
+         }
+         .cajaPerfilContent > p{
+             padding-top:5px;
+             padding-left:3rem;
+         }
+         .cajaPerfilContent > li{
+             padding-top:5px;
+             
+         }
+         .noVisible{
+             display:none;
+         }
+         
+
+         
     </style>
 <script>
     
@@ -93,181 +149,101 @@
     </table>
     <!---------->
 
-    <br />
-    <br />
-    
-
     <div class="container-fluid">
-        <form class="needs-validation" id="formGposAtencion" novalidate>
+        <form class="needs-validation" id="formPerfilEmpleados" novalidate>
         <div class="row">
                    <div  class="col-md-4">
-                     
-                            
-                               <h4>Empleados sin perfiles</h4>
-
-
-    <div class="input-group has-validation">
-        <span class="input-group-text" id="inputBuscar">Empleado</span>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputBuscar" style="text-transform:uppercase" />
-        <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idBuscar" onclick="onBuscar(event)" >Buscar</button>&nbsp;
-    </div>
-
-<select class="form-select" multiple aria-label="multiple select example">
-  <option >Alberto Sahagun Arias</option>
-  <option value="1">Ricardo Castro Perez</option>
-  <option value="2">Verenice Longoria Perez</option>
-  <option value="3">Claudia Lopez Gonzales</option>
-    <option value="4">Jimena Gonzales Perez</option>
-    <option value="5">Catalina Hinojosa Gonzales</option>
-</select>
-<br />&nbsp;<br />
-<h4>Municipio Celaya</h4>
-<div class="accordion-item" draggable="true" ondragstart="dragStart(event)" id="id3itemAcoor-2000">
-    <h2 class="accordion-header" id="id3h2-2000">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#id3Collapse-2000" aria-expanded="false" aria-controls="Collapse-Celaya">Plaza dorada&nbsp;&nbsp;<span class="badge bg-primary  rounded-pill" style="color:white" id="id3badge-2000">3</span></button>
-    </h2>
-    <div id="id3Collapse-2000" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#idAccordionGrupos" style="">
-        <div class="accordion-body"><span id="id3list-2000">
-            <button type="button" class="list-group-item list-group-item-action" ondblclick="ondblclickSede(this)" id="id3idLiAcoor-undefined">Alberto Sahagun Arias<div class="pull-right" hidden="" id="id3XAcoor-6"><i class="fa fa-remove fa-1x" onclick="borrarItem(this)"></i></div></button>
-            <button type="button" class="list-group-item list-group-item-action" ondblclick="ondblclickSede(this)" id="id3idLiAcoor-undefined">Ricardo Castro Perez<div class="pull-right" hidden="" id="id3XAcoor-13"><i class="fa fa-remove fa-1x" onclick="borrarItem(this)"></i></div>
-            </button><button type="button" class="list-group-item list-group-item-action" ondblclick="ondblclickSede(this)" id="id3idLiAcoor-undefined">Verenice Longoria Perez<div class="pull-right" hidden="" id="id3XAcoor-15"><i class="fa fa-remove fa-1x" onclick="borrarItem(this)"></i></div></button></span>
-        </div>
-    </div>
-</div>
+                               <h4>Selecciona empleado</h4>
+                                <div class="input-group mb-3">
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="inputFiltrarM01">Filtrar Municipio</span>
+                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputFiltrarMpio" style="text-transform:uppercase" />
+                                    </div>
+                                    <div class="input-group" id="msMunicipios">
+                                        ................
+                                    </div>
+                                </div>
+                                 <h4 id="idTitleMunicipio">-------</h4>
+                                 <div class="acoordion" id="idAccordionSedeEmpleado">----</div> 
+                                <br />
+                                <div class="input-group mb-3">
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="inputFiltrarEmp">Filtrar Empleado</span>
+                                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputFiltrarEmp" style="text-transform:uppercase" />
+                                    </div>
+                                    <div class="input-group" id="msEmpleados">
+                                        --------------------
+                                    </div>
+                                </div>
                        
                    </div>
                    <div  class="col-md-4 well">
-                       <h4>Alta perfiles empleados</h4>
+                       <h4>Perfiles empleado  </h4>
+                       <div class="alert alert-danger" role="alert" id="idAlertPerfiles" hidden>
+                          ......
+                        </div>
                         <div class="input-group mb-3">
                             <div class="input-group has-validation">
-                                <span class="input-group-text" id="inputRfc">RFC</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputRfc" style="text-transform:uppercase"  disabled value="SAAA7408161v3"/>
-                                <div class="invalid-feedback" id="inputRequiredRfc">
-                                Por favor ingrese un RFC valido.
-                                </div>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputNameMid" disabled />
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputApellidoPMid" disabled />
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputApellidoMMid" disabled />
                             </div>
                         </div>
+                       <h5>Tipo de empleado</h5>
+                       <div id="perfilesConfig">
+                        -------------------
+                        </div>
+                       <br />&nbsp;<br />
+                       <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idActualizar" onclick="onActualizar(event)" >Actualizar</button>&nbsp;
+                       <button class="btn btn-default btn-xs btn-primary" type="button" id="idLimpiar" onclick="onLimpiar(this)" >Limpiar</button>
+                    </div>
+                    
+                   <div class="col-md-4  well">
+                       <h4>Detalle empleado</h4>
+                       <div class="alert alert-primary" role="alert" id="idAlertDetalleEmpleado" hidden>
+                          ......
+                        </div>
+                       <div class="input-group mb-3">
+                            <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputRfc">RFC</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputRfc" style="text-transform:uppercase"  disabled />
 
-
-
+                            </div>
+                        </div>
                         <div class="input-group mb-3">
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputEmpleado">Empleado</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputName" disabled value="Alberto"/>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputApellidoP" disabled value="Sahagun"/>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputApellidoM" disabled value="Arias"/>
-                                
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputName" disabled />
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputApellidoP" disabled />
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputApellidoM" disabled />
                             </div>
                         </div>
 
                        <div class="input-group mb-3">
                             <div class="input-group has-validation">
+                                <span class="input-group-text" id="inputMunicipio">Municipio</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputMunicipio"   disabled />
                                 <span class="input-group-text" id="inputSede">Sede</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputSede"   disabled value="Plaza dorada"/>
-                                
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputSede"   disabled />
                             </div>
                         </div>
                        <div class="input-group mb-3">
                             <div class="input-group has-validation">
                                 <span class="input-group-text" id="inputResponsable">Alta</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputAlta" disabled value="2021-02-28"/>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputStatus" disabled value="Estatus"/>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputStatus01" disabled value="Activo"/>
-                                
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputAlta" disabled />
+                                <span class="input-group-text" id="inputStatus">Estado</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" id="idInputStatus" disabled />
                             </div>
                         </div>
-
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-  <label class="form-check-label" for="flexSwitchCheckDefault">Coordinador</label>
-</div>
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-  <label class="form-check-label" for="flexSwitchCheckChecked">Empleado de atención</label>
-</div>
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDisabled" >
-  <label class="form-check-label" for="flexSwitchCheckDisabled">Firmante</label>
-</div>
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="id01" >
-  <label class="form-check-label" for="id01">Editor Plantillas</label>
-</div>
- <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="id02" >
-  <label class="form-check-label" for="id02">Editor Catálogos Plantillas</label>
-</div>
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="id03" >
-  <label class="form-check-label" for="id03">Editor Catálogos Plantillas</label>
-</div>
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="id04" >
-  <label class="form-check-label" for="id04">Pubilcador</label>
-</div>
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="id05" >
-  <label class="form-check-label" for="id05">Revisor</label>
-</div>
-
-                      
-                       <br />&nbsp;<br />
-
-                        <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idEnviar" onclick="onEnviarGrupo(event)" >Enviar</button>&nbsp;
-                       <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idActualizar" onclick="onActualizar(event)" >Actualizar</button>&nbsp;
-                       <button class="btn btn-default btn-xs  btn-primary" type="button" id="idBorrar" onclick="onBorrarSede(event)" >Borrar</button>&nbsp;
-                       <button class="btn btn-default btn-xs btn-primary" type="button" id="idLimpiar" onclick="onLimpiar(this)" >Limpiar</button>
-                       
-                        
-                       
-                    </div>
-                    
-                   <div class="col-md-4  well">
-                       <h4>Empleados con perfiles </h4>
-
-<div class="input-group has-validation">
-    <span class="input-group-text" id="inputBuscar">Empleado</span>
-    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputBuscar" style="text-transform:uppercase" />
-    <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idBuscar" onclick="onBuscar(event)" >Buscar</button>&nbsp;
-</div>
-<select class="form-select" multiple aria-label="multiple select example">
-  <option >Carlos Gutierrez Lopez</option>
-  <option value="1">Roberto Mendez Perez</option>
-  <option value="2">Carolina Hernandez Rodriguez</option>
-  <option value="3">Claudia Ortiz Garcia</option>
-    <option value="4">Jimena Zamarripa Gonzales</option>
-    <option value="5">Victoria Cruz Oropeza</option>
-</select>
-                   </div>
-            
-            </div>
+                        <div id="TabPerfiles">
+                            ------------------------
+                        </div>
+  
+                </div>
          </form>
     </div>
-    <div class="container">
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#alertModal" hidden id="idAlerDialog">
-        Launch demo modal
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="alertModalLabel">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="idMessageAlertDlg">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="onClickModal(1)">Continuar</button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="onClickModal(2)" id="idBtnCancelar">Cancelar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     
+    <div id="includeModal"></div>    
     <script src="../JScript/catUtility.js?v=1"></script>
 </body>
 </html>

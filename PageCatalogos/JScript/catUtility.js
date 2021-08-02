@@ -4,6 +4,13 @@ var catGen = catGen || {};
 
 catGen.catUtility = (function (catUtility, $, undefined) {
     g_arrMunicipios = [];
+    g_arrMunicipioAtienden = [];
+    g_arrCatPerfiles = [];//{ cv: , n1: , des: }
+    g_objMunicipioAtienden = ""; 
+    let g_arrEmpPerfies = [];//{ idEmp: , perfiles: arreglo[...] }
+    let g_arrMunicipiosSedes = []; //{ id: , n1: , d1: , r1: , idS: , c1: , t1:  }
+    let g_arrEmpleados = []; //{ idEmp: , rfc: , n1: , ap: , am: , idM: , idS: , fa: , st:, co: }
+
     let g_nameGruposDeAtencion = [];//no es arreglo es un objeto con clave:nombre ejemplo 2010:COBRANZA
 
     getNameMunicipio: function getNameMunicipio(value) {
@@ -19,6 +26,38 @@ catGen.catUtility = (function (catUtility, $, undefined) {
         return g_nameGruposDeAtencion;
     }
 
+    getNameMunicipio: function getObjMunicipiosSedes(value) {
+        return g_arrMunicipiosSedes[value];
+    }
+    getArrNameMunicipio: function getArrMunicipiosSedes() {
+        return g_arrMunicipiosSedes;
+    }
+    getNameMunicipioAtiende: function getNameMunicipioAtiende(value) {
+        return g_objMunicipioAtienden[value];
+    }
+    getArrNameMunicipioAtiende: function getArrNameMunicipioAtiende() {
+        return g_objMunicipioAtienden;
+    }
+
+    getNameEmpleado: function getNameEmpleado(value) {
+        return g_arrEmpleados[value];
+    }
+    getArrEmpleados: function getArrEmpleados() {
+        return g_arrEmpleados;
+    }
+    getElementEmpPerfies: function getElementEmpPerfies(value) {
+        return g_arrEmpPerfies.filter(val => val.idEmp == value);
+    }
+    
+    getPerfilName: function getPerfilName(value) {
+        return g_arrCatPerfiles.filter(val => val.cv == value);
+    }
+
+    getArrCatPerfile: function getArrCatPerfile() {
+        return g_arrCatPerfiles;
+    }
+    
+    
     /*-----------------------------------------------------------------------------------------------------------------------------------*/
     eventFire:function eventFire(el, etype) {
         if (el.fireEvent) {
@@ -209,7 +248,7 @@ catGen.catUtility = (function (catUtility, $, undefined) {
         return iLength;
     }
 
-    fnCreateListAcordeon:function fnCreateListAcordeon(idElement, result, numero_c, fnNameTitulo) {
+    fnCreateListAcordeon: function fnCreateListAcordeon(idElement, result, numero_c, fnNameTitulo, fndblclickItem) {
 
         let arrMunicipios = result.split("$");
         let strID = "id" + numero_c;
@@ -243,7 +282,7 @@ catGen.catUtility = (function (catUtility, $, undefined) {
                 arrayNameId.length < 5 ? strIdTemp = arrayNameId[0] : strIdTemp = arrayNameId[5];
 
 
-                strList += "<button type='button' class='list-group-item list-group-item-action' ondblclick='ondblclickSede(this)' id='" +
+                strList += "<button type='button' class='list-group-item list-group-item-action'  id='" +
                     strID + "idLiAcoor-" + strIdTemp + "'>" +
                     arrayNameId[1] + "<div class='pull-right' hidden id='" + strID + "XAcoor-" +
                     arrayNameId[0] + "'><i class='fa fa-remove fa-1x' onclick='borrarItem(this)'></i></div></button>";
@@ -283,6 +322,11 @@ catGen.catUtility = (function (catUtility, $, undefined) {
                     document.getElementById(strID + "badge-" + arrList[jIndex].key.split("-")[1]).innerHTML = arrList[jIndex].size;
                 }
             }
+            var childButtons = document.getElementById(idElement).getElementsByTagName('button')
+            for (let jIndex = 0; childButtons.length > jIndex; jIndex++) {
+                childButtons[jIndex].addEventListener("dblclick", fndblclickItem);
+            }
+            
         }
         catch (err) {
             alert("-E- fnCreateListAcordeon " + idElement);
@@ -312,7 +356,7 @@ catGen.catUtility = (function (catUtility, $, undefined) {
             document.getElementById(idElemento).innerHTML = strfloatingSelect + strText + "</select><label for='id" + idElemento+"'>" + strTitle + "</label>";
         }
     }
-
+    //me regresa el value del option
     getSelectOptionID: function getSelectOptionID(strIdSelect) {
         let returnValue = 0;
         let fsLement = document.getElementById(strIdSelect);
@@ -324,20 +368,131 @@ catGen.catUtility = (function (catUtility, $, undefined) {
         }
         return returnValue;
     }
+    //me regresa el obj de html al que se le dio  click
+    changeElementSelected: function changeElementSelected(idCtrl, value) {
+        let msList = document.getElementById(idCtrl);
+        for (let iItem = 0; msList.children.length > iItem; iItem++) {
+            if (msList.children[iItem].selected == true) {
+                 msList.children[iItem].selected=false;
+                break;
+            }
+        }
+        for (let iItem = 0; msList.children.length > iItem; iItem++) {
+            if (msList.children[iItem].value == value) {
+                msList.children[iItem].selected = true;
+                return msList.children[iItem];
+            }
+        }
+    }
+
     fnCreateMultipleSelect: function fnCreateMultipleSelect(idElemento, result, pos, strTitle, selectItem) {
         let arrSelect = result.split("$");
         let strMultselect1 = "<select class='form-select' id='id" + pos + idElemento + "' multiple aria-label='" + strTitle + "'>";
         let strText = "";
         let strMultselect2 = "<option value='";
-        let strMultselect3 = "'>";
+        let strMultselect3 = "' ";
+        let strMultselect31 = ">";
         let strMultselect4 = "</option > ";
         let strMultselect5 = "</select>";
         let arrElement = [];
+        
         for (let iIndex = 0; arrSelect.length > iIndex; iIndex++) {
             arrElement = arrSelect[iIndex].split("|");
-            strText += strMultselect2 + arrElement[0] + strMultselect3 + arrElement[1] + strMultselect4
+            
+            strSelected = (selectItem == iIndex)?"selected":"";
+            strText += strMultselect2 + arrElement[0] + strMultselect3 + strSelected + strMultselect31 + arrElement[1] + strMultselect4
         }
         return strMultselect1 + strText + strMultselect5;
+    }
+    fnCreateAcoorSedesEmpleados: function fnCreateAcoorSedesEmpleados(idAccordion, idMSelect, fndblclickItem) {
+        let arrSedes = g_arrMunicipiosSedes.filter(val => val.id == idMSelect);
+        let result3 = "";
+        let arrSedesName = [];
+        function getNameSedes(value) {
+            return arrSedesName[value]
+        }
+        let arrEmp;
+        let empleado;
+        let arrSede;
+        for (let iIndex = 0; arrSedes.length > iIndex; iIndex++) {
+
+            arrEmp = g_arrEmpleados.filter(value => value.idS == arrSedes[iIndex].idS);
+            if (arrEmp.length) {//si tengo empleados en la sede
+                for (let jIndex = 0; arrEmp.length > jIndex; jIndex++) {
+
+                    empleado = arrEmp[jIndex];
+                    arrSede = g_arrMunicipiosSedes.filter(value => value.idS == arrSedes[iIndex].idS);
+                    arrSedesName[empleado.idS] = arrSede[0].n1;
+                    result3 += (result3 == "" ? "" : "$") + empleado.idEmp + "|" + empleado.n1 + " " + empleado.ap + " " + empleado.am + "|" + empleado.idS;
+                }
+
+            } else {
+                //si no tengo que hago??
+                let arrSede = g_arrMunicipiosSedes.filter(value => value.idS == arrSedes[iIndex].idS);
+                arrSedesName[arrSedes[iIndex].idS] = arrSede[0].n1;
+                result3 += (result3 == "" ? "" : "$") + "0|No tenemos empleados en esta sede|" + arrSedes[iIndex].idS;
+
+            }
+        }
+        nlength = fnCreateListAcordeon(idAccordion, result3, 0, getNameSedes, fndblclickItem);//izq abajo
+    }
+
+    fnFiltrarEmpleados: function fnFiltrarEmpleados(msElement, title, strFiltro, fnSelectItem, fnSelectItemClick){
+        let arrEmpleadosFiltro = g_arrEmpleados.filter(val => (val.n1 + val.ap + val.am + val.rfc).indexOf(strFiltro) != -1);
+        let result = createCadenaFilter(arrEmpleadosFiltro, 1);
+        fnCreateFilterMSelect(result, msElement, title, fnSelectItem, fnSelectItemClick);
+    }
+
+    fnFiltrarMunicipios: function fnFiltrarMunicipios(msElement, title, strFiltro, fnSelectItem, fnSelectItemClick) {
+        let arrMunFiltro = g_arrMunicipioAtienden.filter(val => val.n1.toUpperCase().indexOf(strFiltro) != -1);
+        let result = createCadenaFilter(arrMunFiltro,  2);
+        fnCreateFilterMSelect(result, msElement, title, fnSelectItem, fnSelectItemClick);
+    }
+
+    createCadenaFilter:function createCadenaFilter(arrFiltro, type ) {
+        let strTextResult = "";
+        let item;
+        for (iIndex = 0; arrFiltro.length > iIndex; iIndex++) {
+            item = arrFiltro[iIndex];
+            if (type == 1)//empleados
+                strTextResult += (strTextResult == "" ? "" : "$") + item.idEmp + "|" + item.n1 + " " + item.ap + " " + item.am;
+            else//municipios
+                strTextResult += (strTextResult == "" ? "" : "$") + item.idM + "|" + item.n1
+        }
+        return strTextResult;
+    }
+
+    fnCreateFilterMSelect: function fnCreateFilterMSelect(strTextResult, msElement, title, fnChangeItem, fnSelectItemClick) {
+        if (strTextResult.length > 0) {
+            let strText = fnCreateMultipleSelect(msElement, strTextResult, "0", title, 0);
+            document.getElementById(msElement).innerHTML = strText;
+            document.getElementById("id0" + msElement).addEventListener("change", fnChangeItem);
+        } else {
+            let strText = fnCreateMultipleSelect(msElement, "0|No  hay coincidencias", "0", title, 0);
+            document.getElementById(msElement).innerHTML = strText;
+        }
+        let elementSM = document.getElementById("id0" + msElement);
+        for (let iIndex = 0; elementSM.children.length > iIndex; iIndex++) {
+            elementSM[iIndex].addEventListener("click", fnSelectItemClick);
+        }
+    }
+
+    fnCreateAcoorSedesEmp: function fnCreateAcoorSedesEmp(result, idAcoor, fndblclickItem) {
+        let arrSedes = [...result.arrSede];
+        function fnGetNameSedes(value) {
+            return arrSedes[value]
+        }
+        fnCreateListAcordeon(idAcoor, result.txtSedeEmp, 0, fnGetNameSedes, fndblclickItem);//izq abajo
+    }
+    
+    fnCreateMsEmpleados: function fnCreateMsEmpleados(result, idMSelect, title, pos, fnChangeItem, fnSelectItemClick) {
+        let strText = fnCreateMultipleSelect(idMSelect, result.txtEmpleados, pos, title, 0);
+        document.getElementById(idMSelect).innerHTML = strText;
+        document.getElementById("id0" + idMSelect).addEventListener("change", fnChangeItem);
+        let elementSM = document.getElementById("id0" + idMSelect);
+        for (let iIndex = 0; elementSM.children.length > iIndex; iIndex++) {
+            elementSM[iIndex].addEventListener("click", fnSelectItemClick);
+        }
     }
     /*-----------------------------------------------------------------------------------------------------------------------------------------------------------*/
     requestMunicipiosList:function requestMunicipiosList(onQueryDataMunicipios) {
@@ -362,23 +517,7 @@ catGen.catUtility = (function (catUtility, $, undefined) {
         });
     }
 
-    requestMpioAtiendeList:function requestMpioAtiendeList(paramValue, onQueryDataMpioAtiendeList) {
-        $.ajax({
-            type: "POST",
-            url: "../WebServices/CatWebService.asmx/requestMpioAtiendeList",
-            data: paramValue,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (response) {
-                var result = response.d;
-                onQueryDataMpioAtiendeList(result)
-                
-            },
-            failure: function (response) {
-                alert(response.d + "#2");
-            }
-        });
-    }
+    
     requestMpiosQueAtienden:function requestMpiosQueAtienden(paramValue, onQueryDataMpiosQueAtienden) {
         $.ajax({
             type: "POST",
@@ -388,6 +527,15 @@ catGen.catUtility = (function (catUtility, $, undefined) {
             dataType: "json",
             success: function (response) {
                 var result = response.d;
+                let tmp = result;
+                g_objMunicipioAtienden = "";
+                tmp = tmp.replace(/[$]/gi, "\",\"");
+                tmp = tmp.replace(/[|]/gi, "\":\"");
+                tmp = "{\"" + tmp + "\"}"
+                g_objMunicipioAtienden = JSON.parse(tmp);
+                Object.keys(g_objMunicipioAtienden).forEach(function (key) {
+                    g_arrMunicipioAtienden.push({ idM: key, n1: g_objMunicipioAtienden[key]})
+                });
                 onQueryDataMpiosQueAtienden(result);
             },
             failure: function (response) {
@@ -460,6 +608,15 @@ catGen.catUtility = (function (catUtility, $, undefined) {
             dataType: "json",
             success: function (response) {
                 var result = response.d;
+                let tmp = result;
+
+                g_arrMunicipiosSedes = [];//limpiamos el arreglo
+                let arrTmp = tmp.split("$");
+                let arrTmp2 = [];
+                for (let iIndex = 0; arrTmp.length > iIndex; iIndex++) {
+                    arrTmp2 = arrTmp[iIndex].split("|");
+                    g_arrMunicipiosSedes.push({ id: arrTmp2[0], n1: arrTmp2[1], d1: arrTmp2[3], r1: arrTmp2[4], idS: arrTmp2[5], c1: arrTmp2[6], t1: arrTmp2[7] });
+                }
                 onQueryDataGrupoTodosMpiosYsedes(result);
             },
             failure: function (response) {
@@ -628,7 +785,7 @@ catGen.catUtility = (function (catUtility, $, undefined) {
         });
     }
 
-    requestEmpleados: function requestEmpleados(dataParam, onQueryDataEmpleados) {
+    requestEmpleados: function requestEmpleados(dataParam, onQueryDataEmpleados, idMunicipioSelect) {
         $.ajax({
             type: "POST",
             url: "../WebServices/CatWebService.asmx/Empleados",
@@ -637,7 +794,29 @@ catGen.catUtility = (function (catUtility, $, undefined) {
             dataType: "json",
             success: function (response) {
                 var result = response.d;
-                onQueryDataEmpleados(result);
+                let arrEmpleados = result.split("$");
+                let arrCampos = [];
+                let strTextResult = "";
+                let result3 = "";
+                let empleado = {};
+                let arrSedes = [];
+
+                
+                g_arrEmpleados = [];
+                let arrSede;
+                for (let iIndex = 0; arrEmpleados.length > iIndex; iIndex++) {
+                    arrCampos = arrEmpleados[iIndex].split("|");
+                    empleado = { idEmp: arrCampos[0], rfc: arrCampos[1], n1: arrCampos[2], ap: arrCampos[3], am: arrCampos[4], idM: arrCampos[5], idS: arrCampos[6], fa: arrCampos[9], st: arrCampos[11], co: arrCampos[12] };
+                    g_arrEmpleados.push(empleado);
+                    strTextResult += (strTextResult == "" ? "" : "$") + empleado.idEmp + "|" + empleado.n1 + " " + empleado.ap + " " + empleado.am;
+                    if (idMunicipioSelect == empleado.idM) {
+                        arrSede = g_arrMunicipiosSedes.filter(value => value.idS == empleado.idS);
+                        arrSedes[empleado.idS] = arrSede[0].n1;
+                        result3 += (result3 == "" ? "" : "$") + empleado.idEmp + "|" + empleado.n1 + " " + empleado.ap + " " + empleado.am + "|" + empleado.idS;
+                    }
+                }
+                let resultado = { arrSede: [...arrSedes], txtSedeEmp: result3, txtEmpleados: strTextResult };
+                onQueryDataEmpleados(resultado);
             },
             failure: function (response) {
                 alert(response.d);
@@ -696,6 +875,115 @@ catGen.catUtility = (function (catUtility, $, undefined) {
             }
         });
     }
+    requestCatPerfiles: function requestCatPerfiles(dataParam, onQueryDataCatPerfiles) {
+        $.ajax({
+            type: "POST",
+            url: "../WebServices/CatWebService.asmx/CatPerfiles",
+            data: JSON.stringify(dataParam),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                var result = response.d;
+                let arrTemp = result.split("$");
+                let arrElements;
+                let textResult="";
+                let text1 = "<div class='containerCheck'><div class='itemCheckPrincipal'><div class='form-check form-switch'>";
+                let text2 = "<input class='form-check-input' type='checkbox' id='";//			idCheck-clave1
+                let text3 = "'><label class='form-check-label' for='";//						idCheck-clave1
+                let text4 = "'>"; //Atención
+                let text41 = "</label><hr/></div></div><div class='itemCheckBtn";
+                let text5 = "'><button class='btn_check_perfiles' type='button' data-bs-toggle='collapse' data-bs-target='#";//	collapse-clave1
+                let text6 = "' aria-expanded='false' aria-controls='";//						collapseExample
+                let text7 = "'>Ver más</button></div><div class='DivCheckEmpty'></div>";
+
+                let text8 = "<div class='collapse itemChecSecundario' id='"; //collapse-clave1
+                let text9 = "'><div class='itemChecSecundario' >";
+
+                let check21 = " <div class='form-check form-switch'><input class='form-check-input' type='checkbox' id='";//		idCheck-clave2
+                let check3 = "' ><label class='form-check-label' for='";//idCheck-clave2
+                let check31 = "'>";//		Firmante
+                let check4 = "</label></div>";
+                let check5 ="</div></div></div>";
+                let claveAnt = "";
+                let idClave1 = "";
+                let idClave2 = "";
+                let title = "Perfil";
+                let primer = "";
+                for (let iIndex = 0; arrTemp.length > iIndex; iIndex++) {
+                    arrElements = arrTemp[iIndex].split("|");
+                    objPerfil = { cv: arrElements[0], n1: arrElements[1], des: arrElements[2] };
+                    //alert(claveAnt+ "--" +objPerfil.cv)
+                    g_arrCatPerfiles.push(objPerfil);
+                    
+                    if (claveAnt == "" || (claveAnt.charAt(0) != objPerfil.cv.charAt(0))) {
+                        if (claveAnt != "")
+                            textResult += check5;
+                        idClave1 = "idCheck-" + objPerfil.cv;
+                        idClave2 = "collapse-" + objPerfil.cv;
+                        textResult += text1 + text2 + idClave1 + text3 + text4 + objPerfil.n1 + text41 + text5 + idClave2 + text6 + title + text7 + text8 + idClave2 + text9;
+                        //alert(textResult);
+                        primer = "";
+
+                    } else {
+                        idClave1 = "idCheck-" + objPerfil.cv;
+                        //alert(check21 + idClave1 + check3 + idClave1 + check31 + objPerfil.n1 + check4);
+                        textResult += check21 + idClave1 + check3 + idClave1 + check31 + objPerfil.n1 + check4;
+                        
+                    }
+                    claveAnt = objPerfil.cv;
+                }
+                textResult += check5;
+
+               
+
+                onQueryDataCatPerfiles(textResult);
+            },
+            failure: function (response) {
+                alert(response.d);
+            }
+        });
+    }
+    requestEmpleadoPerfiles: function requestEmpleadoPerfiles(dataParam, onQueryEmpleadoPerfiles) {
+        $.ajax({
+            type: "POST",
+            url: "../WebServices/CatWebService.asmx/empleadoPerfiles",
+            data: JSON.stringify(dataParam),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                var result = response.d;
+                let arrEmpleados = result.split("$")
+                g_arrEmpPerfies = [];
+                let objEmpPerfiles;
+                for (let iIndex=0; arrEmpleados.length > iIndex; iIndex++) {
+                    arrEmpPerfies = arrEmpleados[iIndex].split("|");
+                    objEmpPerfiles = { idEmp: arrEmpPerfies[0], perfiles: [...arrEmpPerfies[1].split(",")] };
+                    g_arrEmpPerfies.push(objEmpPerfiles);
+                }
+                onQueryEmpleadoPerfiles(result);
+            },
+            failure: function (response) {
+                alert(response.d);
+            }
+        });
+    }
+    requestUpdatePerfilesEmpleado: function requestUpdatePerfilesEmpleado(dataParam, requestQueryDataUpdatePerfilesEmpleado) {
+        $.ajax({
+            type: "POST",
+            url: "../WebServices/CatWebService.asmx/updateEmpleadoPerfiles",
+            data: JSON.stringify(dataParam),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                var result = response.d;
+                
+                requestQueryDataUpdatePerfilesEmpleado(result);
+            },
+            failure: function (response) {
+                alert(response.d);
+            }
+        });
+    }
 
     return {
         eventFire: eventFire,
@@ -709,33 +997,52 @@ catGen.catUtility = (function (catUtility, $, undefined) {
         fnCreateListAcordeon: fnCreateListAcordeon,
         fnCreateSelectList: fnCreateSelectList,
         fnCreatefloatingSelect: fnCreatefloatingSelect,
-        fnCreateMultipleSelect, fnCreateMultipleSelect,
+        fnCreateAcoorSedesEmpleados: fnCreateAcoorSedesEmpleados,
+        fnFiltrarEmpleados: fnFiltrarEmpleados,
+        fnFiltrarMunicipios: fnFiltrarMunicipios,
+        fnCreateMsEmpleados: fnCreateMsEmpleados,
+        fnCreateAcoorSedesEmp: fnCreateAcoorSedesEmp,
+        fnCreateFilterMSelect: fnCreateFilterMSelect,
 
         getNameMunicipio: getNameMunicipio,
         getArrNameMunicipio: getArrNameMunicipio,
         getNameGruposDeAtencion: getNameGruposDeAtencion,
         getArrNameGruposDeAtencion: getArrNameGruposDeAtencion,
+        getNameMunicipioAtiende: getNameMunicipioAtiende,
+        getArrNameMunicipioAtiende: getArrNameMunicipioAtiende,
         getSelectOptionID: getSelectOptionID,
+        getObjMunicipiosSedes: getObjMunicipiosSedes,
+        getArrMunicipiosSedes: getArrMunicipiosSedes,
+        getNameEmpleado: getNameEmpleado,
+        getArrEmpleados: getArrEmpleados,
+        getElementEmpPerfies: getElementEmpPerfies,
+        getPerfilName: getPerfilName,
+        getArrCatPerfile: getArrCatPerfile,
+        changeElementSelected: changeElementSelected,
+        
 
         requestMunicipiosList: requestMunicipiosList,
-        requestMpioAtiendeList: requestMpioAtiendeList,
         requestMpiosQueAtienden: requestMpiosQueAtienden,
         requestMpiosConAtencion: requestMpiosConAtencion,
         requestMpiosSinAtencion: requestMpiosSinAtencion,
         requestCreateMpioAtiende: requestCreateMpioAtiende,
         requestGrupoTodosMpiosYsedes: requestGrupoTodosMpiosYsedes,
         requestNombresGruposAtencion: requestNombresGruposAtencion,
+        requestEmpleados: requestEmpleados,
+        requestStatusEmpleados: requestStatusEmpleados,
         requestGruposAtencionALL: requestGruposAtencionALL,
         requestMpioYsedes: requestMpioYsedes,
+        requestCatPerfiles: requestCatPerfiles,
+        requestEmpleadoPerfiles: requestEmpleadoPerfiles,
+
         requestUpdateGrupoDeAtencion: requestUpdateGrupoDeAtencion,
         requestCreateGrupoDeAtencion: requestCreateGrupoDeAtencion,
         requestBorraGrupoDeAtencion: requestBorraGrupoDeAtencion,
         requestBorraSede: requestBorraSede,
         requestSedesInsertUpdate: requestSedesInsertUpdate,
-        requestEmpleados: requestEmpleados,
-        requestStatusEmpleados: requestStatusEmpleados,
         requestInsertEmpleado: requestInsertEmpleado,
-        requestUpdateEmpleado: requestUpdateEmpleado
+        requestUpdateEmpleado: requestUpdateEmpleado,
+        requestUpdatePerfilesEmpleado: requestUpdatePerfilesEmpleado
 
     }
 
