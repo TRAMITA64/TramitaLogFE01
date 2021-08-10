@@ -1,4 +1,4 @@
-﻿let g_arrMunicipios = [];
+﻿
 let g_arrayInput = ["idEnviar",  "idLimpiar", "idActualizar"];
 
 
@@ -52,7 +52,6 @@ function ondblclickSede(obj) {
 
 function onChangeSedeEmpleado(idMSelect, idSedeSelect) {
     catGen.catUtility.fnCreateAcoorSedesEmpleados("idAccordionSedeEmpleado", idMSelect, fndblclickSedeEmpleado);
-    
     putTitleMunicipioSedes();
 }
 
@@ -82,13 +81,16 @@ function fnChangeMunicipio() {
     
 }
 
-function ondblclickAt(obj, parent) {
-    
+function dragStart(ev) {
+    //ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function selectButton(obj) {
     document.getElementById("idfsMpiosQueAtienden").value = obj.id.split("-")[1];
     catGen.catUtility.eventFire(document.getElementById("idfsMpiosQueAtienden"), "change");
     //limpia
     let idSelect = catGen.catUtility.getSelectOptionID("id0msEmpleados");
-    
+
     let ele = document.getElementById("id0msEmpleados");
     for (let iIndex = 0; ele.children.length > iIndex; iIndex++) {
         if (ele.children[iIndex].value == idSelect)
@@ -96,18 +98,30 @@ function ondblclickAt(obj, parent) {
     }
     let today = new Date().toLocaleDateString()
 
-    let objEmpleado = { idEmp: "", rfc: "", n1: "", ap: "", am: "", idM: 0, idS: 0, fa: today , st:0, co:"" };
-    llenaInputs(objEmpleado,1);
+    let objEmpleado = { idEmp: "", rfc: "", n1: "", ap: "", am: "", idM: 0, idS: 0, fa: today, st: 0, co: "" };
+    llenaInputs(objEmpleado, 1);
     catGen.catUtility.disableInput(true, "");
     catGen.catUtility.disableInput(false, "idEnviar,idLimpiar");
     document.getElementById("idfsMpiosQueAtienden").value = obj.id.split("-")[1];
     catGen.catUtility.eventFire(document.getElementById("idfsMpiosQueAtienden"), "change");
-    
+}
+
+function onclickAt() {
+    catGen.catUtility.clearListButtonsActive(this.parentNode.id);
+    this.classList.add("active");
+    selectButton(this);
+    putTitleMunicipioSedes();
+}
+
+function ondblclickAt() {
+    selectButton(this);
 }
 
 function putTitleMunicipioSedes() {
+    
     let idSelect = catGen.catUtility.getSelectOptionID("idfsMpiosQueAtienden");
-    document.getElementById("idTitleMunicipio").innerHTML = "Municipio " + g_arrMunicipios[idSelect];
+    
+    document.getElementById("idTitleMunicipio").innerHTML = "Municipio " + catGen.catUtility.getNameMunicipio(idSelect);
 }
 
 
@@ -276,7 +290,7 @@ function onQueryDataMunicipios(result) {
 
 function onQueryDataMpiosQueAtienden(result) {
     //02 municipios que atienden 
-    catGen.catUtility.fnCreateListButtonDraggable("idMpiosQueAtienden", result, "Municipios que atienden");//lado izq
+    catGen.catUtility.fnCreateListButtonDraggable("idMpiosQueAtienden", result, "Municipios que atienden", dragStart, ondblclickAt, onclickAt);//lado izq
     catGen.catUtility.fnCreatefloatingSelect("fsMpiosQueAtienden", result, "Selecciona el municipo", 0)//centro municipios
     document.getElementById("idfsMpiosQueAtienden").addEventListener("change", fnChangeMunicipio);
     document.getElementById("idInputFiltrar").addEventListener("keyup", fnChangeFiltrar);
@@ -299,7 +313,7 @@ function onQueryDataGrupoTodosMpiosYsedes(result) {
 
 function onQueryDataEmpleados(result) {
     catGen.catUtility.fnCreateMsEmpleados(result, "msEmpleados", "Empleados", 0, fnSelectEmpleado, fnSelectEmpleadoClick);
-    catGen.catUtility.fnCreateAcoorSedesEmp(result, "idAccordionSedeEmpleado", fndblclickSedeEmpleado);
+    catGen.catUtility.fnCreateAcoorSedesEmp(result, "idAccordionSedeEmpleado",0, fndblclickSedeEmpleado);
     let paramValue = "{param1:'',param2:'yo mero'}";
     catGen.catUtility.requestStatusEmpleados(paramValue, onQueryDataStatusEmpleados)
     putTitleMunicipioSedes();

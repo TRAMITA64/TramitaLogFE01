@@ -25,7 +25,7 @@
    
     <!-- Script de Pagina-->
     <script src="../JScript/jsAltaEmpleados.js" type="text/javascript"></script>
-
+    <link rel="stylesheet"  href="../css/styleCatalogosform.css"/>
 
   
    

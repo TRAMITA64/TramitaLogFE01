@@ -1,4 +1,4 @@
-﻿let g_GruposDeAtencionAll = [];//este si es arreglo que guarda obj {gpo,mpio,sede}
+﻿
 let g_arrMunicipiosSedes = [];
 let g_idGrupoAtencion = 0;
 let g_enviarOpcion = 'NADA'
@@ -49,17 +49,21 @@ function dropMunicipio(ev) {
     let data = ev.dataTransfer.getData("text");
     let element = document.getElementById("idNameGrupo");
     
-    if (element.value == undefined && data.indexOf("itemAcoor")==-1 ) {
+    if ((element.value == undefined || element.value == "") && data.indexOf("itemAcoor")==-1 ) {
         document.getElementById("formGposAtencion").classList.add("was-validated");
         return;
     }
     
     if (data.indexOf("itemAcoor") == -1) {
+    //lado izq
         catGen.catUtility.disableInput(false, "idEnviar,idLimpiar");
-        if (document.getElementById("idAccordionMpioSedes").childElementCount == 0)
-            catGen.catUtility.fnMpioYsedes(data.split("-")[1], onQueryDataMpioYsedes);
-        else
+        
+        if (document.getElementById("idAccordionMpioSedes").childElementCount == 0) {
+            catGen.catUtility.requestMpioYsedes(data.split("-")[1], onQueryDataMpioYsedes);
+        }
+        else {
             fnAddMpioYsedes(data.split("-")[1]);
+        }
     } else {
         //llega del lado derecho
         
@@ -280,9 +284,30 @@ function onLimpiar(obj) {
     document.getElementById("inputMessage").innerText = "Por favor ingrese un nombre para el grupo de atencion.";
 }
 
+function onclickAt() {
+    catGen.catUtility.clearListButtonsActive(this.parentNode.id);
+    this.classList.add("active");
+}
 
-function ondblclickAt(obj, parent) {
-    alert("ondblclickAt");
+function ondblclickAt() {
+    
+    let element = document.getElementById("idNameGrupo");
+
+    if (element.value == undefined || element.value == "")  {
+        document.getElementById("formGposAtencion").classList.add("was-validated");
+        return;
+    }
+
+    //lado izq
+    catGen.catUtility.disableInput(false, "idEnviar,idLimpiar");
+
+    if (document.getElementById("idAccordionMpioSedes").childElementCount == 0) {
+        catGen.catUtility.requestMpioYsedes(this.id.split("-")[1], onQueryDataMpioYsedes);
+    }
+    else {
+        fnAddMpioYsedes(this.id.split("-")[1]);
+    }
+    //xxxx
 }
 function ondblclickGrupos() {
     //no se usa pero debe existir la fn
@@ -372,7 +397,7 @@ function onQueryDataMunicipios(result) {
 }
 
 function onQueryDataMpiosQueAtienden(result) {
-    catGen.catUtility.fnCreateListButtonDraggable("idMunicipiosQueAtienden", result, "Municipios que atienden");
+    catGen.catUtility.fnCreateListButtonDraggable("idMunicipiosQueAtienden", result, "Municipios que atienden", dragStart, ondblclickAt, onclickAt);
     paramValue = "{param1:''}";
     catGen.catUtility.requestGrupoTodosMpiosYsedes(paramValue, onQueryDataGrupoTodosMpiosYsedes);
 }
@@ -387,11 +412,17 @@ function onQueryDataGrupoTodosMpiosYsedes(result) {
         arrTmp2 = arrTmp[iIndex].split("|");
         g_arrMunicipiosSedes.push({ id: arrTmp2[0], n1: arrTmp2[1], d1: arrTmp2[3], r1: arrTmp2[4], idS: arrTmp2[5], c1: arrTmp2[6], t1: arrTmp2[7] });
     }
+    
+    let dataParam = { param1: "yo mero"};
+    catGen.catUtility.requestCatGruposAtencion(dataParam, onQueryDataCatGruposAtencion)
+
+}
+
+function onQueryDataCatGruposAtencion(result) {
     let strUser = "yo mero";
     let dataParam = "{param1:'" + strUser + "'}";
     catGen.catUtility.requestNombresGruposAtencion(dataParam, onQueryDataNombresGruposAtencion);
 }
-
 
 function onQueryDataNombresGruposAtencion(result) {
     
@@ -419,7 +450,7 @@ function onQueryGruposAtencionALL(result) {
         }
         ant = arrTemp2[1];
     }
-    
+    console.log("asa-1- " + strCadena);
     catGen.catUtility.fnCreateListAcordeon("idAccordionGrupos", strCadena, 3, catGen.catUtility.getNameGruposDeAtencion, ondblclickGrupos);
 
 }

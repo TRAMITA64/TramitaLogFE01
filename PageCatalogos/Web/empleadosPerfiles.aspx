@@ -81,11 +81,11 @@
              min-height:10rem;
          }
          .cajaPerfilHeader{
-             background:#0d6efd;
+             background:#e9ecef;
              text-align:center;
              padding-top:5px;
-             color:#fff;
-             border-radius:6px;
+             color:#000;
+             border-radius:3px;
          }
          .cajaPerfilContent > p{
              padding-top:5px;
@@ -236,7 +236,6 @@
                             </div>
                         </div>
                         <div id="TabPerfiles">
-                            ------------------------
                         </div>
   
                 </div>

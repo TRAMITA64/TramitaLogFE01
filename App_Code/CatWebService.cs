@@ -605,6 +605,109 @@ public class CatWebService : System.Web.Services.WebService
             throw new Exception(ex.Message);
         }
     }
+    [WebMethod(EnableSession = true)]
+    public string empConGrupoAtencion(string param1)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.getEmpConGrupoAtencion(param1);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    [WebMethod(EnableSession = true)]
+    public string empSinGrupoAtencion(string param1)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.getEmpSinGrupoAtencion(param1);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    [WebMethod(EnableSession = true)]
+    public string catGruposAtencion(string param1)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.getCatGruposAtencion(param1);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
+    [WebMethod(EnableSession = true)]
+    public string updateGrupoDeAtencionEmpleados(string idGrupo , string idEmp,string  user)
+    {
+        string strResultado = "Webservice";
+        DataSet dtsDatos = new DataSet();
+        try
+        {
+            clsVariablesSesion objVariables = new clsVariablesSesion();
+            // objVariables.RFC = param;
+            //Session["RFC"] = param;
+
+            ClsCatalogos objCatalogos = new ClsCatalogos();
+            objCatalogos.Conexion = ConfigurationManager.ConnectionStrings["conStringTramita"].ConnectionString;
+            //objCatalogos.RFC = Session["RFC"].ToString();
+            // objCatalogos.RFC = param;
+            strResultado = objCatalogos.updateGrupoDeAtencionEmpleados(idGrupo, idEmp, user);
+
+            return strResultado;
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
 }
 
 

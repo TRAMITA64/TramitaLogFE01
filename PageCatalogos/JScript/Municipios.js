@@ -195,6 +195,7 @@ function borrarItem(Element) {
             document.getElementById("id0list-" + arrayId[1]).appendChild(Element.parentNode.parentNode);
         } else {
             //borro todos
+
             catGen.catUtility.disableInput(true, "");
             document.getElementById("formMunicipiosQueAtienden").classList.remove("was-validated");
             let buttonAcor = "id0Button-" + Element.parentNode.parentNode.id.split("-")[1];
@@ -206,10 +207,12 @@ function borrarItem(Element) {
                 let itemBorrar;
                 for (let iIndex = 0; el.children.length > iIndex; iIndex++) {
                     if (el.children[iIndex].id.length) {
-                        municipio = el.children[iIndex].id.split("-")[1];
-                        itemBorrar = document.getElementById("id0XAcoor-" + municipio);
-                        itemBorrar.hidden = true;
-                        arrayIdmove.push(el.children[iIndex].id);
+                        if (el.children[iIndex].id.indexOf("title") == -1) {
+                            municipio = el.children[iIndex].id.split("-")[1];
+                            itemBorrar = document.getElementById("id0XAcoor-" + municipio);
+                            itemBorrar.hidden = true;
+                            arrayIdmove.push(el.children[iIndex].id);
+                        }
                     }
 
                 }
@@ -226,19 +229,24 @@ function borrarItem(Element) {
     
     //lado Izq
     if (Element.parentNode.parentNode.parentNode.id == "idAtiende") {
+        
         let el = document.getElementById("idAtendidos");
         catGen.catUtility.disableInput(true, "");
         document.getElementById("formMunicipiosQueAtienden").classList.remove("was-validated");
         arrayId.push(Element.parentNode.parentNode.id);
         let itemBorrar = document.getElementById("idX-" + Element.parentNode.parentNode.id.split("-")[1]);
         itemBorrar.hidden = true;
+        
         if (el.children.length) {
             for (let iIndex = 0; el.children.length > iIndex; iIndex++) {
                 if (el.children[iIndex].id.length) {
-                    let municipio = el.children[iIndex].id.split("-")[1];
-                    itemBorrar = document.getElementById("idX-" + municipio);
-                    itemBorrar.hidden = true;
-                    arrayId.push(el.children[iIndex].id);
+                    if (el.children[iIndex].id.indexOf("title") == -1) {
+                        let municipio = el.children[iIndex].id.split("-")[1];
+
+                        itemBorrar = document.getElementById("idX-" + municipio);
+                        itemBorrar.hidden = true;
+                        arrayId.push(el.children[iIndex].id);
+                    }
                 }
 
             }
@@ -254,9 +262,15 @@ function borrarItem(Element) {
     document.getElementById("idMpiosSinAtt0").appendChild(document.getElementById(Element.parentNode.parentNode.id));
 }
 
-function ondblclickAt(obj) {
+function onClickAT() {
+    
+    catGen.catUtility.clearListButtonsActive(this.parentNode.id);
+    this.classList.add("active");
+}
 
-    ondblclickSinAt(obj, "");
+function ondblclickAt() {
+    
+    ondblclickSinAt(this, "");
 }
 
 function ondblclickAtencion() {
@@ -267,25 +281,28 @@ function ondblclickAtencion() {
 function ondblclickSinAt(object,parent) {
     let municipio;
     municipio = object.id.split("-")[1];
+    
     if (object.id.indexOf("SinAt") != -1) {
         if (object.parentNode.id == "idMpiosSinAtt0") {
             let childrenAt = document.getElementById("idAtiende").children;
+            let lado = "idAtendidos";
             if (childrenAt.length == 2) {
                 //primer caso se manda a atiende 
                 catGen.catUtility.disableInput(false, "idEnviar,idCancelar");
                 document.getElementById("formMunicipiosQueAtienden").classList.remove("was-validated");
-                let itemBorrar = document.getElementById("idX-" + municipio);
-                itemBorrar.hidden = false;
-                document.getElementById("idAtiende").appendChild(document.getElementById(object.id));
-                return;
+                lado = "idAtiende";
             }
             let itemBorrar = document.getElementById("idX-" + municipio);
             itemBorrar.hidden = false;
-            document.getElementById("idAtendidos").appendChild(document.getElementById(object.id));
+            let eleButton = document.getElementById(object.id);
+            eleButton.classList.remove("active");
+            document.getElementById(lado).appendChild(eleButton);
         } else {
             let itemBorrar = document.getElementById("idX-" + municipio);
             itemBorrar.hidden = true;
-            document.getElementById("idMpiosSinAtt0").appendChild(document.getElementById(object.id));
+            let eleButton = document.getElementById(object.id);
+            eleButton.classList.remove("active");
+            document.getElementById("idMpiosSinAtt0").appendChild(eleButton);
         }
     }
 }
@@ -433,7 +450,7 @@ function onQueryDataMpiosConAtencion(result) {
 
 
 function onQueryDataMpiosSinAtienden(result) {
-    let nlength = catGen.catUtility.fnCreateListButtonDraggable("idMpiosSinAtt", result,"Municipios sin atencion");
+    let nlength = catGen.catUtility.fnCreateListButtonDraggable("idMpiosSinAtt", result, "Municipios sin atencion", dragStart, ondblclickAt, onClickAT);
     document.getElementById('idNumSinAtMunicipios').innerHTML = nlength;
 }
 

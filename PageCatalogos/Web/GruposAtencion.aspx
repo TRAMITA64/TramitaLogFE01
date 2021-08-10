@@ -25,7 +25,7 @@
    
     <!-- Script de Pagina-->
     <script src="../JScript/jsGruposAtencion.js" type="text/javascript"></script>
-
+    <link rel="stylesheet"  href="../css/styleCatalogosform.css"/>
 
   
    
@@ -133,7 +133,13 @@
                        <button class="btn btn-default btn-xs  btn-primary" type="button" id="idBorrar" onclick="onBorrarSede(event)" >Borrar</button>&nbsp;
                        <button class="btn btn-default btn-xs btn-primary" type="button" id="idLimpiar" onclick="onLimpiar(this)" >Limpiar</button>
                        <br />&nbsp;<br />
-                        <div class="box-title"><h5 id="idNameGrupo" ></h5></div>
+
+                        
+                       <div  class="list-group" >
+                            <button type="button" id="title4" class="list-group-item list-group-item-action btn-button-title disabled" aria-current="true" disabled>
+                                <span id="idNameGrupo" >Nuevo grupo de atención</span>
+                            </button>
+                        </div>
                         <button type="button" class="list-group-item list-group-item-action" ondrop="dropMunicipio(event)" ondragover="allowMunicipio(event)">Arrastra aqui</button>
                        <div class="acoordion " id="idAccordionMpioSedes"></div>
                        

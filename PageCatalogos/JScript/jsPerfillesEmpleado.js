@@ -269,7 +269,7 @@ function onClickModal(valor) {
 function actualizarPerfilesEmpleado() {
     let param = getParamCompara()
     arrParamUpdate = param.split(":");
-    catGen.catUtility.requestUpdatePerfilesEmpleado({ idEmp: arrParamUpdate[0], perfiles: arrParamUpdate[1], user:"yo mero"}, requestQueryDataUpdatePerfilesEmpleado);
+    catGen.catUtility.requestUpdatePerfilesEmpleado({ idEmp: arrParamUpdate[0], perfiles: arrParamUpdate[1], user:"yo mero"}, onQueryDataUpdatePerfilesEmpleado);
 }
 
 /*-------------------------------------QueryDATA-----------------------------------------------------------------------------------------------------------*/
@@ -293,7 +293,7 @@ function onQueryDataGrupoTodosMpiosYsedes(result) {
 function onQueryDataEmpleados(result) {
     //04 Empleados
     catGen.catUtility.fnCreateMsEmpleados(result, "msEmpleados", "Empleados", 0, fnSelectEmpleado, fnSelectEmpleadoClick);
-    catGen.catUtility.fnCreateAcoorSedesEmp(result, "idAccordionSedeEmpleado", fndblclickSedeEmpleado);
+    catGen.catUtility.fnCreateAcoorSedesEmp(result, "idAccordionSedeEmpleado",0, fndblclickSedeEmpleado);
     document.getElementById("idInputFiltrarEmp").addEventListener("keyup", fnFiltrarEmpleado);
     document.getElementById("idInputFiltrarMpio").addEventListener("keyup", fnFiltrarMunicipio);
     
@@ -314,7 +314,7 @@ function onQueryEmpleadoPerfiles(result) {
     
 }
 
-function requestQueryDataUpdatePerfilesEmpleado(result) {
+function onQueryDataUpdatePerfilesEmpleado(result) {
     let idEmpSelect = catGen.catUtility.getSelectOptionID("id0msEmpleados");
     let arrEmpleadosFiltro = catGen.catUtility.getArrEmpleados().filter(val => val.idEmp == idEmpSelect);
     let nombreEmpleado = arrEmpleadosFiltro[0].n1 + " " + arrEmpleadosFiltro[0].ap + " " + arrEmpleadosFiltro[0].am;

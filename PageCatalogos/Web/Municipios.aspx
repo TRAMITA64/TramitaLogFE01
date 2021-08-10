@@ -25,6 +25,7 @@
    
     <!-- Script de Pagina-->
     <script src="../JScript/Municipios.js" type="text/javascript"></script>
+    <link rel="stylesheet"  href="../css/styleCatalogosform.css"/>
 
      <style>
 #div1 {
@@ -113,8 +114,8 @@
                     <h4>Alta municipios que atienden</h4><span id="idNumQueAtMunicipios"></span>
                     
                     <div id="idAtiende" class="list-group list-group-atiende" ondrop="dropAtiende(event)" ondragover="allowDrop(event)">
-                        <button type="button" class="list-group-item list-group-item-action active" aria-current="true" disabled>Municipio que Atiende</button>
-                        <button type="button" class="list-group-item list-group-item-action">Arrastra aqui</button>
+                        <button type="button" id="title0" class="list-group-item list-group-item-action btn-button-title  disabled" aria-current="true" disabled>Municipio que Atiende</button>
+                        <button type="button" id="title1"class="list-group-item list-group-item-action">Arrastra aqui</button>
                     </div>
                     <div class="input-group mb-3">
                         <input type="text" hidden class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idHidde" required/>
@@ -130,16 +131,21 @@
                     </div>
                     
                     <div id="idAtendidos" class="list-group list-group-atendidos" ondrop="dropAtendidos(event)" ondragover="allowDrop(event)">
-                            <button type="button" class="list-group-item list-group-item-action active" aria-current="true" disabled>
+                            <button type="button" id="title2" class="list-group-item list-group-item-action btn-button-title disabled" aria-current="true" disabled>
                         Municipios atendidos
                         </button>
-                        <button type="button" class="list-group-item list-group-item-action">Arrastra aqui</button>
+                        <button type="button" id="title3" class="list-group-item list-group-item-action">Arrastra aqui</button>
                     </div>
                 </div>
                 <div class="col-md-4  well">
                     <h4>Municipios con atencion <span id="idNumConAtMunicipios" ></span> </h4>
                     <div class="alert alert-primary" role="alert" id="idAlertGrupo" hidden>
                             ......
+                    </div>
+                    <div  class="list-group" >
+                            <button type="button" id="title4" class="list-group-item list-group-item-action btn-button-title disabled" aria-current="true" disabled>
+                                Municipios que atienden
+                        </button>
                     </div>
                     <div class="acoordion " id="accordionConAtencion"></div>
                 </div>

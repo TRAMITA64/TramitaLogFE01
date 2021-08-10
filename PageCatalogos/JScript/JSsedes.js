@@ -52,7 +52,7 @@ function dropSede(ev) {
     
     let arrId = data.split("-");
     g_municipioForm = arrId[1];
-    document.getElementById("idMunicipioName").innerHTML = catGen.catUtility.getNameMunicipio(arrId[1]);
+    document.getElementById("idMunicipioName").value = catGen.catUtility.getNameMunicipio(arrId[1]);
     paramValue = "{param1:''}";
     catGen.catUtility.requestGrupoTodosMpiosYsedes(paramValue, onQueryDataGrupoTodosMpiosYsedes);
     catGen.catUtility.disableInput(false, "idEnviar,idCancelar");
@@ -68,12 +68,13 @@ function dragStart(ev) {
 }
 
 function ondblclickSede() {
+    
     let element = document.getElementById(this.id);
     g_idSede=this.id.split("-")[1];
     let idEle = element.parentNode.id.split("-")[1];
     let arrTemp = g_arrMunicipiosSedes.filter(value => value.id == idEle)
     let arrSede = arrTemp.filter(value => value.idS == this.id.split("-")[1]);
-    document.getElementById("idMunicipioName").innerHTML = catGen.catUtility.getNameMunicipio(idEle);
+    document.getElementById("idMunicipioName").value = catGen.catUtility.getNameMunicipio(idEle);
     if (element.parentNode.id.indexOf("id0list") == -1) {
         document.getElementById("idInputSedeName").value = arrSede[0]["n1"];
         document.getElementById("idInputDireccion").value = arrSede[0]["d1"];
@@ -98,20 +99,26 @@ function onLimpiarSede(event) {
     g_formParam = "";
     g_idSede = "";
     catGen.catUtility.disableInput(true, "");
-    document.getElementById("idMunicipioName").innerHTML = "Arrastra aqui";
+    document.getElementById("idMunicipioName").value = "Arrastra aqui";
     document.getElementById("formSedes").classList.remove("was-validated");
 }
 
-function ondblclickAt(obj, p) {
+function onClickAT() {
+    catGen.catUtility.clearListButtonsActive(this.parentNode.id);
+    this.classList.add("active");
+}
+
+function ondblclickAt() {
+    
     //es del panel de la izqierda
     catGen.catUtility.fnclearListAcordeon("idAccordionMpioSedes");
     onLimpiarSede(this);
-    let arrId = obj.id.split("-");
+    let arrId = this.id.split("-");
     g_municipioForm = arrId[1];
-    document.getElementById("idMunicipioName").innerHTML = catGen.catUtility.getNameMunicipio(g_municipioForm);
+    document.getElementById("idMunicipioName").value = catGen.catUtility.getNameMunicipio(g_municipioForm);
     paramValue = "{param1:''}";
     catGen.catUtility.requestGrupoTodosMpiosYsedes(paramValue, onQueryDataGrupoTodosMpiosYsedes);
-    
+    catGen.catUtility.disableInput(false, "idCancelar,idEnviar");
 }
 
 function getFormParam(valor)
@@ -254,7 +261,7 @@ function onQueryDataMunicipios(result) {
 
 function onQueryDataMpiosQueAtienden(result) {
     
-    catGen.catUtility.fnCreateListButtonDraggable("idMunicipiosQueAtienden", result, "Municipios que atienden");
+    catGen.catUtility.fnCreateListButtonDraggable("idMunicipiosQueAtienden", result, "Municipios que atienden", dragStart, ondblclickAt,onClickAT);
 }
 
 function onQueryDataGrupoTodosMpiosYsedes(result) {
@@ -271,7 +278,7 @@ function onQueryDataGrupoTodosMpiosYsedes(result) {
         nlength = catGen.catUtility.fnCreateListAcordeon("idAccordionTodosMpioSedes", result, 1, catGen.catUtility.getNameMunicipio, ondblclickSede);
     } 
 
-    document.getElementById('idNumConAtMunicipios').innerHTML = nlength;
+    document.getElementById("idNumSedes").innerHTML = nlength;
 }
 
 function onQueryDataBorraSede(result) {

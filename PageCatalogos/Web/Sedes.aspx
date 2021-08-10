@@ -25,18 +25,10 @@
    
     <!-- Script de Pagina-->
     <script src="../JScript/JSsedes.js" type="text/javascript"></script>
+    <link rel="stylesheet"  href="../css/styleCatalogosform.css"/>
 
      <style>
-        .box-title {
-            font-size: 13px;
-            background: #00f;
-            color: #fff;
-            font-weight: bold;
-            font-family: 'Fuente-Principal' !important;
-            height:3rem;
-            text-align:center;
-            padding-bottom:3px;
-        }
+        
         .box-title > h5 {
             padding-top:10px;
         }
@@ -103,10 +95,15 @@
                 <div  class="col-md-4  well">
                     
                         <h4>Alta de Sedes</h4>
-                         
-                        <div class="box-title" ondrop="dropSede(event)" ondragover="allowDrop(event)" ><h5 id="idMunicipioName" >Arrastra aqui</h5></div>
-                        <br />
+                        
+                        
+    
                         <div class="input-group mb-3">
+                               <span class="input-group-text" id="inputMunicipioName">Municipio</span>
+                            <input type="text" class="form-control disabled" id="idMunicipioName" ondrop="dropSede(event)" ondragover="allowDrop(event)"  aria-current="true"  value="Arrastra aqui" disabled/>
+                         </div> 
+                         <div class="input-group mb-3">
+
                            <span class="input-group-text" id="inputSedeName">Nombre Sede</span>
                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputSedeName" required/>
                             <div class="invalid-feedback" id="idInputSedeNameMessage">
@@ -116,7 +113,7 @@
                        </div>
                     
                        <div class="input-group mb-3">
-                          <span class="input-group-text" id="inputDireccion">Direccion</span>
+                          <span class="input-group-text" id="inputDireccion">Dirección</span>
                           <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputDireccion"  required/>
                            <div class="invalid-feedback" id="idInputDireccionMessage">
                                     Este campo es requerido.
@@ -134,14 +131,14 @@
                             </div>
                         </div>
                         <div class="input-group mb-3">
-                          <span class="input-group-text" id="inputCorreo">Correo electronico</span>
+                          <span class="input-group-text" id="inputCorreo">Correo electrónico</span>
                           <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputCorreo" required/>
                             <div class="invalid-feedback" id="idInputCorreoMessage">
                                     Este campo es requerido.
                             </div>
                         </div>
                         <div class="input-group mb-3">  
-                          <span class="input-group-text" id="inputTelefono">Telefono</span>
+                          <span class="input-group-text" id="inputTelefono">Teléfono</span>
                           <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id="idInputTelefono" required/> 
                           <div class="invalid-feedback" id="idInputTelefonoMessage">
                                     Este campo es requerido.
@@ -160,7 +157,14 @@
                     
                 </div>
                 <div  class="col-md-4  well">
-                    <h4>Municipios y sedes de atencion</h4>
+                    <h4>Municipios atención</h4>
+                    <div  class="list-group" >
+                            <button type="button" id="title4" class="list-group-item list-group-item-action btn-button-title disabled" aria-current="true" disabled>
+                                Sedes de atención&nbsp;<span id="idNumSedes"></span>
+                            </button>
+                    </div>
+                    
+                    
                     <div class="alert alert-primary" role="alert" id="idAlertGrupo" hidden>
                           ......
                      </div>
