@@ -19,6 +19,7 @@ $(function (e) {
         showMsgError(error);
     }
 });
+
 function despliega(error) {
     showMsgError(error);
 }
