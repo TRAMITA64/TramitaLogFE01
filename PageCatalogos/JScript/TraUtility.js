@@ -2,7 +2,7 @@
 
 tramitesGen.catUtility = (function (catUtility, $, undefined) {
     requestFamilias:function requestFamilias(onQueryDataFamilias) {
-        let url = "http://localhost/TramitaApi/api/Tramites/familias/3";
+        let url = "http://localhost/Tramita/api/Tramites/familias/3";
         fetch(url, { method: 'GET' })
             .then(res => res.json())
             .then(data => {
@@ -16,7 +16,7 @@ tramitesGen.catUtility = (function (catUtility, $, undefined) {
     }
 
     requestSubFamilias:function requestSubFamilias(onQueryDataSubFamilas) {
-        let url = "http://localhost/TramitaApi/api/Tramites/subfamilias/3";
+        let url = "http://localhost/Tramita/api/Tramites/subfamilias/3";
         fetch(url, { method: 'GET' })
             .then(res => res.json())
             .then(data => {
@@ -29,7 +29,7 @@ tramitesGen.catUtility = (function (catUtility, $, undefined) {
     }
 
     requestTramites:function requestTramites(onQueryDataTramites) {
-        let url = "http://localhost/TramitaApi/api/Tramites/tramites/3";
+        let url = "http://localhost/Tramita/api/Tramites/tramites/3";
         fetch(url, { method: 'GET' })
             .then(res => res.json())
             .then(data => {

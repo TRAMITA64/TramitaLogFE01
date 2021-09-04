@@ -22,8 +22,8 @@ class ControlSelectFloating extends React.Component {
     }
     render() {
         return (
-            <div class="form-floating mb-3" id={"fs" + this.props.typeOfControl.pos + this.props.typeOfControl.nombre}>
-                <select class="form-select" id={"idfs" + this.props.typeOfControl.pos + this.props.typeOfControl.nombre} aria-label={"Selecciona la " + this.props.typeOfControl.nombre}>
+            <div className="form-floating mb-3" id={"fs" + this.props.typeOfControl.pos + this.props.typeOfControl.nombre}>
+                <select className="form-select" id={"idfs" + this.props.typeOfControl.pos + this.props.typeOfControl.nombre} aria-label={"Selecciona la " + this.props.typeOfControl.nombre}>
                     {this.props.arrFamilias.map(familia => <option value={"familia-" + familia.clave} selected="">{familia.nombre}</option>) }
                 </select>
                 <label for="idfsMpiosQueAtienden">{"Selecciona la " + this.props.typeOfControl.nombre}</label>
@@ -120,7 +120,7 @@ function onQueryDataTramites(data) {
     const domContainer2 = document.getElementById("familas_navigation_container2");
     let typeOfControl2 = { editable: 1, pos: 1 };
     ReactDOM.render(<ArbolNivel3 typeOfControl={typeOfControl2} arrFamilias={g_arrFamilias} arrSubFamilias={g_arrSubFamilas} arrTramites={g_arrTramites} />, domContainer2);
-
+/*
     const domContainer3 = document.getElementById("select_floating_familias");
     let typeOfControl3 = { nombre:"famila",  pos: 0 };
     ReactDOM.render(<ControlSelectFloating typeOfControl={typeOfControl3} arrFamilias={g_arrFamilias} />, domContainer3);
@@ -128,6 +128,6 @@ function onQueryDataTramites(data) {
     const domContainer4 = document.getElementById("select_floating_subfamilias");
     let typeOfControl4 = { nombre: "Sub-Famila", pos: 1 };
     ReactDOM.render(<ControlSelectFloating typeOfControl={typeOfControl4} arrFamilias={g_arrSubFamilas.filter(val => val.refFam == g_arrFamilias[0].clave)} />, domContainer4);
-    
+  */  
 
 }
