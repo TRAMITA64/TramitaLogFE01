@@ -767,17 +767,10 @@ body {
     text-align: left;
     color: #000;
 }
-.work_area .home_content .content_dashboard .box-card .conten-card .link-card:hover li {
-    padding-left: 15px;
-    padding-top: 4px;
-    height: 35px;
-    background: #FFF;
-    border-radius: 12px;
-    margin-top: 4px;
-    margin-left: 10px;
-    width: 92%;
-    text-align: left;
+.work_area .home_content .content_dashboard .box-card .conten-card .link-card li:hover {
+    background: var(--bg-navbar-hover);
     color: #000;
+    cursor: pointer;
 }
 
 
