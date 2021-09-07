@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default2.aspx.cs" Inherits="PageCatalogos_Web_Default2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Dashboard.aspx.cs" Inherits="PageCatalogos_Dashboard" %>
 
 <!DOCTYPE html>
 
@@ -23,7 +23,7 @@
             <div class="logo">
                 <img src="http://sateg.gob.mx/assets/img/logo-secretaria-finanzas-guanajuato.svg" />
                 <i class='bx bxl-c-plus-plus1'></i>
-                <div class="logo_name">Bandeja de entrada>Comunicados</div>
+                <div class="logo_name"></div>
                 <input type="checkbox" id="clickBars" />
                 <label for="clickBars" class="menu-btn">
                     <i class="fas fa-bars"></i>
@@ -107,35 +107,7 @@
                     <aside class="bd-sidebar">
                         <nav class="collapse bd-links" id="bd-docs-nav" aria-label="Familas de tramites navigation">
                             <ul class="list-unstyled mb-0 py-3 pt-md-1">
-                                
-                                <li class="mb-1">
-                                    <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#collapse0-f001" aria-expanded="false">Bandeja de entrada</button>
-                                    <div>
-                                        <div class="collapse" id="collapse0-f001" style="">
-                                            <ul class="list-unstyled fw-normal pb-1 small ">
-                                                <li><a href="#" id="tramite0-t001" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Mensaje</a></li>
-                                                <li><a href="#" id="tramite0-t002" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Comunicados</a></li>
-                                                <li><a href="#" id="tramite0-t003" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Notificaciones</a></li>
-                                                <li><a href="#" id="tramite0-t003" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Tramites</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="mb-1">
-                                    <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#collapse0-f002" aria-expanded="false">Bandeja de salida</button>
-                                    <div>
-                                        <div class="collapse" id="collapse0-f002" style="">
-                                                <ul class="list-unstyled fw-normal pb-1 small ">
-                                                    <li><a href="#" id="tramite0-t007" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Mensajes</a></li>
-                                                    <li><a href="#" id="tramite0-t008" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Comunicados</a></li>
-                                                    <li><a href="#" id="tramite0-t008" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Tramites</a></li>
-                                                </ul>
-                                        </div>
-                                    </div>
-                                    <hr />
-                                </li>
                                 <li>
-                                    
                                     <div class="profile_content"> 
                                         <div class="profile">
                                             <div class="profile_detail">
@@ -151,8 +123,6 @@
                                                     <span class="tooltip">Editar medios de contacto</span>    
                                                 </div>
                                             </div>
-                                            
-                                
                                         </div>
                                     </div>
                                      <hr />
@@ -162,20 +132,112 @@
                     </aside>
         </div>
          <div class="home_content">
-            <div class="content_reports">
-                <div class="title-action">Editar Medios de contacto</div>
-                <div class="box-config-medios">
-                    <div class="d-grid gap-2">
-                      <button class="btn btn-primary btn-edit-medios" type="button">Añadir correos electrónicos</button>
-                      <button class="btn btn-primary btn-edit-medios" type="button">Añadir número de teléfono</button>
+            <div class="content_dashboard">
+                <div class="box-card">
+                    <div class="title-border-top"></div>
+                    <div class="conten-card">
+                        <div class="logo-card"><i class='bx bx-spreadsheet' ></i></div>
+                        <div class="dec-card">Catalogo</div>
+                        <div class="link-card">
+                            <ul>
+                                <li><a>Atencion por municipio</a></li>
+                                <li><a>Grupos de Atencion</a></li>
+                                <li><a>Empleados</a></li>
+                                <li><a>Perfil empleado</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <!--<div class="img-datagrid">
-                    <img src="../img/DataGridEjemplo.png" />
-                </div>-->
+                <div class="box-card">
+                   <div class="title-border-top"></div>
+                    <div class="conten-card">
+                        <div class="logo-card"><i class='bx bxs-news'></i></div>
+                        <div class="dec-card">Plantillas</div>
+                        <div class="link-card">
+                            <ul>
+                                <li><a>Crear</a></li>
+                                <li><a>modificar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-card">
+                      <div class="title-border-top"></div>
+                    <div class="conten-card">
+                        <div class="logo-card"><i class="bx bx-mail-send"></i></div>
+                        <div class="dec-card">Buzón</div>
+                        <div class="link-card">
+                            <ul>
+                                <li><a>Asignar tramites</a></li>
+                                <li><a>Bandeja de Entrada / Salida</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-card">
+                    <div class="title-border-top"></div>
+                    <div class="conten-card">
+                        <div class="logo-card"><i class='bx bxs-bell-ring'></i></div>
+                        <div class="dec-card">Notificaciones</div>
+                        <div class="link-card">
+                            <ul>
+                                <li><a>Registro uno a uno</a></li>
+                                <li><a>Registro masivo</a></li>
+                                <li><a>Consulta</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="sidebar-right">
-                         
+                        <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
+          <strong class="d-block h6 my-2 pb-2 border-bottom">Contenido</strong>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#quick-start">Aviso privacidad</a>
+      <ul>
+        <li><span >Catalogos</span>
+          <ul>
+            <li><a href="#bundle">Atencion por municipios</a></li>
+            <li><a href="#separate">Grupos Atencion</a></li>
+            <li><a href="#modules">Empleados</a></li>
+            <li><a href="#components">Perfil Empleados</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><ul>
+    <li><span >Plantillas</span>
+      <ul>
+        <li><a href="#html5-doctype">Crear</a></li>
+        <li><a href="#responsive-meta-tag">Modificar</a></li>
+      </ul>
+    </li>
+    </ul></li>
+      <li><ul>
+    <li><span >Buzón</span>
+      <ul>
+        <li><a href="#html5-doctype">Asignar tramites</a></li>
+        <li><a href="#responsive-meta-tag">Bandeja de entrada / salida</a></li>
+      </ul>
+    </li>
+    </ul></li>
+      <li><ul>
+    <li><span >Notificaciones</span>
+      <ul>
+        <li><a href="#html5-doctype">Registro uno a uno</a></li>
+        <li><a href="#responsive-meta-tag">Registro masivo</a></li>
+          <li><a href="#responsive-meta-tag">Consulta</a></li>
+      </ul>
+    </li>
+    </ul></li>
+
+    
+
+  </ul>
+</nav>
+        </div> 
             </div>
         </div>
     </div>
@@ -197,7 +259,7 @@
         
         sidebar_left.classList.toggle("active");
         home.classList.toggle("active");
-        we
+
         btnLeft.onclick = function () {
             sidebar_left.classList.toggle("active");
             home.classList.toggle("active");
