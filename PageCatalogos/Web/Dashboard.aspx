@@ -132,7 +132,7 @@
                     </aside>
         </div>
          <div class="home_content">
-            <div class="content_dashboard">
+             <div class="content_dashboard" style="height:600px; overflow: scroll;">
                 <div class="box-card">
                     <div class="title-border-top"></div>
                     <div class="conten-card">
@@ -182,9 +182,9 @@
                         <div class="dec-card">Notificaciones</div>
                         <div class="link-card">
                             <ul>
-                                <li><a>Registro uno a uno</a></li>
-                                <li><a>Registro masivo</a></li>
-                                <li><a>Consulta</a></li>
+                                <li><a href="EnvioUno.aspx">Registro uno a uno</a></li>
+                                <li><a href="EnvioUno.aspx">Registro masivo</a></li>
+                                <li><a href="EnvioUno.aspx">Consulta</a></li>
                             </ul>
                         </div>
                     </div>
@@ -199,10 +199,10 @@
       <ul>
         <li><span >Catalogos</span>
           <ul>
-            <li><a href="#bundle">Atencion por municipios</a></li>
-            <li><a href="#separate">Grupos Atencion</a></li>
-            <li><a href="#modules">Empleados</a></li>
-            <li><a href="#components">Perfil Empleados</a></li>
+            <li><a href="Dashboard.aspx">Atencion por municipios</a></li>
+            <li><a href="Dashboard.aspx">Grupos Atencion</a></li>
+            <li><a href="Dashboard.aspx">Empleados</a></li>
+            <li><a href="Dashboard.aspx">Perfil Empleados</a></li>
           </ul>
         </li>
       </ul>
@@ -210,25 +210,25 @@
     <li><ul>
     <li><span >Plantillas</span>
       <ul>
-        <li><a href="#html5-doctype">Crear</a></li>
-        <li><a href="#responsive-meta-tag">Modificar</a></li>
+        <li><a href="Dashboard.aspx">Crear</a></li>
+        <li><a href="Dashboard.aspx">Modificar</a></li>
       </ul>
     </li>
     </ul></li>
       <li><ul>
     <li><span >Buzón</span>
       <ul>
-        <li><a href="#html5-doctype">Asignar tramites</a></li>
-        <li><a href="#responsive-meta-tag">Bandeja de entrada / salida</a></li>
+        <li><a href="Dashboard.aspx">Asignar tramites</a></li>
+        <li><a href="Dashboard.aspx">Bandeja de entrada / salida</a></li>
       </ul>
     </li>
     </ul></li>
       <li><ul>
     <li><span >Notificaciones</span>
       <ul>
-        <li><a href="#html5-doctype">Registro uno a uno</a></li>
-        <li><a href="#responsive-meta-tag">Registro masivo</a></li>
-          <li><a href="#responsive-meta-tag">Consulta</a></li>
+        <li>><a href="EnvioUno.aspx">Registro uno a uno</a></li>
+        <li>><a href="EnvioUno.aspx">Registro masivo</a></li>
+        <li>><a href="EnvioUno.aspx">Consulta</a></li>
       </ul>
     </li>
     </ul></li>
