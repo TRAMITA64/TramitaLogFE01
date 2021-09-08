@@ -921,3 +921,31 @@ body {
 .home_content .box-consultas .limpiar-btn button{
     margin:10px;
 }
+
+.navbar_dos .nav_list .home-login {
+    font-size: 38px;
+}
+
+.box-login {
+    margin: auto;
+    padding-top: 20px;
+    width: 725px;
+}
+
+.box-login .contenedorEfirma {
+    margin:auto;
+    box-shadow: 0px 5px 10px #8e8e8e, 0px 8px 8px #8e8e8e;
+    padding:10px;
+}
+.box-login .contenedorEfirma .displayNone{
+    display:none;
+}
+
+.box-login .contenedorEfirma .inputAcceso {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.box-login .contenedorEfirma .inputAcceso button {
+    width:85px;
+}
