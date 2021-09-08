@@ -13,11 +13,10 @@
     <script src="../../Content/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet"  href="../css/styleCatalogosform.css"/>
     <link rel="stylesheet"  href="../css/style2.css"/>
+    <script src="../JScript/jsNotificaMasiva.js" type="text/javascript"></script>
     
     <script src="https://kit.fontawesome.com/d339b43b25.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-
-
 </head>
 <body>
     <nav class="navbar_dos">
@@ -133,110 +132,102 @@
                         </nav>
                     </aside>
         </div>
-         <div class="home_content" >
-            <div class="content_reports" style="height:600px; overflow: scroll;">
-                <div class="title-action">Registro de Notificación</div>
-                <div class="box-config-medios">
-                    <div class="d-grid gap-2">
-
-              <table style="width:100%">
-                    <tr>
-                        <td style="width:50%">
-                            <div>
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm1">RFC del Contribuyente</span>
-                                    </div>
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm1"/>
-                                </div>
+         <div class="home_content">
+            
+                <div class="content_reports">
+                <div class="title-action">Registro de notificaciones</div>
+                <div class="box-consultas">
+                    <div class="consulta-controles">
+                        <div class="grupo-consulta-input mb-3">
+                            <label for="idRFC">RFC contribuyente</label>
+                            <input type="text" class="form-control" aria-label="Sizing example input" id="idRFC1" aria-describedby="inputGroup-sizing-sm">
+                            <label for="idRFC">Fecha del Docuemto</label>
+                            <input type="date" class="form-control" aria-label="Sizing example input" id="idRFC2" aria-describedby="inputGroup-sizing-sm">
+                            <label for="idRFC">Determinate</label>
+                            <input type="text" class="form-control" aria-label="Sizing example input" id="idRFC3" aria-describedby="inputGroup-sizing-sm">
+                            <label for="idRFC">RFC del Funcionario</label>
+                            <input type="text" class="form-control" aria-label="Sizing example input" id="idRFC4" aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                        <div class="grupo-consulta-select mb-3">
+                            <div class="form-floating mb-3" id="fsTramites">
+                                <select class="form-select" id="idfsTramites" aria-label="Trámite">
+                                    <option value="0" selected="">Todos</option>
+                                    <option value="13">Campaña Tenencia 2021</option>
+                                    <option value="15">Regularizate</option>
+                                    <option value="18">Fiscalización</option>
+                                    <option value="26">Garantía de Interés Fiscal</option>
+                                </select><label for="idfsMpiosQueAtienden">Buscar por Trámite</label>
                             </div>
-                            <div>
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm2">Fecha del Documento&nbsp;</span>
-                                    </div>
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm2"/>
-                                </div>
+                            <div class="form-floating mb-3" id="fsDocumento">
+                                <select class="form-select" id="idfsDocumento" aria-label="Tipo de docuemto">
+                                    <option value="0" selected="">Todos</option>
+                                    <option value="13">Paga tu tenencia</option>
+                                    <option value="15">Carta Invitación</option>
+                                    <option value="18">Orden de Visita</option>
+                                    <option value="26">Ofrecimiento</option>
+                                </select><label for="idfsMpiosQueAtienden">Buscar por docuemto</label>
                             </div>
-
-                            <div>
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm3">Determinante&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    </div>
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm3"/>
-                                </div>
+                            <div class="form-floating mb-3" id="fsAutoridad">
+                                <select class="form-select" id="idfsAutoridad" aria-label="Autoridad que emite documento">
+                                    <option value="0" selected="">Todos</option>
+                                    <option value="13">Recaudación</option>
+                                    <option value="15">Auditoría</option>
+                                </select><label for="idfsMpiosQueAtienden">Buscar por  Autoridad que emite</label>
                             </div>
-                            <div>
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroup-sizing-sm4">RFC del Funcionario&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    </div>
-                                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm4"/>
-                                </div>
-                            </div>
-  	                    </td>
-                        <td style="width:10%">
-                        </td>
-                        <td style="width:40%">
-                            <div>
-                                <span class="input-group-text">Trámite</span>
-                            </div>
-                            <div>
-                                <select class="form-select form-select-sm" aria-label="Default select example">
-                                    <option selected>Seleccione</option>
-                                    <option value="1">Trámite 1</option>
-                                    <option value="2">Trámite 2</option>
-                                    <option value="3">Trámite 3</option>
-                                </select>
-                            </div>
-                            <br />
-                            <div>
-                                <span class="input-group-text">Tipo de Documento</span>
-                            </div>
-                            <div>
-                                <select class="form-select form-select-sm" aria-label="Default select example">
-                                    <option selected>Seleccione</option>
-                                    <option value="1">Documento 1</option>
-                                    <option value="2">Documento 2</option>
-                                    <option value="3">Documento 3</option>
-                                </select>
-                            </div>
-                            <br />
-                            <div>
-                                <span class="input-group-text">Autoridad que emite el Documento</span>
-                            </div>
-                            <div>
-                                <select class="form-select form-select-sm" aria-label="Default select example">
-                                    <option selected>Seleccione</option>
-                                    <option value="1">Autoridad 1</option>
-                                    <option value="2">Autoridad 2</option>
-                                    <option value="3">Autoridad 3</option>
-                                </select>
-                            </div>
-                        </td>
-                    </tr>
-              </table>
+                        </div>
+                    </div>
+                    
+                    <div class="input-carga">
+                      <h5>Archivo de carga</h5>
+                         <div class="input-group has-validation mb-3">
+                            <span class="input-group-text acceso-title-min-width">Archivo (.pdf)</span>
+                            <input class="form-control" type="text" placeholder="Ubicación del archivo" name="txtCarga" id="txtCarga"  onclick="onclickCarga" readOnly ></input>
+                            <button type="button" class="btn btn-primary" id="btnCarga" name="btnCarga" onclick="onclickCarga">Buscar</button>
+                            <input  type="file" class="displayNone" accept=".pdf" id="fileCarga"  />
+                         </div>
                         
-            <div class="title-action">Carga del documento a notificar</div>
-            <div class="input-group mb-3">
-              <input type="file" class="form-control" id="inputGroupFile02"/>
-              <label class="input-group-text" for="inputGroupFile02">Buscar</label>
-                <a href="../../General/pdf/acuse.pdf" class="btn btn-secondary btn-sm" role="button" target="_blank">Vista Previa</a>
-            </div>
-
-            <button type="button" class="btn btn-outline-secondary">Enviar</button>
-            <br />
-
+                    </div>
+                    <div class="input-group-uno" >
+                        <div class="enviar-btn-vista">
+                              <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idVista" onclick="onEnviarMunicipioAtiende(event)" disabled>Vista Previa</button>&nbsp;
+                            <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idEnviar" onclick="onEnviarMunicipioAtiende(event)" disabled>Enviar</button>&nbsp;
+                        </div>
                     </div>
                 </div>
+                <div class="box-envio-uno-respuesta">
+                    <div class="tittulo-folios">
+                      <h5>Esta notificación genero el siguiente número de control</h5>
+                    </div>
+                    <div class="grid-img mb-3">
+                        <label><strong>07010102-2021-00035</strong> </label>
+                    </div>
+                    <div class="grid-img mb-3">
+                        <label>GALR901220DN0 | </label>
+                        <label>28/03/2021 | </label>
+                        <label>07010102202100006 | </label>
+                        <label>OEOM760816PP3 | </label>
+                        <label>Recaudación | </label>
+                        <label>Fiscalización | </label>
+                        <label>Orden de Visita </label>
+                    </div>
+
+                    <div class="enviar-btn">
+                        <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idContinuar" onclick="onEnviarMunicipioAtiende(event)" >Continuar</button>&nbsp;
+                    </div>
+                    
+                </div>
+                <!--<div class="img-datagrid">
+                    <img src="../img/DataGridEjemplo.png" />
+                </div>-->
             </div>
+               
+            
             <div class="sidebar-right">
                         <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
           <strong class="d-block h6 my-2 pb-2 border-bottom">Contenido</strong>
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#quick-start">Aviso privacidad</a>
+    <li><a href="dashboard.aspx">Dashboard</a>
       <ul>
         <li><span >Catalogos</span>
           <ul>
@@ -267,9 +258,9 @@
       <li><ul>
     <li><span >Notificaciones</span>
       <ul>
-        <li><b><a href="#html5-doctype">Registro uno a uno</a></b></li>
-        <li><a href="#responsive-meta-tag">Registro masivo</a></li>
-          <li><a href="#responsive-meta-tag">Consulta</a></li>
+        <li><a href="EnvioUno.aspx"><strong> Registro uno a uno</strong></a></li>
+        <li><a href="EnvioMasivo.aspx">Registro masivo</a></li>
+          <li><a href="ConsultaNotificaciones.aspx">Consulta Notificaciones</a></li>
       </ul>
     </li>
     </ul></li>
@@ -307,12 +298,89 @@
         }
 
         let iconBuzon = document.getElementById("check-icon-buzon-bar");
-
+        
         iconBuzon.onclick = function () {
             sidebar_left.classList.toggle("active");
             home.classList.toggle("active");
         }
 
-    </script>
 
+        let btnCarga = document.getElementById("btnCarga");
+        let inputFileName = document.getElementById("txtCarga");
+        let btnfileCarga = document.getElementById("fileCarga");
+
+        btnfileCarga.onchange = function () {
+            let arr = this.value.split("\\");
+            if (arr.length > 0) {
+                document.getElementById("txtCarga").value = arr[arr.length - 1];
+                document.getElementById("idVista").disabled = false;
+                validaEnviar(this);
+            }
+        }
+        inputFileName.onclick = function () {
+            document.getElementById("fileCarga").click();
+        }
+        btnCarga.onclick = function () {
+            document.getElementById("fileCarga").click();
+        }
+
+        let btnVista = document.getElementById("idVista");
+
+        btnVista.onclick = function () {
+            var a = document.createElement('a');
+            a.href = '../img/acuseBuzon942021195159.pdf';
+            a.target = '_blanck';
+            document.body.appendChild(a);
+            a.click();
+        }
+        let inputOj = ["idRFC1", "idRFC2", "idRFC3", "idRFC4", "txtCarga" ];
+        let btn1 = document.getElementById("idRFC1");
+        let btn2 = document.getElementById("idRFC2");
+        let btn3 = document.getElementById("idRFC3");
+        let btn4 = document.getElementById("idRFC4");
+        btn1.onchange = function () {
+            validaEnviar(this);
+        }
+        btn2.onchange = function () {
+            validaEnviar(this);
+        }
+        btn3.onchange = function () {
+            validaEnviar(this);
+        }
+        btn4.onchange = function () {
+            validaEnviar(this);
+        }
+
+        function validaEnviar(obj) {
+            for (let iIndex = 0; inputOj.length > iIndex; iIndex++) {
+                if (document.getElementById(inputOj[iIndex]).value == "") {
+                    document.getElementById("idEnviar").disabled=true;
+                    return true;
+                }
+            }
+            document.getElementById("idEnviar").disabled = false;
+            return false;
+        }
+        let btnEnviar = document.getElementById("idEnviar");
+
+        btnEnviar.onclick = function () {
+            let divBox = document.querySelector(".box-consultas");
+            divBox.style.display = "none";
+            document.querySelector(".box-envio-uno-respuesta").style.display = "block";
+
+        }
+        let btnContinuar = document.getElementById("idContinuar");
+
+        btnContinuar.onclick = function () {
+            let divBox = document.querySelector(".box-consultas");
+            divBox.style.display = "block";
+            document.querySelector(".box-envio-uno-respuesta").style.display = "none";
+            for (let iIndex = 0; inputOj.length > iIndex; iIndex++) {
+                document.getElementById(inputOj[iIndex]).value = "";
+              
+            }
+        }
+
+    </script>
+    
 </html>

@@ -203,7 +203,7 @@
           <strong class="d-block h6 my-2 pb-2 border-bottom">Contenido</strong>
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#quick-start">Aviso privacidad</a>
+    <li><a href="dashboard.aspx">Dashboard</a>
       <ul>
         <li><span >Catalogos</span>
           <ul>
@@ -234,9 +234,9 @@
       <li><ul>
     <li><span >Notificaciones</span>
       <ul>
-        <li><a href="#html5-doctype">Registro uno a uno</a></li>
-        <li><a href="#responsive-meta-tag">Registro masivo</a></li>
-          <li><a href="#responsive-meta-tag">Consulta</a></li>
+        <li><a href="EnvioUno.aspx">Registro uno a uno</a></li>
+        <li><a href="EnvioMasivo.aspx">Registro masivo</a></li>
+          <li><a href="ConsultaNotificaciones.aspx"><strong>Consulta Notificaciones</strong></a></li>
       </ul>
     </li>
     </ul></li>

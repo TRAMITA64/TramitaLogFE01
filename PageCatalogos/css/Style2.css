@@ -62,7 +62,7 @@ body {
 }
 
 .navbar_dos {
-    height: 80px;
+    height: 85px;
     background: #1b1b1b;
     background: var(--bg-nav-bar);
     display: flex;
@@ -131,7 +131,7 @@ body {
 }
 
 .navbar_dos ul {
-    margin-top: 20px;
+    margin-top: 13px;
     display: flex;
 }
 
@@ -280,6 +280,12 @@ body {
 
 #clickBars {
     display: none;
+}
+
+@media (max-width: 1600px) {
+    .navbar_dos ul li input {
+        display: none;
+    }
 }
 
 @media (max-width: 850px) {
@@ -540,17 +546,25 @@ body {
 .home_content .content_reports {
     background: blue;
     height: 100vh;
-    width: 70%;
+    width: 100%;
     background: var(--bg-home-content);
 }
 
 .home_content .sidebar-right {
     
     height: 100vh;
-    width: 30%;
+    width: 20%;
     background: var(--bg-nav-bar);
     box-shadow: inset 3px 0 0px rgb(0 0 0 / 26%);
 }
+
+.home_content.active .sidebar-right {
+    height: 100vh;
+    width: 40%;
+    background: var(--bg-nav-bar);
+    box-shadow: inset 3px 0 0px rgb(0 0 0 / 26%);
+}
+
 @media (min-width: 768px) {
     .bd-links {
         height: calc(100vh - 10rem);
@@ -683,7 +697,7 @@ body {
     margin: auto;
     background: var(--bg-nav-bar);
     display: block;
-    width: 40rem;
+    width: 100%;
     height: 18rem;
     border-radius: 8px;
     border: 1px solid #dadce0;
@@ -769,6 +783,13 @@ body {
     text-align: left;
     color: #000;
 }
+
+.work_area .home_content .content_dashboard .box-card .conten-card .link-card li a {
+    text-decoration: none;
+    color: #000;
+}
+
+
 .work_area .home_content .content_dashboard .box-card .conten-card .link-card li:hover {
     background: var(--bg-navbar-hover);
     color: #000;
@@ -862,9 +883,9 @@ body {
 
 
 .home_content .content_reports .box-consultas .enviar-btn {
-    width: 75px;
-    align-items: center;
-    margin: auto;
+    width: 124px;
+    margin:auto;
+    padding-bottom:22px;
 }
 
 .home_content .content_reports .box-consultas .grid-img img {
@@ -948,4 +969,24 @@ body {
 
 .box-login .contenedorEfirma .inputAcceso button {
     width:85px;
+}
+
+.work_area .home_content .content_reports .box-consultas  .input-carga {
+    width: 60%;
+    padding: 15px 0px 5px 15px;
+    color: #000;
+    margin:auto;
+}
+.work_area .home_content .content_reports .box-consultas  .displayNone{
+    display:none;
+}
+
+.work_area .home_content .content_reports .box-consultas .input-group-uno {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.work_area .home_content .content_reports  .box-envio-uno-respuesta{
+    text-align:center;
+    display:none;
 }

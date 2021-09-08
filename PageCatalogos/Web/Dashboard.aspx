@@ -132,7 +132,7 @@
                     </aside>
         </div>
          <div class="home_content">
-             <div class="content_dashboard" style="height:600px; overflow: scroll;">
+             <div class="content_dashboard" >
                 <div class="box-card">
                     <div class="title-border-top"></div>
                     <div class="conten-card">
@@ -183,8 +183,8 @@
                         <div class="link-card">
                             <ul>
                                 <li><a href="EnvioUno.aspx">Registro uno a uno</a></li>
-                                <li><a href="EnvioUno.aspx">Registro masivo</a></li>
-                                <li><a href="EnvioUno.aspx">Consulta</a></li>
+                                <li><a href="EnvioMasivo.aspx">Registro masivo</a></li>
+                                <li><a href="ConsultaNotificaciones.aspx">Consulta</a></li>
                             </ul>
                         </div>
                     </div>
@@ -195,7 +195,7 @@
           <strong class="d-block h6 my-2 pb-2 border-bottom">Contenido</strong>
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#quick-start">Aviso privacidad</a>
+    <li><a ><strong>Dashboard</strong></a>
       <ul>
         <li><span >Catalogos</span>
           <ul>
@@ -226,9 +226,9 @@
       <li><ul>
     <li><span >Notificaciones</span>
       <ul>
-        <li>><a href="EnvioUno.aspx">Registro uno a uno</a></li>
-        <li>><a href="EnvioUno.aspx">Registro masivo</a></li>
-        <li>><a href="EnvioUno.aspx">Consulta</a></li>
+        <li><a href="EnvioUno.aspx">Registro uno a uno</a></li>
+        <li><a href="EnvioMasivo.aspx">Registro masivo</a></li>
+        <li><a href="ConsultaNotificaciones.aspx">Consulta</a></li>
       </ul>
     </li>
     </ul></li>
