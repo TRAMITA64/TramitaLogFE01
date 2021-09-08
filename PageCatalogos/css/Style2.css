@@ -523,7 +523,7 @@ body {
     background: #fff;
     background: var(--bg-home-content);
     transition: all 0.5s ease;
-    color:green;
+    
 }
 
 .work_area {
@@ -545,7 +545,7 @@ body {
 }
 
 .home_content .sidebar-right {
-    background: green;
+    
     height: 100vh;
     width: 30%;
     background: var(--bg-nav-bar);
@@ -700,7 +700,9 @@ body {
     padding-top: 25px;
     padding-bottom: 25px;
     font-size: 20px;
+    font-weight:600;
     color: #000;
+
 }
 .work_area .home_content .content_dashboard {
     width: 100%;
@@ -774,4 +776,148 @@ body {
 }
 
 
+.home_content .content_reports .box-envio-masivo {
+    margin: auto;
+    background: var(--bg-nav-bar);
+    display: block;
+    width: 97%;
+    height: 70%;
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+    box-shadow: none;
+}
 
+.home_content .content_reports .box-envio-masivo .displayNone {
+    display: none;
+}
+.home_content .content_reports .box-envio-masivo .input-carga {
+    width: 60%;
+    padding: 15px 0px 5px 15px;
+    color:#000;
+}
+    .home_content .content_reports .box-envio-masivo .grid-content {
+        width: 100%;
+        height: 35px;
+        
+        white-space: nowrap;
+    }
+
+    .home_content .content_reports .box-envio-masivo .grid-img{
+        width:100%;
+    }
+
+    .home_content .content_reports .box-envio-masivo .grid-img img{
+        width: 100%;
+    }
+
+    .home_content .content_reports .box-envio-masivo .enviar-btn {
+        width: 75px;
+        align-items: center;
+        margin: auto;
+    }
+
+
+
+.home_content .content_reports .box-envio-masivo-respuesta {
+    margin: auto;
+    background: var(--bg-nav-bar);
+    display: block;
+    width: 97%;
+    height: 70%;
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+    box-shadow: none;
+    display:none;
+}
+
+.home_content .content_reports .box-envio-masivo-respuesta .grid-img {
+    width: 100%;
+}
+
+.home_content .content_reports .box-envio-masivo-respuesta .grid-img img {
+    width: 100%;
+}
+
+.home_content .content_reports .box-envio-masivo-respuesta .enviar-btn {
+    width: 75px;
+    align-items: center;
+    margin: auto;
+}
+
+.work_area .home_content .content_reports .box-envio-masivo-respuesta .tittulo-folios h5 {
+    padding: 15px 0px 15px 0px;
+    text-align: center;
+}
+
+.home_content .content_reports .box-consultas {
+    margin: auto;
+    background: var(--bg-nav-bar);
+    display: block;
+    width: 95%;
+    height: 70%;
+    border-radius: 8px;
+    border: 1px solid #dadce0;
+    box-shadow: none;
+}
+
+
+.home_content .content_reports .box-consultas .enviar-btn {
+    width: 75px;
+    align-items: center;
+    margin: auto;
+}
+
+.home_content .content_reports .box-consultas .grid-img img {
+    width: 100%;
+}
+
+
+.home_content .box-consultas .consulta-controles{
+    display:flex;
+}
+
+.home_content .box-consultas .grupo-consulta {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.home_content .box-consultas .grupo-consulta-input {
+    display:block;
+    width:50%;
+}
+
+.home_content .box-consultas .grupo-consulta-input label {
+    width: 30%;
+    margin-left: 0.5rem;
+    font-weight:500;
+}
+
+.home_content .box-consultas .grupo-consulta-input input {
+    width: 60%;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+        
+}
+.home_content .box-consultas .form-control {
+    display: initial;
+}
+
+.home_content .box-consultas .grupo-consulta-select {
+    width: 50%;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+.home_content .box-consultas .grupo-consulta-select select{
+    width:98%
+}
+
+.home_content .box-consultas .limpiar-btn {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.home_content .box-consultas .limpiar-btn button{
+    margin:10px;
+}
