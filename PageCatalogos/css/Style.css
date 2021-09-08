@@ -619,3 +619,7 @@ body {
     width: 30%;
     background: var(--bg-nav-bar);
     box-shadow: inset 3px 0 0px rgb(0 0 0 / 26%);
+}
+.displayNone {
+    display: none;
+}
