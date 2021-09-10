@@ -167,7 +167,18 @@
                     </div>
 
                     <div class="enviar-btn">
-                        <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idContinuar" onclick="onEnviarMunicipioAtiende(event)" >Continuar</button>&nbsp;
+                        <table style="width:100%">
+                            <tr>
+                                <td style="width:50%">
+                                    <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idFactura" onclick="onEnviarMunicipioAtiende(event)">&nbsp;&nbsp;Factura&nbsp;</button>&nbsp;&nbsp;
+                                </td>
+                                <td style="width:50%">
+                                    <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idContinuar" onclick="onEnviarMunicipioAtiende(event)" >Continuar</button>&nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                        
+                       
                     </div>
                     
                 </div>
@@ -384,7 +395,14 @@
             }
            
         }
-
+        let btnFactura = document.getElementById("idFactura");
+        btnFactura.onclick = function () {
+            var a = document.createElement('a');
+            a.href = '../img/FacturaNotificacionMasiva.pdf';
+            a.target = '_blanck';
+            document.body.appendChild(a);
+            a.click();
+        }
     </script>
 
 </html>
