@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default2.aspx.cs" Inherits="PageCatalogos_Web_Default2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Buzon1.aspx.cs" Inherits="PageCatalogos_Web_Default2" %>
 
 <!DOCTYPE html>
 
@@ -18,12 +18,13 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+    <div class="inicio"></div>
     <nav class="navbar_dos">
         <div class="logo_content">
             <div class="logo">
                 <img src="http://sateg.gob.mx/assets/img/logo-secretaria-finanzas-guanajuato.svg" />
                 <i class='bx bxl-c-plus-plus1'></i>
-                <div class="logo_name">Bandeja de entrada>Comunicados</div>
+                <div class="logo_name">Portal Contribuyente</div>
                 <input type="checkbox" id="clickBars" />
                 <label for="clickBars" class="menu-btn">
                     <i class="fas fa-bars"></i>
@@ -99,7 +100,7 @@
                     <div class="icon-edit-medios">
                         <i class='bx bx-edit-alt' id="icon-edit-medios"></i>
                         <hr /> 
-                        <span class="tooltip">Editar medios de contacto</span>
+                        <span class="tooltip">Editar medios de contactoxxx</span>
                     </div>
                 </div>
                 
@@ -109,13 +110,15 @@
                             <ul class="list-unstyled mb-0 py-3 pt-md-1">
                                 
                                 <li class="mb-1">
-                                    <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#collapse0-f001" aria-expanded="false">Bandeja de entrada</button>
+                                    <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#collapse0-f001" aria-expanded="false">Bandeja de entrada
+                                        <span class="badge bg-secondary badge-top">1</span>
+                                    </button>
                                     <div>
                                         <div class="collapse" id="collapse0-f001" style="">
                                             <ul class="list-unstyled fw-normal pb-1 small ">
                                                 <li><a href="#" id="tramite0-t001" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Mensaje</a></li>
                                                 <li><a href="#" id="tramite0-t002" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Comunicados</a></li>
-                                                <li><a href="#" id="tramite0-t003" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Notificaciones</a></li>
+                                                <li><a href="#" id="tramite0-t003" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Notificaciones<span class="badge bg-secondary badge-top">1</span></a></li>
                                                 <li><a href="#" id="tramite0-t003" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Tramites</a></li>
                                             </ul>
                                         </div>
@@ -163,25 +166,135 @@
         </div>
          <div class="home_content">
             <div class="content_reports">
-                <div class="title-action">Editar Medios de contacto</div>
-                <div class="box-config-medios">
+                <div class="title-action">Bandeja de entrada>Comunicados</div>
+                <!--<div class="box-config-medios">
                     <div class="d-grid gap-2">
                       <button class="btn btn-primary btn-edit-medios" type="button">Añadir correos electrónicos</button>
                       <button class="btn btn-primary btn-edit-medios" type="button">Añadir número de teléfono</button>
                     </div>
-                </div>
-                <!--<div class="img-datagrid">
-                    <img src="../img/DataGridEjemplo.png" />
                 </div>-->
+                <div class="img-datagrid">
+                   <a id="imagenNotificacion" href="#"> <img src="../img/DataGridEjemplo.png" /></a>
+                </div>
             </div>
             <div class="sidebar-right">
-                         
+                    <div class="aviso-left">
+                       <h6>¡Cumplir Es fácil!</h6>
+                        <hr />
+                        <p>Presenta tus declaraciones de impuestos estatales</p>
+                    </div>
             </div>
         </div>
     </div>
+
+    
+    <div class="modal fade show" id="eFrimaModalLg" tabindex="-1" aria-labelledby="eFrimaModalLgLabel" style="display: none;" aria-modal="true" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title h4" id="eFrimaModalLgLabel">Firma tu notificación</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="work_area">
+                    <div class="box-login">
+                        <div id="idContenedorEfirma-registro" class="contenedorEfirma">
+                            <h3>Firma electrónica</h3>
+                            <div class="alert-acceso alert alert-danger " role="alert" id="idAlertAcceso" hidden=""></div>
+                            <div>
+                                <div class="input-group has-validation mb-3"><span class="input-group-text acceso-title-min-width">Certificado (.cer)</span>
+                                    <input class="form-control" type="text" placeholder="Ubicación del certificado" name="txtArchivo" id="txtArchivo" readonly="" />
+                                    <button type="button" class="btn btn-primary" id="btnArchivo1" name="btnArchivo1">Buscar</button>
+                                    <input type="file" class="displayNone" accept=".cer" id="file1" />
+                                </div>
+                                <div class="input-group mb-3"><span class="input-group-text acceso-title-min-width">Clave privada (.key):</span>
+                                    <input class="form-control" id="txtFile2" name="txtFile2" type="text" placeholder="Ubicación de la llave privada" readonly=""/>
+                                    <button type="button" class="btn btn-primary" name="btnFile2" id="btnFile2">Buscar</button>
+                                    <input type="file" class="displayNone" accept=".key" id="fileFile2"/>
+                                </div>
+                                <div class="input-group has-validation mb-3"><span class="input-group-text acceso-title-min-width">Contraseña de clave privada:</span>
+                                    <input class="form-control" id="File2Password" type="password" name="File2Password" placeholder="Contraseña" disabled="disabled"/>
+                                </div>
+                                <div class="input-group has-validation mb-3"><span class="input-group-text acceso-title-min-width">RFC:</span>
+                                    <input class="form-control" name="rfc" id="rfc" placeholder="RFC" type="text" disabled="disabled"/>
+                                </div>
+                            </div>
+                            <div class="inputAcceso">
+                                    <button class="btn btn-primary input-group" type="button" value="Enviar" id="idEnviar" name="Enviar" disabled="">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" id="idAviso" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#avisoModal" style="display:none">
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="avisoModal" tabindex="-1" aria-labelledby="avisoModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="avisoModalLabel">Firma electrónica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Firmando notificacón electrónica
+              <div class="progress">
+                  <div class="progress-bar" id="idProgress" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="closeConfirmacion" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </body>
     <script>
-        
+
+        let btnArchivo = document.getElementById("btnArchivo1");
+        let btnFile1 = document.getElementById("file1");
+        let btnFile2 = document.getElementById("btnFile2");
+        let btnFileFile2 = document.getElementById("fileFile2");
+
+        btnFile2.onclick = function () {
+            document.getElementById("fileFile2").click();
+        }
+
+        btnArchivo.onclick = function () {
+            document.getElementById("file1").click();
+        }
+
+        btnFileFile2.onchange = function () {
+            let arr = this.value.split("\\");
+            if (arr.length > 0) {
+                document.getElementById("txtFile2").value = arr[arr.length - 1];
+            }
+            if (document.getElementById("txtFile2").value != "" && document.getElementById("txtArchivo").value != "") {
+                document.getElementById("File2Password").disabled = false;
+                document.getElementById("idEnviar").disabled = false;
+            }
+        }
+        btnFile1.onchange = function () {
+            let arr = this.value.split("\\");
+            if (arr.length > 0) {
+                document.getElementById("txtArchivo").value = arr[arr.length - 1];
+                document.getElementById("rfc").value = "SAAA7401061V3";
+            }
+            if (document.getElementById("txtFile2").value != "" && document.getElementById("txtArchivo").value != "") {
+                document.getElementById("File2Password").disabled = false;
+                document.getElementById("idEnviar").disabled = false;
+            }
+        }
+
+
         let btn = document.querySelector("#clickBars");
         let navbar = document.querySelector(".navbar_dos");
 
@@ -190,14 +303,14 @@
             navbar.classList.toggle("active");
         }
 
-
+        
         let btnLeft = document.querySelector(".bx-menu_left");
         let sidebar_left = document.querySelector(".sidebar_left");
         let home = document.querySelector(".home_content");
         
         sidebar_left.classList.toggle("active");
         home.classList.toggle("active");
-        we
+        
         btnLeft.onclick = function () {
             sidebar_left.classList.toggle("active");
             home.classList.toggle("active");
@@ -208,6 +321,68 @@
         iconBuzon.onclick = function () {
             sidebar_left.classList.toggle("active");
             home.classList.toggle("active");
+        }
+        let btnImagenNotificacion = document.getElementById("imagenNotificacion");
+
+        btnImagenNotificacion.onclick = function () {
+            document.getElementById("eFrimaModalLg").style.display = "block";
+        }
+        let bntEnviar = document.getElementById("idEnviar")
+        let tid;
+        bntEnviar.onclick = function ()
+        {
+
+            document.getElementById("idAviso").click();
+             tid = setInterval(fnAvance, 100);
+            document.getElementById("eFrimaModalLg").style.display = "none";
+           
+        }
+        let btnClose = document.querySelector(".btn-close");
+
+        btnClose.onclick = function () {
+            document.getElementById("eFrimaModalLg").style.display = "none";
+        }
+
+        // set interval
+        
+        let valueCont = 1;
+        function fnAvance() {
+            
+            let progressBar = document.getElementById("idProgress");
+            let valorPorc;
+            switch (valueCont) {
+                case 1:
+                    valorPorc = "25%"
+                    break;
+                case 2:
+                    valorPorc = "50%"
+                    break;
+                case 3:
+                    valorPorc = "75%"
+                    break;
+                case 4:
+                    valorPorc = "100%"
+                    break;
+            }
+            
+            progressBar.style.width = valorPorc;
+            progressBar.innerHTML = valorPorc;
+            
+            valueCont++
+            if (valueCont == 5)
+                abortTimer();
+        }
+        function abortTimer() { // to be called when you want to stop the timer
+            clearInterval(tid);
+        }
+        btnCloseConfirma = document.getElementById("closeConfirmacion");
+
+        btnCloseConfirma.onclick = function () {
+            var a = document.createElement('a');
+           a.href = 'DetalleNotificacion.html';
+           a.target = '_self';
+           document.body.appendChild(a);
+           a.click();
         }
 
     </script>
