@@ -174,7 +174,7 @@
                     </div>
                 </div>-->
                 <div class="img-datagrid">
-                   <a id="imagenNotificacion" href="#"> <img src="../img/DataGridEjemplo.png" /></a>
+                   <a id="imagenNotificacion" href="#"> <img src="../img/DataGridEjemploBold.png" /></a>
                 </div>
             </div>
             <div class="sidebar-right">
@@ -240,11 +240,11 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="avisoModalLabel">Firma electrónica</h5>
+            <h5 class="modal-title" id="avisoModalLabel">Firma electrónica de notificación</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            Firmando notificacón electrónica
+            Proceso de firmado
               <div class="progress">
                   <div class="progress-bar" id="idProgress" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
               </div>

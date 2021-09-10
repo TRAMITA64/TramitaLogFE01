@@ -299,7 +299,12 @@
         let btnImagenNotificacion = document.getElementById("imagenNotificacion");
 
         btnImagenNotificacion.onclick = function () {
-            document.getElementById("eFrimaModalLg").style.display = "block";
+            //detalle
+            var a = document.createElement('a');
+            a.href = 'DetalleNotificacion.html';
+            a.target = '_self';
+            document.body.appendChild(a);
+            a.click();
         }
         let bntEnviar = document.getElementById("idEnviar")
 

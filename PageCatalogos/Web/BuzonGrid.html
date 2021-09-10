@@ -11,11 +11,17 @@
     <script src="../../Content/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../css/styleCatalogosform.css" />
     <link rel="stylesheet" href="../css/style2.css" />
+    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-data-grid/6.1.0/react-data-grid.min.js"></script>
+    <script src="../JScript/datagrid.jsx" type="text/jsx"></script>
 
     <script src="https://kit.fontawesome.com/d339b43b25.js" crossorigin="anonymous"></script>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+    <div class="inicio"></div>
     <nav class="navbar_dos">
         <div class="logo_content">
             <div class="logo">
@@ -109,14 +115,14 @@
                         <li class="mb-1">
                             <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#collapse0-f001" aria-expanded="false">
                                 Bandeja de entrada
-                                
+                                <span class="badge bg-secondary badge-top">1</span>
                             </button>
                             <div>
                                 <div class="collapse" id="collapse0-f001" style="">
                                     <ul class="list-unstyled fw-normal pb-1 small ">
                                         <li><a href="#" id="tramite0-t001" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Mensaje</a></li>
                                         <li><a href="#" id="tramite0-t002" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Comunicados</a></li>
-                                        <li><a href="#" id="tramite0-t003" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Notificaciones</a></li>
+                                        <li><a href="#" id="tramite0-t003" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Notificaciones<span class="badge bg-secondary badge-top">1</span></a></li>
                                         <li><a href="#" id="tramite0-t003" class="d-inline-flex align-items-center rounded tree-mg-lf-01">Tramites</a></li>
                                     </ul>
                                 </div>
@@ -164,89 +170,24 @@
         </div>
         <div class="home_content">
             <div class="content_reports">
-                <div class="title-detalle">Detalle de notificación</div>
-                <div class="box-consultas">
-                    <div class="consulta-controles">
-                        <div class="grupo-consulta-detalle mb-3">
-                            <label for="idRFC">Fecha de Envio</label>
-                            <input type="date" class="form-control" aria-label="Sizing example input" id="idEnvio" aria-describedby="inputGroup-sizing-sm" disabled value="2021-08-10">
-                            <label for="idRFC">Funcionario</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="idFuncionario" aria-describedby="inputGroup-sizing-sm" disabled value="Hector Jesus Fuerte Roble">
-                            <label for="idRFC">RFC contribuyente</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="idRFC1" aria-describedby="inputGroup-sizing-sm" disabled value="SAAA740809RMA">
-                            <label for="idRFC">Fecha del Docuemto</label>
-                            <input type="date" class="form-control" aria-label="Sizing example input" id="idRFC2" aria-describedby="inputGroup-sizing-sm" disabled value="2021-08-01">
-                            <label for="idRFC">Determinate</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="idRFC3" aria-describedby="inputGroup-sizing-sm" disabled value="400-65-00-03-02-2021-3915">
-
-                        </div>
-                        <div class="grupo-consulta-detalle mb-3">
-                            <label for="idRFC">Fecha para contestar</label>
-                            <input type="date" class="form-control" aria-label="Sizing example input" id="idContestar" aria-describedby="inputGroup-sizing-sm" disabled value="2021-09-02">
-                            <label for="idRFC">Trámite</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="idTramite" aria-describedby="inputGroup-sizing-sm" disabled value="Cancelación de CSD">
-                            <label for="idRFC">Documento</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="idDocumento" aria-describedby="inputGroup-sizing-sm" disabled value="Oficio">
-                            <label for="idRFC">Autoridad</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="idAutoridad" aria-describedby="inputGroup-sizing-sm" disabled value="Dirección de ejecución">
-                        </div>
-                    </div>
-
-                    
-                    <div class="input-group-uno">
-                        <div class="enviar-btn-vista">
-                            <button class="btn btn-default btn-xs  btn-primary" type="button" id="idContinuar" onclick="onEnviarMunicipioAtiende(event)" >Continuar</button>&nbsp;
-                        </div>
-                    </div>
-                </div>
-                <div class="box-envio-uno-respuesta">
-                    <div class="tittulo-folios">
-                        <h5>Esta notificación genero el siguiente número de control</h5>
-                    </div>
-                    <div class="grid-img mb-3">
-                        <label><strong>07010102-2021-00035</strong> </label>
-                    </div>
-                    <div class="grid-img mb-3">
-                        <label>GALR901220DN0 | </label>
-                        <label>28/03/2021 | </label>
-                        <label>07010102202100006 | </label>
-                        <label>OEOM760816PP3 | </label>
-                        <label>Recaudación | </label>
-                        <label>Fiscalización | </label>
-                        <label>Orden de Visita </label>
-                    </div>
-
-                    <div class="enviar-btn">
-                        <button class="btn btn-default btn-xs  btn-primary" type="button" id="idContinuarRespuesta" onclick="onEnviarMunicipioAtiende(event)">Continuar</button>&nbsp;
-                    </div>
-
-                </div>
-                <!--<div class="img-datagrid">
-        <img src="../img/DataGridEjemplo.png" />
+                <div class="title-action">Bandeja de entrada>Comunicados</div>
+                <!--<div class="box-config-medios">
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary btn-edit-medios" type="button">Añadir correos electrónicos</button>
+          <button class="btn btn-primary btn-edit-medios" type="button">Añadir número de teléfono</button>
+        </div>
     </div>-->
+                <div id="root">
+
+                </div>
+                
             </div>
             <div class="sidebar-right">
-                
-                <div class="aviso-adjuntos">
-                    <h6>Archivos adjuntos</h6>
+                <div class="aviso-left">
+                    <h6>¡Cumplir Es fácil!</h6>
                     <hr />
-                    <div class="files-adjuntos">
-                        <a target="_blank" href="../img/Acto administrativo ejemplo.pdf">
-                            <div class="adjunto_link">
-                                <i class='bx bxs-file-pdf'></i><span>Acto Administrativo</span>
-                            </div>
-                        </a>
-                        <a target="_blank" href="../img/Constancia de Notificación por firma.pdf">
-                            <div class="adjunto_link">
-                                <i class='bx bxs-file-pdf'></i><span>Constancia De Notificación</span>
-                            </div>
-                        </a>
-                        <a target="_blank" href="../img/Formato aviso electrónico.pdf">
-                            <div class="adjunto_link">
-                                <i class='bx bxs-file-pdf'></i><span>Aviso Eléctronico</span>
-                            </div>
-                        </a>
-                    </div>
+                    <p>Presenta tus declaraciones de impuestos estatales</p>
+                </div>
             </div>
         </div>
     </div>
@@ -298,98 +239,160 @@
         </div>
     </div>
 
+    <!-- Button trigger modal -->
+    <button type="button" id="idAviso" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#avisoModal" style="display:none">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="avisoModal" tabindex="-1" aria-labelledby="avisoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="avisoModalLabel">Firma electrónica de notificación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Proceso de firmado
+                    <div class="progress">
+                        <div class="progress-bar" id="idProgress" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closeConfirmacion" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 <script>
-    
-    let btnArchivo = document.getElementById("btnArchivo1");
-    let btnFile1 = document.getElementById("file1");
-    let btnFile2 = document.getElementById("btnFile2");
-    let btnFileFile2 = document.getElementById("fileFile2");
 
-    btnFile2.onclick = function () {
-        document.getElementById("fileFile2").click();
-    }
+        let btnArchivo = document.getElementById("btnArchivo1");
+        let btnFile1 = document.getElementById("file1");
+        let btnFile2 = document.getElementById("btnFile2");
+        let btnFileFile2 = document.getElementById("fileFile2");
 
-    btnArchivo.onclick = function () {
-        document.getElementById("file1").click();
-    }
-
-    btnFileFile2.onchange = function () {
-        let arr = this.value.split("\\");
-        if (arr.length > 0) {
-            document.getElementById("txtFile2").value = arr[arr.length - 1];
+        btnFile2.onclick = function () {
+            document.getElementById("fileFile2").click();
         }
-        if (document.getElementById("txtFile2").value != "" && document.getElementById("txtArchivo").value != "") {
-            document.getElementById("File2Password").disabled = false;
-            document.getElementById("idEnviar").disabled = false;
+
+        btnArchivo.onclick = function () {
+            document.getElementById("file1").click();
         }
-    }
-    btnFile1.onchange = function () {
-        let arr = this.value.split("\\");
-        if (arr.length > 0) {
-            document.getElementById("txtArchivo").value = arr[arr.length - 1];
-            document.getElementById("rfc").value = "SAAA7401061V3";
+
+        btnFileFile2.onchange = function () {
+            let arr = this.value.split("\\");
+            if (arr.length > 0) {
+                document.getElementById("txtFile2").value = arr[arr.length - 1];
+            }
+            if (document.getElementById("txtFile2").value != "" && document.getElementById("txtArchivo").value != "") {
+                document.getElementById("File2Password").disabled = false;
+                document.getElementById("idEnviar").disabled = false;
+            }
         }
-        if (document.getElementById("txtFile2").value != "" && document.getElementById("txtArchivo").value != "") {
-            document.getElementById("File2Password").disabled = false;
-            document.getElementById("idEnviar").disabled = false;
+        btnFile1.onchange = function () {
+            let arr = this.value.split("\\");
+            if (arr.length > 0) {
+                document.getElementById("txtArchivo").value = arr[arr.length - 1];
+                document.getElementById("rfc").value = "SAAA7401061V3";
+            }
+            if (document.getElementById("txtFile2").value != "" && document.getElementById("txtArchivo").value != "") {
+                document.getElementById("File2Password").disabled = false;
+                document.getElementById("idEnviar").disabled = false;
+            }
         }
-    }
-
-    
-    let btn = document.querySelector("#clickBars");
-    let navbar = document.querySelector(".navbar_dos");
-
-    btn.onclick = function () {
-
-        navbar.classList.toggle("active");
-    }
 
 
-    let btnLeft = document.querySelector(".bx-menu_left");
-    let sidebar_left = document.querySelector(".sidebar_left");
-    let home = document.querySelector(".home_content");
+        let btn = document.querySelector("#clickBars");
+        let navbar = document.querySelector(".navbar_dos");
 
-    sidebar_left.classList.toggle("active");
-    home.classList.toggle("active");
-    
-    btnLeft.onclick = function () {
+        btn.onclick = function () {
+
+            navbar.classList.toggle("active");
+        }
+
+
+        let btnLeft = document.querySelector(".bx-menu_left");
+        let sidebar_left = document.querySelector(".sidebar_left");
+        let home = document.querySelector(".home_content");
+
         sidebar_left.classList.toggle("active");
         home.classList.toggle("active");
-    }
 
-    let iconBuzon = document.getElementById("check-icon-buzon-bar");
+        btnLeft.onclick = function () {
+            sidebar_left.classList.toggle("active");
+            home.classList.toggle("active");
+        }
 
-    iconBuzon.onclick = function () {
-        sidebar_left.classList.toggle("active");
-        home.classList.toggle("active");
-    }
-    
-    let bntEnviar = document.getElementById("idEnviar")
-    
-    bntEnviar.onclick = function () {
-        var a = document.createElement('a');
-        a.href = 'DetalleNotificacion.html';
-        a.target = '_self';
-        document.body.appendChild(a);
-        a.click();
-    }
-    let btnClose = document.querySelector(".btn-close");
+        let iconBuzon = document.getElementById("check-icon-buzon-bar");
 
-    btnClose.onclick = function () {
-        document.getElementById("eFrimaModalLg").style.display = "none";
-    }
+        iconBuzon.onclick = function () {
+            sidebar_left.classList.toggle("active");
+            home.classList.toggle("active");
+        }
+        let btnImagenNotificacion = document.getElementById("imagenNotificacion");
 
-    let btnContinuar = document.getElementById("idContinuar");
-    
-    btnContinuar.onclick = function () {
-        var a = document.createElement('a');
-        a.href = 'Buzon2.aspx';
-        a.target = '_self';
-        document.body.appendChild(a);
-        a.click();
-    }
+        btnImagenNotificacion.onclick = function () {
+            document.getElementById("eFrimaModalLg").style.display = "block";
+        }
+        let bntEnviar = document.getElementById("idEnviar")
+        let tid;
+        bntEnviar.onclick = function ()
+        {
+
+            document.getElementById("idAviso").click();
+             tid = setInterval(fnAvance, 100);
+            document.getElementById("eFrimaModalLg").style.display = "none";
+
+        }
+        let btnClose = document.querySelector(".btn-close");
+
+        btnClose.onclick = function () {
+            document.getElementById("eFrimaModalLg").style.display = "none";
+        }
+
+        // set interval
+
+        let valueCont = 1;
+        function fnAvance() {
+
+            let progressBar = document.getElementById("idProgress");
+            let valorPorc;
+            switch (valueCont) {
+                case 1:
+                    valorPorc = "25%"
+                    break;
+                case 2:
+                    valorPorc = "50%"
+                    break;
+                case 3:
+                    valorPorc = "75%"
+                    break;
+                case 4:
+                    valorPorc = "100%"
+                    break;
+            }
+
+            progressBar.style.width = valorPorc;
+            progressBar.innerHTML = valorPorc;
+
+            valueCont++
+            if (valueCont == 5)
+                abortTimer();
+        }
+        function abortTimer() { // to be called when you want to stop the timer
+            clearInterval(tid);
+        }
+        btnCloseConfirma = document.getElementById("closeConfirmacion");
+
+        btnCloseConfirma.onclick = function () {
+            var a = document.createElement('a');
+           a.href = 'DetalleNotificacion.html';
+           a.target = '_self';
+           document.body.appendChild(a);
+           a.click();
+        }
 
 </script>
 

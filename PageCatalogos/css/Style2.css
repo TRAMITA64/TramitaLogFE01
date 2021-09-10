@@ -62,7 +62,7 @@ body {
 }
 
 .navbar_dos {
-    height: 85px;
+    height: 60px;
     background: #1b1b1b;
     background: var(--bg-nav-bar);
     display: flex;
@@ -802,6 +802,7 @@ body {
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
+    height:fit-content;
 }
 
 .work_area .home_content .box-card {
@@ -1166,4 +1167,11 @@ body {
 .box-login-confirma .contenedor-medios-confirma .contenedorEfirma .enviar-de-nevo button{
     width:auto;
     margin:5px;
+}
+
+
+.modal .modal-dialog .modal-content .modal-body .reporte-valida-masivo{
+    display:grid;
+    padding-top:10px;
+    display:none;
 }

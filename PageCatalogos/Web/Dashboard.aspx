@@ -23,7 +23,7 @@
             <div class="logo">
                 <img src="http://sateg.gob.mx/assets/img/logo-secretaria-finanzas-guanajuato.svg" />
                 <i class='bx bxl-c-plus-plus1'></i>
-                <div class="logo_name"></div>
+                <div class="logo_name">Portal Empleado</div>
                 <input type="checkbox" id="clickBars" />
                 <label for="clickBars" class="menu-btn">
                     <i class="fas fa-bars"></i>
@@ -169,7 +169,8 @@
                         <div class="link-card">
                             <ul>
                                 <li><a>Asignar tramites</a></li>
-                                <li><a>Bandeja de Entrada / Salida</a></li>
+                                <li><a>Bandeja de Entrada </a></li>
+                                <li><a>Bandeja de Salida</a></li>
                                 
                             </ul>
                         </div>
@@ -199,8 +200,8 @@
       <ul>
         <li><span >Catalogos</span>
           <ul>
-            <li><a href="Dashboard.aspx">Atencion por municipios</a></li>
-            <li><a href="Dashboard.aspx">Grupos Atencion</a></li>
+            <li><a href="Dashboard.aspx">Atención municipios</a></li>
+            <li><a href="Dashboard.aspx">Grupos Atención</a></li>
             <li><a href="Dashboard.aspx">Empleados</a></li>
             <li><a href="Dashboard.aspx">Perfil Empleados</a></li>
           </ul>
@@ -219,7 +220,8 @@
     <li><span >Buzón</span>
       <ul>
         <li><a href="Dashboard.aspx">Asignar tramites</a></li>
-        <li><a href="Dashboard.aspx">Bandeja de entrada / salida</a></li>
+        <li><a href="Dashboard.aspx">Bandeja de entrada </a></li>
+          <li><a href="Dashboard.aspx">Bandeja de salida</a></li>
       </ul>
     </li>
     </ul></li>

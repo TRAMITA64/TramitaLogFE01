@@ -24,7 +24,7 @@
             <div class="logo">
                 <img src="http://sateg.gob.mx/assets/img/logo-secretaria-finanzas-guanajuato.svg" />
                 <i class='bx bxl-c-plus-plus1'></i>
-                <div class="logo_name"></div>
+                <div class="logo_name">Portal Empleado</div>
                 <input type="checkbox" id="clickBars" />
                 <label for="clickBars" class="menu-btn">
                     <i class="fas fa-bars"></i>
@@ -222,57 +222,88 @@
             </div>
                
             
-            <div class="sidebar-right">
-                        <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
-          <strong class="d-block h6 my-2 pb-2 border-bottom">Contenido</strong>
-          <nav id="TableOfContents">
-  <ul>
-    <li><a href="dashboard.aspx">Dashboard</a>
-      <ul>
-        <li><span >Catalogos</span>
-          <ul>
-            <li><a href="#bundle">Atencion por municipios</a></li>
-            <li><a href="#separate">Grupos Atencion</a></li>
-            <li><a href="#modules">Empleados</a></li>
-            <li><a href="#components">Perfil Empleados</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><ul>
-    <li><span >Plantillas</span>
-      <ul>
-        <li><a href="#html5-doctype">Crear</a></li>
-        <li><a href="#responsive-meta-tag">Modificar</a></li>
-      </ul>
-    </li>
-    </ul></li>
-      <li><ul>
-    <li><span >Buzón</span>
-      <ul>
-        <li><a href="#html5-doctype">Asignar tramites</a></li>
-        <li><a href="#responsive-meta-tag">Bandeja de entrada / salida</a></li>
-      </ul>
-    </li>
-    </ul></li>
-      <li><ul>
-    <li><span >Notificaciones</span>
-      <ul>
-        <li><a href="EnvioUno.aspx"><strong> Registro uno a uno</strong></a></li>
-        <li><a href="EnvioMasivo.aspx">Registro masivo</a></li>
-          <li><a href="ConsultaNotificaciones.aspx">Consulta Notificaciones</a></li>
-      </ul>
-    </li>
-    </ul></li>
-
-    
-
-  </ul>
-</nav>
-        </div> 
-            </div>
+             <div class="sidebar-right">
+                 <div class="bd-toc mt-4 mb-5 my-md-0 ps-xl-3 mb-lg-5 text-muted">
+                     <strong class="d-block h6 my-2 pb-2 border-bottom">Contenido</strong>
+                     <nav id="TableOfContents">
+                         <ul>
+                             <li><a href="dashboard.aspx">Dashboard</a>
+                                 <ul>
+                                     <li><span>Catalogos</span>
+                                         <ul>
+                                             <li><a href="#bundle">Atención municipios</a></li>
+                                             <li><a href="#separate">Grupos Atención</a></li>
+                                             <li><a href="#modules">Empleados</a></li>
+                                             <li><a href="#components">Perfil Empleados</a></li>
+                                         </ul>
+                                     </li>
+                                 </ul>
+                             </li>
+                             <li>
+                                 <ul>
+                                     <li><span>Plantillas</span>
+                                         <ul>
+                                             <li><a href="#html5-doctype">Crear</a></li>
+                                             <li><a href="#responsive-meta-tag">Modificar</a></li>
+                                         </ul>
+                                     </li>
+                                 </ul>
+                             </li>
+                             <li>
+                                 <ul>
+                                     <li><span>Buzón</span>
+                                         <ul>
+                                             <li><a href="#html5-doctype">Asignar tramites</a></li>
+                                             <li><a href="#responsive-meta-tag">Bandeja de entrada </a></li>
+                                             <li><a href="#responsive-meta-tag">Bandeja de  salida</a></li>
+                                         </ul>
+                                     </li>
+                                 </ul>
+                             </li>
+                             <li>
+                                 <ul>
+                                     <li><span>Notificaciones</span>
+                                         <ul>
+                                             <li><a href="EnvioUno.aspx"><strong>Registro una</strong></a></li>
+                                             <li><a href="EnvioMasivo.aspx">Registro masivo</a></li>
+                                             <li><a href="ConsultaNotificaciones.aspx">Consulta Notificaciones</a></li>
+                                         </ul>
+                                     </li>
+                                 </ul>
+                             </li>
+                         </ul>
+                     </nav>
+                 </div>
+             </div>
         </div>
     </div>
+
+      <!-- Button trigger modal -->
+    <button type="button" id="idAviso" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#avisoModal" style="display:none">
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="avisoModal" tabindex="-1" aria-labelledby="avisoModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="avisoModalLabel">Notificacón electrónica</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+             Proceso de notificacón electrónica 
+              <div class="progress">
+                  <div class="progress-bar" id="idProgress" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="closeConfirmacion" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </body>
     <script>
 
@@ -325,8 +356,9 @@
         }
 
         let btnVista = document.getElementById("idVista");
-
+        let tid;
         btnVista.onclick = function () {
+            
             var a = document.createElement('a');
             a.href = '../img/acuseBuzon942021195159.pdf';
             a.target = '_blanck';
@@ -364,23 +396,72 @@
         let btnEnviar = document.getElementById("idEnviar");
 
         btnEnviar.onclick = function () {
-            let divBox = document.querySelector(".box-consultas");
-            divBox.style.display = "none";
-            document.querySelector(".box-envio-uno-respuesta").style.display = "block";
+            document.getElementById("idAviso").click();
+            tid = setInterval(fnAvance, 100);
+            
 
         }
         let btnContinuar = document.getElementById("idContinuar");
 
         btnContinuar.onclick = function () {
-            let divBox = document.querySelector(".box-consultas");
+            
+            /*let divBox = document.querySelector(".box-consultas");
             divBox.style.display = "block";
             document.querySelector(".box-envio-uno-respuesta").style.display = "none";
             for (let iIndex = 0; inputOj.length > iIndex; iIndex++) {
                 document.getElementById(inputOj[iIndex]).value = "";
-              
-            }
-        }
+            }*/
+            var a = document.createElement('a');
+            a.href = 'EnvioUno.aspx';
+            a.target = '_self';
+            document.body.appendChild(a);
+            a.click();
 
+        }
+        let valueCont = 1;
+        function fnAvance() {
+
+            let progressBar = document.getElementById("idProgress");
+            let valorPorc;
+            switch (valueCont) {
+                case 1:
+                    valorPorc = "25%"
+                    break;
+                case 2:
+                    valorPorc = "50%"
+                    break;
+                case 3:
+                    valorPorc = "75%"
+                    break;
+                case 4:
+                    valorPorc = "100%"
+                    break;
+            }
+
+            progressBar.style.width = valorPorc;
+            progressBar.innerHTML = valorPorc;
+
+            valueCont++
+            if (valueCont == 5)
+                abortTimer();
+        }
+        function abortTimer() { // to be called when you want to stop the timer
+            clearInterval(tid);
+            valueCont = 0;
+        }
+        btnCloseConfirma = document.getElementById("closeConfirmacion");
+
+        btnCloseConfirma.onclick = function () {
+            let divBox = document.querySelector(".box-consultas");
+            divBox.style.display = "none";
+            document.querySelector(".box-envio-uno-respuesta").style.display = "block";
+
+           /* var a = document.createElement('a');
+            a.href = 'DetalleNotificacion.html';
+            a.target = '_self';
+            document.body.appendChild(a);
+            a.click();*/
+        }
     </script>
     
 </html>
