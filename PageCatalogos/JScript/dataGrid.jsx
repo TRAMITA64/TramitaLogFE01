@@ -1,29 +1,52 @@
-﻿
-
-let cols = [
+﻿/*---------------------Bandeja de Entrada --------------------------------------*/
+/*let cols = [
     {
         key: "colFolio",
         name: "Número de Control",
         width: 180,
         editable: false,
-        resizable: true,
-        sortable: true
+        resizable: true
+        
     },
     {
-        key: 'colRFC',
-        name: 'RFC Contribuyente',
-        width: 180,
+        key: 'colTramite',
+        name: 'Trámite',
+        width: 190,
         editable: false,
-        resizable: true,
-        sortable: true
+        resizable: true
+        
     },
     {
         key: 'colFechaDelDocumento',
         name: 'Fecha Documento',
         width: 180,
         editable: false,
-        resizable: true,
-        sortable: true
+        resizable: true
+        
+    },
+    {
+        key: 'colAutoridad',
+        name: 'Autoridad',
+        width: 110,
+        editable: false,
+        resizable: true
+        
+    },
+    {
+        key: 'colTipoDeDocumento',
+        name: 'Tipo',
+        width: 190,
+        editable: false,
+        resizable: true
+        
+    },
+    {
+        key: 'colstatus',
+        name: 'Estaus',
+        width: 180,
+        editable: false,
+        resizable: true
+        
     },
     {
         key: 'colDeterminante',
@@ -31,79 +54,174 @@ let cols = [
         width: 180,
         editable: false,
         resizable: true,
-        sortable: true
+    }
+];
+
+
+let rows = [
+    {
+        "colFolio": "07010102-2021-00035",
+        "colTramite": "Cancelación de CSD",
+        "colFechaDelDocumento": "01/08/2021",
+        "colAutoridad": "Dirección de Ejecución",
+        "colTipoDeDocumento": "Oficio",
+        "colstatus": "PENDIENTE DE NOTIFICAR",
+        "colDeterminante": "400-65-00-03-02-2021-3915"
+        
     },
     {
-        key: 'colRFCFunc',
-        name: 'RFC Funcionario',
-        width: 150,
+        "colFolio": "07010102-2021-00004",
+        "colTramite": "Tenecia 2021",
+        "colFechaDelDocumento": "28/04/2021",
+        "colAutoridad": "Gobierno del estado",
+        "colTipoDeDocumento": "Carta invitación",
+        "colstatus": "Notificado",
+        "colDeterminante": "8790597832872391"
+
+    },
+    {
+        "colFolio": "07010102-2020-00414",
+        "colTramite": "Requerimiento de obligaciones",
+        "colFechaDelDocumento": "19/11/2020",
+        "colAutoridad": "Dirección de Ejacución",
+        "colTipoDeDocumento": "Requerimiento",
+        "colstatus": "Notificado",
+        "colDeterminante": "1008634000251",
+
+    },
+    {
+        "colFolio": "07010102-2020-00328",
+        "colTramite": "Requerimiento de obligaciones",
+        "colFechaDelDocumento": "19/10/2020",
+        "colAutoridad": "Dirección de Ejacución",
+        "colTipoDeDocumento": "Requerimiento",
+        "colstatus": "Notificado",
+        "colDeterminante": "1008633900401",
+
+    },
+    {
+        "colFolio": "07010102-2020-00299",
+        "colTramite": "Requerimiento de pago",
+        "colFechaDelDocumento": "22/08/2020",
+        "colAutoridad": "Dirección de Ejacución",
+        "colTipoDeDocumento": "PAE",
+        "colstatus": "Notificado",
+        "colDeterminante": "500-55-00-03-02-2020-4592",
+
+    }
+   
+
+];
+*/
+
+let cols = [
+    {
+        key: "colFolio",
+        name: "Número de Control",
+        width: 180,
         editable: false,
-        resizable: true,
-        sortable: true
+        resizable: true
+
     },
     {
         key: 'colTramite',
         name: 'Trámite',
         width: 190,
         editable: false,
-        resizable: true,
-        sortable: true
+        resizable: true
+
     },
-    
+    {
+        key: 'colFechaDelDocumento',
+        name: 'Fecha Documento',
+        width: 180,
+        editable: false,
+        resizable: true
+
+    },
     {
         key: 'colAutoridad',
         name: 'Autoridad',
         width: 110,
         editable: false,
-        resizable: true,
-        sortable: true
+        resizable: true
+
     },
     {
         key: 'colTipoDeDocumento',
         name: 'Tipo',
         width: 190,
         editable: false,
+        resizable: true
+
+    },
+    {
+        key: 'colstatus',
+        name: 'Estaus',
+        width: 180,
+        editable: false,
+        resizable: true
+
+    },
+    {
+        key: 'colDeterminante',
+        name: 'Determinante',
+        width: 180,
+        editable: false,
         resizable: true,
-        sortable: true
     }
 ];
 
 let rows = [
     {
         "colFolio": "07010102-2021-00035",
-        "colRFC": "GALR901220DN0",
-        "colFechaDelDocumento": "28/03/2021",
-        "colDeterminante": "07010102202100006",
-        "colRFCFunc": "OEOM760816PP3",
-        "colAutoridad": "Recaudación",
-        "colTramite": "Fiscalización",
-        "colTipoDeDocumento": "Orden de Visita",
-    },
-    {
-        "colFolio": "07010102-2021-00040",
-        "colRFC": "EAMM9104192Z5",
-        "colFechaDelDocumento": "28/03/2021",
-        "colDeterminante": "07010102202100007",
-        "colRFCFunc": "LIVC610518NV9",
-        "colAutoridad": "Auditoría",
-        "colTramite": "Garantía de Interés Fiscal",
-        "colTipoDeDocumento": "Ofrecimiento",
+        "colTramite": "Cancelación de CSD",
+        "colFechaDelDocumento": "01/08/2021",
+        "colAutoridad": "Dirección de Ejecución",
+        "colTipoDeDocumento": "Oficio",
+        "colstatus": "PENDIENTE DE NOTIFICAR",
+        "colDeterminante": "400-65-00-03-02-2021-3915"
+
     },
     {
         "colFolio": "07010102-2021-00004",
-        "colRFC": "LIRJ8503054P9",
-        "colFechaDelDocumento": "28/03/2021",
-        "colDeterminante": "07010102202100003",
-        "colRFCFunc": "SAAA7401061V3",
-        "colAutoridad": "Recaudación",
-        "colTramite": "Fiscalización",
-        "colTipoDeDocumento": "Carta Invitación",
+        "colTramite": "Tenecia 2021",
+        "colFechaDelDocumento": "28/04/2021",
+        "colAutoridad": "Gobierno del estado",
+        "colTipoDeDocumento": "Carta invitación",
+        "colstatus": "Notificado",
+        "colDeterminante": "8790597832872391"
+
     },
-    
     {
-        "folio": "07010102-2021-00004",
-        "colRFC": "",
-     
+        "colFolio": "07010102-2020-00414",
+        "colTramite": "Requerimiento de obligaciones",
+        "colFechaDelDocumento": "19/11/2020",
+        "colAutoridad": "Dirección de Ejecución",
+        "colTipoDeDocumento": "Requerimiento",
+        "colstatus": "Notificado",
+        "colDeterminante": "1008634000251",
+
+    },
+    {
+        "colFolio": "07010102-2020-00328",
+        "colTramite": "Requerimiento de obligaciones",
+        "colFechaDelDocumento": "19/10/2020",
+        "colAutoridad": "Dirección de Ejecución",
+        "colTipoDeDocumento": "Requerimiento",
+        "colstatus": "Notificado",
+        "colDeterminante": "1008633900401",
+
+    },
+    {
+        "colFolio": "07010102-2020-00299",
+        "colTramite": "Requerimiento de pago",
+        "colFechaDelDocumento": "22/08/2020",
+        "colAutoridad": "Dirección de Ejecución",
+        "colTipoDeDocumento": "PAE",
+        "colstatus": "Notificado",
+        "colDeterminante": "500-55-00-03-02-2020-4592",
+
     }
 
 
@@ -126,9 +244,7 @@ class Example extends React.Component {
         }, 5000);
     }
 
-    onGridSort() {
-        alert("uno");
-    }
+   
 
     render() {
         return <ReactDataGrid

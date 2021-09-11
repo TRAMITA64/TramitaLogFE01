@@ -23,7 +23,7 @@
             <div class="logo">
                 <img src="http://sateg.gob.mx/assets/img/logo-secretaria-finanzas-guanajuato.svg" />
                 <i class='bx bxl-c-plus-plus1'></i>
-                <div class="logo_name"></div>
+                <div class="logo_name">Portal Empleado</div>
                 <input type="checkbox" id="clickBars" />
                 <label for="clickBars" class="menu-btn">
                     <i class="fas fa-bars"></i>
@@ -132,7 +132,7 @@
                     </aside>
         </div>
          <div class="home_content">
-            <div class="content_dashboard">
+             <div class="content_dashboard" >
                 <div class="box-card">
                     <div class="title-border-top"></div>
                     <div class="conten-card">
@@ -169,7 +169,8 @@
                         <div class="link-card">
                             <ul>
                                 <li><a>Asignar tramites</a></li>
-                                <li><a>Bandeja de Entrada / Salida</a></li>
+                                <li><a>Bandeja de Entrada </a></li>
+                                <li><a>Bandeja de Salida</a></li>
                                 
                             </ul>
                         </div>
@@ -182,9 +183,9 @@
                         <div class="dec-card">Notificaciones</div>
                         <div class="link-card">
                             <ul>
-                                <li><a>Registro uno a uno</a></li>
-                                <li><a>Registro masivo</a></li>
-                                <li><a>Consulta</a></li>
+                                <li><a href="EnvioUno.aspx">Registro uno a uno</a></li>
+                                <li><a href="EnvioMasivo.aspx">Registro masivo</a></li>
+                                <li><a href="ConsultaNotificaciones.aspx">Consulta</a></li>
                             </ul>
                         </div>
                     </div>
@@ -195,14 +196,14 @@
           <strong class="d-block h6 my-2 pb-2 border-bottom">Contenido</strong>
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#quick-start">Aviso privacidad</a>
+    <li><a ><strong>Dashboard</strong></a>
       <ul>
         <li><span >Catalogos</span>
           <ul>
-            <li><a href="#bundle">Atencion por municipios</a></li>
-            <li><a href="#separate">Grupos Atencion</a></li>
-            <li><a href="#modules">Empleados</a></li>
-            <li><a href="#components">Perfil Empleados</a></li>
+            <li><a href="Dashboard.aspx">Atención municipios</a></li>
+            <li><a href="Dashboard.aspx">Grupos Atención</a></li>
+            <li><a href="Dashboard.aspx">Empleados</a></li>
+            <li><a href="Dashboard.aspx">Perfil Empleados</a></li>
           </ul>
         </li>
       </ul>
@@ -210,25 +211,26 @@
     <li><ul>
     <li><span >Plantillas</span>
       <ul>
-        <li><a href="#html5-doctype">Crear</a></li>
-        <li><a href="#responsive-meta-tag">Modificar</a></li>
+        <li><a href="Dashboard.aspx">Crear</a></li>
+        <li><a href="Dashboard.aspx">Modificar</a></li>
       </ul>
     </li>
     </ul></li>
       <li><ul>
     <li><span >Buzón</span>
       <ul>
-        <li><a href="#html5-doctype">Asignar tramites</a></li>
-        <li><a href="#responsive-meta-tag">Bandeja de entrada / salida</a></li>
+        <li><a href="Dashboard.aspx">Asignar tramites</a></li>
+        <li><a href="Dashboard.aspx">Bandeja de entrada </a></li>
+          <li><a href="Dashboard.aspx">Bandeja de salida</a></li>
       </ul>
     </li>
     </ul></li>
       <li><ul>
     <li><span >Notificaciones</span>
       <ul>
-        <li><a href="#html5-doctype">Registro uno a uno</a></li>
-        <li><a href="#responsive-meta-tag">Registro masivo</a></li>
-          <li><a href="#responsive-meta-tag">Consulta</a></li>
+        <li><a href="EnvioUno.aspx">Registro uno a uno</a></li>
+        <li><a href="EnvioMasivo.aspx">Registro masivo</a></li>
+        <li><a href="ConsultaNotificaciones.aspx">Consulta</a></li>
       </ul>
     </li>
     </ul></li>
