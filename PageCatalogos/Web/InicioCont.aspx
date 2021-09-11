@@ -43,6 +43,7 @@
     </nav>
     <!-- **********************************************************************************************************-->
     <div class="work_area">
+        <div class="login-area">
                     <div class="box-login">
                         <div id="idContenedorEfirma-registro" class="contenedorEfirma">
                             <h3>Acceso con firma electrónica</h3>
@@ -107,7 +108,7 @@
                                 <div class="alert-acceso alert alert-danger " role="alert" id="idAlertConfirmar" hidden=""></div>
                                 
                                 <div>
-                                    <p>Se acaba de enviar un correo electrónico a la cuenta <span id="correo1"></span> con un vínculo y un número de control para verificar su medio de contacto.</p>
+                                    <p>Se acaba de enviar un correo electrónico a la cuenta <strong><span id="correo1"></span></strong> con un vínculo y un número de control para verificar su medio de contacto.</p>
                                     <h6>Favor de revisar la bandeja de entrada o los correos no deseados de su correo  <span id="correo2"></span></h6>
                                     <p>y hacer clic en el vínculo o ingresar el código proporcionado para validar su correo electrónico.</p>
                                     <input class="form-control" id="idCodigo" type="text" name="código" placeholder="Código" required=""/>
@@ -121,6 +122,7 @@
                             </div>
                         </div>
                     </div>
+        </div>
     </div>
 </body>
     <script>
@@ -189,6 +191,7 @@
                 document.querySelector(".box-login-confirma").style.display = "block";
                 document.getElementById("correo1").value = document.getElementById("idMedioContacto").value;
                 document.getElementById("correo2").value = document.getElementById("idMedioContacto").value;
+                document.getElementById("correo1").innerHTML = document.getElementById("idMedioContacto").value;
             } else {
                 fireAlert("idAlertMedios","Es necesario aceptar términos y condiciones");
             }

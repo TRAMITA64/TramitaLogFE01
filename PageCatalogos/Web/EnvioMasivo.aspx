@@ -167,7 +167,7 @@
                     </div>
 
                     <div class="enviar-btn">
-                        <table style="width:100%">
+                         <table style="width:100%">
                             <tr>
                                 <td style="width:50%">
                                     <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idFactura" onclick="onEnviarMunicipioAtiende(event)">&nbsp;&nbsp;Factura&nbsp;</button>&nbsp;&nbsp;
@@ -177,8 +177,11 @@
                                 </td>
                             </tr>
                         </table>
+                            <!--
+                                <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idFactura" onclick="onEnviarMunicipioAtiende(event)">&nbsp;&nbsp;Factura&nbsp;</button>&nbsp;&nbsp;
+                            <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idContinuar" onclick="onEnviarMunicipioAtiende(event)" >Continuar</button>&nbsp;
+                        -->
                         
-                       
                     </div>
                     
                 </div>

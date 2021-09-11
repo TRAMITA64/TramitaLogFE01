@@ -43,7 +43,7 @@
     </nav>
     <!-- **********************************************************************************************************-->
     <div class="work_area">
-         
+        <div class="login-area">
                     <div class="box-login">
                         <div id="idContenedorEfirma-registro" class="contenedorEfirma">
                             <h3>Acceso con firma electrónica</h3>
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                     </div>
-        
+        </div>
     </div>
 </body>
     <script>

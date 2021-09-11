@@ -165,13 +165,16 @@
         </div>
          <div class="home_content">
             <div class="content_reports">
-                <div class="title-action">Editar Medios de contacto</div>
-                <div class="box-config-medios">
+                <div class="title-action"><b>Bandeja de entrada>Notificaciones</b></div>
+                <!--<div class="box-config-medios">
                     <div class="d-grid gap-2">
                       <button class="btn btn-primary btn-edit-medios" type="button">Añadir correos electrónicos</button>
                       <button class="btn btn-primary btn-edit-medios" type="button">Añadir número de teléfono</button>
                     </div>
                 </div>-->
+                <div class="img-datagrid">
+                   <a id="imagenNotificacion" href="#"> <img src="../img/DataGridEjemplo.png" /></a>
+                </div>
             </div>
             <div class="sidebar-right">
                     <div class="aviso-left">
@@ -274,21 +277,21 @@
             navbar.classList.toggle("active");
         }
 
-        
+
         let btnLeft = document.querySelector(".bx-menu_left");
         let sidebar_left = document.querySelector(".sidebar_left");
         let home = document.querySelector(".home_content");
-        
+
         sidebar_left.classList.toggle("active");
         home.classList.toggle("active");
-        
+
         btnLeft.onclick = function () {
             sidebar_left.classList.toggle("active");
             home.classList.toggle("active");
         }
 
         let iconBuzon = document.getElementById("check-icon-buzon-bar");
-        
+
         iconBuzon.onclick = function () {
             sidebar_left.classList.toggle("active");
             home.classList.toggle("active");
@@ -305,8 +308,7 @@
         }
         let bntEnviar = document.getElementById("idEnviar")
 
-        bntEnviar.onclick = function ()
-        {
+        bntEnviar.onclick = function () {
             var a = document.createElement('a');
             a.href = 'DetalleNotificacion.html';
             a.target = '_self';

@@ -550,7 +550,14 @@ body {
     background: var(--bg-home-content);
 }
 
-
+.work_area .login-area {
+    position: inherit;
+    top: 0;
+    left: 0;
+    height: 10vh;
+    width: 100%;
+    background: #fff;
+}
 
 .home_content .content_reports {
     background: blue;
@@ -940,9 +947,8 @@ body {
 }
 
 .home_content .content_reports .box-envio-masivo-respuesta .enviar-btn {
-    width: 75px;
-    align-items: center;
-    margin: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .work_area .home_content .content_reports .box-envio-masivo-respuesta .tittulo-folios h5 {
