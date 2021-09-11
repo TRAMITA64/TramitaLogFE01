@@ -114,13 +114,13 @@
                                             <div class="profile_detail">
                                                 <!-- <img src="profile.jpg" alt=""> -->
                                                 <div class="profile_contribuyente">
-                                                    <div class="profile_name">Alberto Sahgun Arias</div>
-                                                    <div class="profile_rfc">SAAA7401061V3</div>
+                                                    <div class="profile_name">Roberto Velasco Diaz</div>
+                                                    <div class="profile_rfc">VEDR721028DB3</div>
                                                 </div>
                                                 
                                                 <div class="profile_medios">
-                                                    <div class="title"><i class='bx bx-edit-alt' id="edit_medios"></i><span>Medios de contacto</span></div>
-                                                    <div class="medios">alberto.sahagun@outlook.com</div>
+                                                    <div class="title"><i class='bx bx-edit-alt' id="edit_medios"></i></div>
+                                                    <div class="medios">roberto.velasco@outlook.com</div>
                                                     <span class="tooltip">Editar medios de contacto</span>    
                                                 </div>
                                             </div>
@@ -135,44 +135,61 @@
          <div class="home_content">
             
                 <div class="content_reports">
-                <div class="title-action">Registro de notificaciones</div>
+                <div class="title-action"><b>Registro de notificación</b></div>
                 <div class="box-consultas">
                     <div class="consulta-controles">
                         <div class="grupo-consulta-input mb-3">
                             <label for="idRFC">RFC contribuyente</label>
                             <input type="text" class="form-control" aria-label="Sizing example input" id="idRFC1" aria-describedby="inputGroup-sizing-sm">
-                            <label for="idRFC">Fecha del Docuemto</label>
+                            <label for="idRFC">Fecha del documento</label>
                             <input type="date" class="form-control" aria-label="Sizing example input" id="idRFC2" aria-describedby="inputGroup-sizing-sm">
-                            <label for="idRFC">Determinate</label>
+                            <label for="idRFC">Determinante</label>
                             <input type="text" class="form-control" aria-label="Sizing example input" id="idRFC3" aria-describedby="inputGroup-sizing-sm">
-                            <label for="idRFC">RFC del Funcionario</label>
+                            <label for="idRFC">RFC funcionario</label>
                             <input type="text" class="form-control" aria-label="Sizing example input" id="idRFC4" aria-describedby="inputGroup-sizing-sm">
                         </div>
                         <div class="grupo-consulta-select mb-3">
                             <div class="form-floating mb-3" id="fsTramites">
                                 <select class="form-select" id="idfsTramites" aria-label="Trámite">
                                     <option value="0" selected="">Todos</option>
-                                    <option value="13">Campaña Tenencia 2021</option>
-                                    <option value="15">Regularizate</option>
-                                    <option value="18">Fiscalización</option>
-                                    <option value="26">Garantía de Interés Fiscal</option>
-                                </select><label for="idfsMpiosQueAtienden">Buscar por Trámite</label>
+                                    <option value="1"="">Vigilancia de obligaciones</option>
+                                    <option value="2"="">Fiscalización</option>
+                                    <option value="3"="">Póliza de fianza</option>
+                                    <option value="4"="">Billete de depósito</option>
+                                    <option value="5"="">Embargo de bienes muebles</option>
+                                    <option value="6"="">Embargo de bienes inmuebles</option>
+                                    <option value="7"="">Embargo de negociación</option>
+                                    <option value="8"="">Tercero solidario</option>
+                                    <option value="9"="">Sustitución de garantía</option>
+                                    <option value="10"="">Cancelación de garantía</option>
+                                </select><label for="idfsMpiosQueAtienden">Buscar por trámite</label>
                             </div>
                             <div class="form-floating mb-3" id="fsDocumento">
                                 <select class="form-select" id="idfsDocumento" aria-label="Tipo de docuemto">
                                     <option value="0" selected="">Todos</option>
-                                    <option value="13">Paga tu tenencia</option>
-                                    <option value="15">Carta Invitación</option>
-                                    <option value="18">Orden de Visita</option>
-                                    <option value="26">Ofrecimiento</option>
-                                </select><label for="idfsMpiosQueAtienden">Buscar por docuemto</label>
+                                    <option value="1"="">Orden de visita</option>
+                                    <option value="2"="">Escrito libre</option>
+                                    <option value="3"="">Oficio</option>
+                                    <option value="4"="">Carta invitación</option>
+                                    <option value="5"="">Requerimiento de información</option>
+                                    <option value="6"="">Requerimiento de obligaciones</option>
+                                    <option value="7"="">Requerimiento de pago</option>
+                                    <option value="8"="">Hechos u omisiones</option>
+                                    <option value="9"="">Multa de fondo</option>
+                                </select><label for="idfsMpiosQueAtienden">Buscar por documento</label>
                             </div>
                             <div class="form-floating mb-3" id="fsAutoridad">
                                 <select class="form-select" id="idfsAutoridad" aria-label="Autoridad que emite documento">
                                     <option value="0" selected="">Todos</option>
-                                    <option value="13">Recaudación</option>
-                                    <option value="15">Auditoría</option>
-                                </select><label for="idfsMpiosQueAtienden">Buscar por  Autoridad que emite</label>
+                                    <option value="2">Secretaría de Finanzas, Inversión y Administración</option>
+                                    <option value="3">Dirección General Financiera</option>
+                                    <option value="4">Dirección General de Ingresos</option>
+                                    <option value="5">Subdirección General Jurídica</option>
+                                    <option value="6">Subdirección General de Ingresos</option>
+                                    <option value="7">Dirección de Recaudación</option>
+                                    <option value="8">Subdirección General de Auditoría</option>
+                                    <option value="9">Dirección de Ejecución</option>
+                                </select><label for="idfsMpiosQueAtienden">Buscar por autoridad que emite</label>
                             </div>
                         </div>
                     </div>
@@ -196,19 +213,19 @@
                 </div>
                 <div class="box-envio-uno-respuesta">
                     <div class="tittulo-folios">
-                      <h5>Esta notificación genero el siguiente número de control</h5>
+                      <h5>Esta notificación generó el siguiente número de control</h5>
                     </div>
                     <div class="grid-img mb-3">
                         <label><strong>07010102-2021-00035</strong> </label>
                     </div>
                     <div class="grid-img mb-3">
-                        <label>GALR901220DN0 | </label>
+                        <label>SAAA740809RMA | </label>
                         <label>28/03/2021 | </label>
                         <label>07010102202100006 | </label>
-                        <label>OEOM760816PP3 | </label>
-                        <label>Recaudación | </label>
-                        <label>Fiscalización | </label>
-                        <label>Orden de Visita </label>
+                        <label>FURH860816PP3 | </label>
+                        <label>Dirección de Ejecución | </label>
+                        <label>Vigilancia de obligaciones | </label>
+                        <label>Requerimiento de obligaciones </label>
                     </div>
 
                     <div class="enviar-btn">
@@ -229,12 +246,12 @@
                          <ul>
                              <li><a href="dashboard.aspx">Dashboard</a>
                                  <ul>
-                                     <li><span>Catalogos</span>
+                                     <li><span>Catálogos</span>
                                          <ul>
                                              <li><a href="#bundle">Atención municipios</a></li>
-                                             <li><a href="#separate">Grupos Atención</a></li>
+                                             <li><a href="#separate">Grupos atención</a></li>
                                              <li><a href="#modules">Empleados</a></li>
-                                             <li><a href="#components">Perfil Empleados</a></li>
+                                             <li><a href="#components">Perfil empleados</a></li>
                                          </ul>
                                      </li>
                                  </ul>
@@ -253,20 +270,20 @@
                                  <ul>
                                      <li><span>Buzón</span>
                                          <ul>
-                                             <li><a href="#html5-doctype">Asignar tramites</a></li>
+                                             <li><a href="#html5-doctype">Asignar trámites</a></li>
                                              <li><a href="#responsive-meta-tag">Bandeja de entrada </a></li>
-                                             <li><a href="#responsive-meta-tag">Bandeja de  salida</a></li>
+                                             <li><a href="#responsive-meta-tag">Bandeja de salida</a></li>
                                          </ul>
                                      </li>
                                  </ul>
                              </li>
                              <li>
                                  <ul>
-                                     <li><span>Notificaciones</span>
+                                     <li><span>Notificación</span>
                                          <ul>
-                                             <li><a href="EnvioUno.aspx"><strong>Registro una</strong></a></li>
+                                             <li><a href="EnvioUno.aspx"><strong>Registro uno a uno</strong></a></li>
                                              <li><a href="EnvioMasivo.aspx">Registro masivo</a></li>
-                                             <li><a href="ConsultaNotificaciones.aspx">Consulta Notificaciones</a></li>
+                                             <li><a href="ConsultaNotificaciones.aspx">Consulta notificaciones</a></li>
                                          </ul>
                                      </li>
                                  </ul>
@@ -288,11 +305,11 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="avisoModalLabel">Notificacón electrónica</h5>
+            <h5 class="modal-title" id="avisoModalLabel">Notificación electrónica</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-             Proceso de notificacón electrónica 
+             Proceso de notificación electrónica 
               <div class="progress">
                   <div class="progress-bar" id="idProgress" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
               </div>

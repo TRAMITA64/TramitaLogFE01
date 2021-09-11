@@ -113,13 +113,13 @@
                                             <div class="profile_detail">
                                                 <!-- <img src="profile.jpg" alt=""> -->
                                                 <div class="profile_contribuyente">
-                                                    <div class="profile_name">Alberto Sahgun Arias</div>
-                                                    <div class="profile_rfc">SAAA7401061V3</div>
+                                                    <div class="profile_name">Roberto Velasco Diaz</div>
+                                                    <div class="profile_rfc">VEDR721028DB3</div>
                                                 </div>
                                                 
                                                 <div class="profile_medios">
-                                                    <div class="title"><i class='bx bx-edit-alt' id="edit_medios"></i><span>Medios de contacto</span></div>
-                                                    <div class="medios">alberto.sahagun@outlook.com</div>
+                                                    <div class="title"><i class='bx bx-edit-alt' id="edit_medios"></i></div>
+                                                    <div class="medios">roberto.velasco@outlook.com</div>
                                                     <span class="tooltip">Editar medios de contacto</span>    
                                                 </div>
                                             </div>
@@ -137,11 +137,11 @@
                     <div class="title-border-top"></div>
                     <div class="conten-card">
                         <div class="logo-card"><i class='bx bx-spreadsheet' ></i></div>
-                        <div class="dec-card">Catalogo</div>
+                        <div class="dec-card">Catálogos</div>
                         <div class="link-card">
                             <ul>
-                                <li><a>Atencion por municipio</a></li>
-                                <li><a>Grupos de Atencion</a></li>
+                                <li><a>Atención por municipio</a></li>
+                                <li><a>Grupos de Atención</a></li>
                                 <li><a>Empleados</a></li>
                                 <li><a>Perfil empleado</a></li>
                             </ul>
@@ -156,7 +156,7 @@
                         <div class="link-card">
                             <ul>
                                 <li><a>Crear</a></li>
-                                <li><a>modificar</a></li>
+                                <li><a>Modificar</a></li>
                             </ul>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
                         <div class="dec-card">Buzón</div>
                         <div class="link-card">
                             <ul>
-                                <li><a>Asignar tramites</a></li>
+                                <li><a>Asignar trámites</a></li>
                                 <li><a>Bandeja de Entrada </a></li>
                                 <li><a>Bandeja de Salida</a></li>
                                 
@@ -180,7 +180,7 @@
                     <div class="title-border-top"></div>
                     <div class="conten-card">
                         <div class="logo-card"><i class='bx bxs-bell-ring'></i></div>
-                        <div class="dec-card">Notificaciones</div>
+                        <div class="dec-card">Notificación</div>
                         <div class="link-card">
                             <ul>
                                 <li><a href="EnvioUno.aspx">Registro uno a uno</a></li>
@@ -198,7 +198,7 @@
   <ul>
     <li><a ><strong>Dashboard</strong></a>
       <ul>
-        <li><span >Catalogos</span>
+        <li><span >Catálogos</span>
           <ul>
             <li><a href="Dashboard.aspx">Atención municipios</a></li>
             <li><a href="Dashboard.aspx">Grupos Atención</a></li>
@@ -219,7 +219,7 @@
       <li><ul>
     <li><span >Buzón</span>
       <ul>
-        <li><a href="Dashboard.aspx">Asignar tramites</a></li>
+        <li><a href="Dashboard.aspx">Asignar trámites</a></li>
         <li><a href="Dashboard.aspx">Bandeja de entrada </a></li>
           <li><a href="Dashboard.aspx">Bandeja de salida</a></li>
       </ul>

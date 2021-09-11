@@ -114,13 +114,13 @@
                                             <div class="profile_detail">
                                                 <!-- <img src="profile.jpg" alt=""> -->
                                                 <div class="profile_contribuyente">
-                                                    <div class="profile_name">Alberto Sahgun Arias</div>
-                                                    <div class="profile_rfc">SAAA7401061V3</div>
+                                                    <div class="profile_name">Roberto Velasco Diaz</div>
+                                                    <div class="profile_rfc">VEDR721028DB3</div>
                                                 </div>
                                                 
                                                 <div class="profile_medios">
-                                                    <div class="title"><i class='bx bx-edit-alt' id="edit_medios"></i><span>Medios de contacto</span></div>
-                                                    <div class="medios">alberto.sahagun@outlook.com</div>
+                                                    <div class="title"><i class='bx bx-edit-alt' id="edit_medios"></i></div>
+                                                    <div class="medios">roberto.velasco@outlook.com</div>
                                                     <span class="tooltip">Editar medios de contacto</span>    
                                                 </div>
                                             </div>
@@ -135,7 +135,7 @@
          <div class="home_content">
             
                 <div class="content_reports">
-                <div class="title-action">Registro Masivo Notificaciones</div>
+                <div class="title-action"><b>Registro masivo notificaciones</b></div>
                 <div class="box-envio-masivo">
                     <div class="input-carga">
                       <h5>Archivo de carga</h5>
@@ -167,7 +167,18 @@
                     </div>
 
                     <div class="enviar-btn">
-                        <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idContinuar" onclick="onEnviarMunicipioAtiende(event)" >Continuar</button>&nbsp;
+                        <table style="width:100%">
+                            <tr>
+                                <td style="width:50%">
+                                    <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idFactura" onclick="onEnviarMunicipioAtiende(event)">&nbsp;&nbsp;Factura&nbsp;</button>&nbsp;&nbsp;
+                                </td>
+                                <td style="width:50%">
+                                    <button class="btn btn-default btn-xs  btn-primary"  type="button" id="idContinuar" onclick="onEnviarMunicipioAtiende(event)" >Continuar</button>&nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                        
+                       
                     </div>
                     
                 </div>
@@ -184,12 +195,12 @@
                                 <ul>
                                     <li><a href="dashboard.aspx">Dashboard</a>
                                         <ul>
-                                            <li><span>Catalogos</span>
+                                            <li><span>Catálogos</span>
                                                 <ul>
-                                                    <li><a href="#bundle">Atencion por municipios</a></li>
-                                                    <li><a href="#separate">Grupos Atencion</a></li>
+                                                    <li><a href="#bundle">Atención por municipios</a></li>
+                                                    <li><a href="#separate">Grupos atención</a></li>
                                                     <li><a href="#modules">Empleados</a></li>
-                                                    <li><a href="#components">Perfil Empleados</a></li>
+                                                    <li><a href="#components">Perfil empleados</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -208,7 +219,7 @@
                                         <ul>
                                             <li><span>Buzón</span>
                                                 <ul>
-                                                    <li><a href="#html5-doctype">Asignar tramites</a></li>
+                                                    <li><a href="#html5-doctype">Asignar trámites</a></li>
                                                     <li><a href="#responsive-meta-tag">Bandeja de entrada / salida</a></li>
                                                 </ul>
                                             </li>
@@ -216,11 +227,11 @@
                                     </li>
                                     <li>
                                         <ul>
-                                            <li><span>Notificaciones</span>
+                                            <li><span>Notificación</span>
                                                 <ul>
                                                     <li><a href="EnvioUno.aspx">Registro uno a uno</a></li>
                                                     <li><a href="EnvioMasivo.aspx"><strong>Registro masivo</strong></a></li>
-                                                    <li><a href="ConsultaNotificaciones.aspx">Consulta Notificaciones</a></li>
+                                                    <li><a href="ConsultaNotificaciones.aspx">Consulta notificaciones</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -242,19 +253,19 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="avisoModalLabel">Notificacón electrónica</h5>
+            <h5 class="modal-title" id="avisoModalLabel">Notificación electrónica masiva</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-             <span id="tituloModalProgress">Validacion archivo notificacón electrónica masiva</span>
+             <span id="tituloModalProgress">Validación archivo notificación electrónica masiva</span>
               <div class="progress">
                   <div class="progress-bar" id="idProgress" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
                  
               </div>
               <div class="reporte-valida-masivo">
-                  <span> Regsitros analizados  5</span>
-                  <span> Regsitros validados 5</span>
-                  <span> Registros sin correspondencia 0</span>
+                  <span> Registros analizados: 5</span>
+                  <span> Registros validados: 5</span>
+                  <span> Registros sin correspondencia: 0</span>
               </div>
                
           </div>
@@ -325,7 +336,7 @@
                 document.getElementById("idAviso").click();
                 tid = setInterval(fnAvance, 100);
                 envioMasivo = 1;
-                document.getElementById("tituloModalProgress").innerHTML = "Envio notificación masiva";
+                document.getElementById("tituloModalProgress").innerHTML = "Proceso de envío";
                 document.getElementById("cancelarConfirmacion").style.display = "none";
             }
           
@@ -384,7 +395,14 @@
             }
            
         }
-
+        let btnFactura = document.getElementById("idFactura");
+        btnFactura.onclick = function () {
+            var a = document.createElement('a');
+            a.href = '../img/FacturaNotificacionMasiva.pdf';
+            a.target = '_blanck';
+            document.body.appendChild(a);
+            a.click();
+        }
     </script>
 
 </html>

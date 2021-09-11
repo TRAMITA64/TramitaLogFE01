@@ -165,16 +165,13 @@
         </div>
          <div class="home_content">
             <div class="content_reports">
-                <div class="title-action">Bandeja de entrada>Comunicados</div>
-                <!--<div class="box-config-medios">
+                <div class="title-action">Editar Medios de contacto</div>
+                <div class="box-config-medios">
                     <div class="d-grid gap-2">
                       <button class="btn btn-primary btn-edit-medios" type="button">Añadir correos electrónicos</button>
                       <button class="btn btn-primary btn-edit-medios" type="button">Añadir número de teléfono</button>
                     </div>
                 </div>-->
-                <div class="img-datagrid">
-                   <a id="imagenNotificacion" href="#"> <img src="../img/DataGridEjemplo.png" /></a>
-                </div>
             </div>
             <div class="sidebar-right">
                     <div class="aviso-left">
