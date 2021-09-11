@@ -165,7 +165,7 @@
         </div>
          <div class="home_content">
             <div class="content_reports">
-                <div class="title-action">Bandeja de entrada>Comunicados</div>
+                <div class="title-action"><b>Bandeja de entrada>Notificaciones</b></div>
                 <!--<div class="box-config-medios">
                     <div class="d-grid gap-2">
                       <button class="btn btn-primary btn-edit-medios" type="button">Añadir correos electrónicos</button>
