@@ -523,7 +523,8 @@ body {
     line-height: 50px;
     border-radius: 12px;
     text-align: center;
-    font-size: 28px
+    font-size: 28px;
+    cursor:pointer;
 }
 
 .home_content {
@@ -1180,4 +1181,100 @@ body {
     display:grid;
     padding-top:10px;
     display:none;
+}
+/*******************************editar medios de contacto*********************************/
+.work_area .home_content .content_reports .box-editar-medios .profile {
+    position: relative;
+    padding: 10px 6px 18px 0px;
+    background: #1d1b31;
+    background: var(--bg-navbar-profile);
+    border-radius: 12px;
+}
+
+.work_area .home_content .content_reports .box-editar-medios .profile .profile_detail .profile_medios {
+    padding-left: 10px;
+}
+
+.work_area .home_content .content_reports .box-editar-medios .profile .profile_detail .profile_medios i {
+    font-size: 38px;
+    min-width: 40px;
+    background: #ebf3f3;
+    min-height: 45px;
+    border-radius: 6px;
+}
+.work_area .home_content .content_reports .box-editar-medios .profile .profile_detail .profile_medios i:hover {
+    background: var(--bg-navbar-hover);
+    cursor: pointer;
+}
+.work_area .home_content .content_reports .box-editar-medios .profile .profile_detail .title-editar-medio {
+    display: flex;
+}
+.work_area .home_content .content_reports .box-editar-medios .profile .profile_detail .profile_medios span {
+    font-size: 20px;
+    padding-top: 14px;
+    padding-right: 18px;
+}
+.work_area .home_content .content_reports .box-editar-medios .nuevo-medio-contacto {
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #aba;
+    margin: 5px;
+    display: none;
+    transition: all 0.5s ease;
+}
+
+.work_area .home_content .content_reports .box-editar-medios .nuevo-medio-contacto p {
+    font-weight: 500;
+    padding-left: 6px;
+    padding-top: 10px;
+    margin: 0px 0px 2px 2px;
+}
+
+.work_area .home_content .content_reports .box-editar-medios .nuevo-medio-contacto .enviar-nuevo-medio {
+    display: flex;
+    width: auto;
+    justify-content: center;
+    padding-bottom: 10px;
+    transition: all 0.5s ease;
+}
+
+.work_area .home_content .content_reports .box-editar-medios .confirma-medio-contacto {
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #aba;
+    margin: 5px;
+    display: none;
+    transition: all 0.5s ease;
+}
+
+    .work_area .home_content .content_reports .box-editar-medios .confirma-medio-contacto p {
+        font-weight: 300;
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-top: 10px;
+        margin: 0px 0px 2px 2px;
+        
+    }
+
+    .work_area .home_content .content_reports .box-editar-medios .confirma-medio-contacto h6 {
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-top: 10px;
+        margin: 0px 0px 2px 2px;
+    }
+
+.work_area .home_content .content_reports .box-editar-medios .enviar-de-nuevo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 10px;
+}
+.work_area .home_content .content_reports .box-editar-medios .enviar-de-nuevo button{
+    margin:5px;
+}
+.work_area .home_content .content_reports .box-editar-medios .codigo-contenedor {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin:10px;
 }

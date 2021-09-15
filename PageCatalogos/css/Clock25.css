@@ -1,0 +1,72 @@
+﻿body {
+    background: #231e5c;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+body #container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+body #container #app .clockframe .title {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+body #container .lenght-control, body #container .button-level {
+    display: inline-block;
+    margin:5px;
+}
+body #container .lenght-control{
+    width:200px;
+    padding-bottom:15px;
+}
+
+body #container .lenght-control button {
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    background: #52545d;
+    min-width: 29px;
+    min-height: 29px;
+}
+
+body #container .lenght-control button:hover {
+    color: #fff;
+    background: #17133a;
+}
+
+body #container .timer {
+    border:7px solid #17133a;
+    margin: 20px auto 10px auto;
+    width: 270px;
+    height: 160px;
+    border-radius: 50px;
+    position: relative;
+}
+body #container #time-left {
+    font-family: digital;
+    font-size: 80px;
+}
+
+body #container #timer-label {
+    padding: 10px;
+}
+
+body #container #app .clockframe .timer-control button {
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    background: #52545d;
+    min-width: 125px;
+    min-height: 30px;
+}
+
+body #container #app .clockframe .timer-control button:hover {
+    background:#17133a;
+    color:aliceblue;
+}

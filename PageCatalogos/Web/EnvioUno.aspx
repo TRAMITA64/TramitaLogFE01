@@ -162,7 +162,7 @@
                                     <option value="8"="">Tercero solidario</option>
                                     <option value="9"="">Sustitución de garantía</option>
                                     <option value="10"="">Cancelación de garantía</option>
-                                </select><label for="idfsMpiosQueAtienden">Buscar por trámite</label>
+                                </select><label for="idfsMpiosQueAtienden">Trámite</label>
                             </div>
                             <div class="form-floating mb-3" id="fsDocumento">
                                 <select class="form-select" id="idfsDocumento" aria-label="Tipo de docuemto">
@@ -176,7 +176,7 @@
                                     <option value="7"="">Requerimiento de pago</option>
                                     <option value="8"="">Hechos u omisiones</option>
                                     <option value="9"="">Multa de fondo</option>
-                                </select><label for="idfsMpiosQueAtienden">Buscar por documento</label>
+                                </select><label for="idfsMpiosQueAtienden">Tipo de documento</label>
                             </div>
                             <div class="form-floating mb-3" id="fsAutoridad">
                                 <select class="form-select" id="idfsAutoridad" aria-label="Autoridad que emite documento">
@@ -189,7 +189,7 @@
                                     <option value="7">Dirección de Recaudación</option>
                                     <option value="8">Subdirección General de Auditoría</option>
                                     <option value="9">Dirección de Ejecución</option>
-                                </select><label for="idfsMpiosQueAtienden">Buscar por autoridad que emite</label>
+                                </select><label for="idfsMpiosQueAtienden">Autoridad que emite</label>
                             </div>
                         </div>
                     </div>

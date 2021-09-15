@@ -157,30 +157,32 @@
                             <div class="form-floating mb-3" id="fsTramites">
                                 <select class="form-select" id="idfsTramites" aria-label="Trámite">
                                     <option value="0" selected="">Todos</option>
-                                    <option value="1"="">Vigilancia de obligaciones</option>
-                                    <option value="2"="">Fiscalización</option>
-                                    <option value="3"="">Póliza de fianza</option>
-                                    <option value="4"="">Billete de depósito</option>
-                                    <option value="5"="">Embargo de bienes muebles</option>
-                                    <option value="6"="">Embargo de bienes inmuebles</option>
-                                    <option value="7"="">Embargo de negociación</option>
-                                    <option value="8"="">Tercero solidario</option>
-                                    <option value="9"="">Sustitución de garantía</option>
-                                    <option value="10"="">Cancelación de garantía</option>
+                                    <option value="1">Vigilancia de obligaciones</option>
+                                    <option value="2">Fiscalización</option>
+                                    <option value="3">Póliza de fianza</option>
+                                    <option value="4">Billete de depósito</option>
+                                    <option value="5">Embargo de bienes muebles</option>
+                                    <option value="6">Embargo de bienes inmuebles</option>
+                                    <option value="7">Embargo de negociación</option>
+                                    <option value="8">Tercero solidario</option>
+                                    <option value="9">Sustitución de garantía</option>
+                                    <option value="10">Cancelación de garantía</option>
+                                    <option value="10">Regularízate</option>
+                                    
                                 </select><label for="idfsMpiosQueAtienden">Buscar por trámite</label>
                             </div>
                             <div class="form-floating mb-3" id="fsDocumento">
                                 <select class="form-select" id="idfsDocumento" aria-label="Tipo de documento">
                                       <option value="0" selected="">Todos</option>
-                                    <option value="1"="">Orden de visita</option>
-                                    <option value="2"="">Escrito libre</option>
-                                    <option value="3"="">Oficio</option>
-                                    <option value="4"="">Carta invitación</option>
-                                    <option value="5"="">Requerimiento de información</option>
-                                    <option value="6"="">Requerimiento de obligaciones</option>
-                                    <option value="7"="">Requerimiento de pago</option>
-                                    <option value="8"="">Hechos u omisiones</option>
-                                    <option value="9"="">Multa de fondo</option>
+                                    <option value="1">Orden de visita</option>
+                                    <option value="2">Escrito libre</option>
+                                    <option value="3">Oficio</option>
+                                    <option value="4">Carta invitación</option>
+                                    <option value="5">Requerimiento de información</option>
+                                    <option value="6">Requerimiento de obligaciones</option>
+                                    <option value="7">Requerimiento de pago</option>
+                                    <option value="8">Hechos u omisiones</option>
+                                    <option value="9">Multa de fondo</option>
                                 </select><label for="idfsMpiosQueAtienden">Buscar por documento</label>
                             </div>
                             <div class="form-floating mb-3" id="fsAutoridad">

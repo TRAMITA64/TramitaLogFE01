@@ -109,7 +109,7 @@
                         <li class="mb-1">
                             <button class="btn d-inline-flex align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#collapse0-f001" aria-expanded="false">
                                 Bandeja de entrada
-                                
+
                             </button>
                             <div>
                                 <div class="collapse" id="collapse0-f001" style="">
@@ -147,7 +147,7 @@
                                         </div>
 
                                         <div class="profile_medios">
-                                            <div class="title"><i class='bx bx-edit-alt' id="edit_medios"></i><span>Medios de contacto</span></div>
+                                            <div class="title"><span>Medios de contacto</span></div>
                                             <div class="medios">alberto.sahagun@outlook.com</div>
                                             <span class="tooltip">Editar medios de contacto</span>
                                         </div>
@@ -164,71 +164,95 @@
         </div>
         <div class="home_content">
             <div class="content_reports">
-                <div class="title-detalle">Detalle de notificación</div>
-                <div class="box-consultas">
-                    <div class="consulta-controles">
-                        <div class="grupo-consulta-detalle mb-3">
-                            <label for="idRFC">Fecha de envío</label>
-                            <input type="date" class="form-control" aria-label="Sizing example input" id="idEnvio" aria-describedby="inputGroup-sizing-sm" disabled value="2021-08-10">
-                            <label for="idRFC">Funcionario</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="idFuncionario" aria-describedby="inputGroup-sizing-sm" disabled value="Hector Jesus Fuerte Roble">
-                            <label for="idRFC">RFC contribuyente</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="idRFC1" aria-describedby="inputGroup-sizing-sm" disabled value="SAAA740809RMA">
-                            <label for="idRFC">Fecha documento</label>
-                            <input type="date" class="form-control" aria-label="Sizing example input" id="idRFC2" aria-describedby="inputGroup-sizing-sm" disabled value="2021-08-01">
-                            <label for="idRFC">Determinante</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="idRFC3" aria-describedby="inputGroup-sizing-sm" disabled value="400-65-00-03-02-2021-3915">
+                <div class="title-detalle">Editar Medios de contacto</div>
+                <div class="box-editar-medios">
 
-                        </div>
-                        <div class="grupo-consulta-detalle mb-3">
-                            <label for="idRFC">Fecha para contestar</label>
-                            <input type="date" class="form-control" aria-label="Sizing example input" id="idContestar" aria-describedby="inputGroup-sizing-sm" disabled value="2021-09-02">
-                            <label for="idRFC">Trámite</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="idTramite" aria-describedby="inputGroup-sizing-sm" disabled value="Cancelación de CSD">
-                            <label for="idRFC">Documento</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="idDocumento" aria-describedby="inputGroup-sizing-sm" disabled value="Oficio">
-                            <label for="idRFC">Autoridad</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="idAutoridad" aria-describedby="inputGroup-sizing-sm" disabled value="Dirección de ejecución">
-                            <label for="idRFC">Estatus</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="idAutoridad" aria-describedby="inputGroup-sizing-sm" disabled value="Notificado">
+                    <div class="profile">
+                        <div class="profile_detail">
+                            <!-- <img src="profile.jpg" alt=""> -->
+                            <div class="profile_contribuyente">
+                                <div class="profile_name">Alberto Sahgun Arias</div>
+                                <div class="profile_rfc">SAAA7401061V3</div>
+                            </div>
+                            <div class="profile_medios">
+                                <div class="title-editar-medio"><span>Agregar Medio de Contacto</span><i id="addMedio" class='bx bx-add-to-queue'></i></div>
+                            </div>
                         </div>
                     </div>
-
-                    
-                    <div class="input-group-uno">
-                        <div class="enviar-btn-vista">
-                            <button class="btn btn-default btn-xs  btn-primary" type="button" id="idContinuar" onclick="onEnviarMunicipioAtiende(event)" >Continuar</button>&nbsp;
+                    <div class="nuevo-medio-contacto">
+                        <div>
+                            <p>Agregar correo electrónico como medio de contacto</p>
+                            <div class="input-group has-validation mb-2"><span class="input-group-text acceso-title-min-width">Correo electrónico:</span><input class="form-control" id="idMedioContacto" type="email" name="email" placeholder="Medio de contacto" required="" /></div>
+                            <p>Confirmar correo electrónico</p>
+                            <div class="input-group has-validation mb-2"><span class="input-group-text acceso-title-min-width">Correo electrónico:</span><input class="form-control" id="idMedioContactoValida" type="email" name="email" placeholder="Medio de contacto" required="" /></div>
+                            <div class="enviar-nuevo-medio">
+                                <button class="btn btn-default btn-xs  btn-primary" type="button" id="idEnviar" onclick="onEnviarMunicipioAtiende(event)">Enviar</button>&nbsp;
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="box-envio-uno-respuesta">
-                    <div class="tittulo-folios">
-                        <h5>Esta notificación genero el siguiente número de control</h5>
-                    </div>
-                    <div class="grid-img mb-3">
-                        <label><strong>07010102-2021-00035</strong> </label>
-                    </div>
-                    <div class="grid-img mb-3">
-                        <label>GALR901220DN0 | </label>
-                        <label>28/03/2021 | </label>
-                        <label>07010102202100006 | </label>
-                        <label>OEOM760816PP3 | </label>
-                        <label>Recaudación | </label>
-                        <label>Fiscalización | </label>
-                        <label>Orden de Visita </label>
-                    </div>
+                    <div class="confirma-medio-contacto">
+                        <div>
+                            <p>Se acaba de enviar un correo electrónico a la cuenta <strong><span id="correo1"></span></strong> con un vínculo y un número de control para verificar su medio de contacto.</p>
+                            <h6>Favor de revisar la bandeja de entrada o los correos no deseados de su correo  <span id="correo2"></span></h6>
+                            <p>y hacer clic en el vínculo o ingresar el código proporcionado para validar su correo electrónico.</p>
+                        </div>
+                        <div class="codigo-contenedor">
+                            <input id="idCodigo" type="text" name="código" placeholder="Código" required="" />
+                        </div>
 
-                    <div class="enviar-btn">
-                        <button class="btn btn-default btn-xs  btn-primary" type="button" id="idContinuarRespuesta" onclick="onEnviarMunicipioAtiende(event)">Continuar</button>&nbsp;
+                        <div class="enviar-de-nuevo">
+                            <button class="btn btn-primary valid" type="button" value="Siguiente" id="idAceptar" name="Aceptar" aria-invalid="false">Aceptar</button>
+                            <button class="btn btn-primary valid" type="button" value="Siguiente" id="idEnviarDeNuevo" name="Siguiente" aria-invalid="false">Enviar de nuevo correo</button>
+                        </div>
                     </div>
 
                 </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Medio de contacto</th>
+                            <th scope="col">Fecha registro</th>
+                            <th scope="col">Fecha confirmación</th>
+                            <th scope="col">Fecha baja</th>
+                            <th scope="col">status</th>
+                            <th scope="col">Enviar correo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>alberto.sahagun@outlook.com</td>
+                            <td>2021-01-15</td>
+                            <td>2021-01-16</td>
+                            <td>--</td>
+                            <td>Confirmado</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>alberto.sahagun@gmail.com</td>
+                            <td>2021-01-15</td>
+                            <td>2021-01-16</td>
+                            <td>--</td>
+                            <td>Confirmado</td>
+                            <td>--</td>
+                        </tr>
+                        <tr>
+                            <td>asahagun@hotmail.com</td>
+                            <td>2021-01-15</td>
+                            <td>2021-01-16</td>
+                            <td>--</td>
+                            <td>Pendiente de confirmar</td>
+                            <td><a href="#">Enviar</a></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
                 <!--<div class="img-datagrid">
-        <img src="../img/DataGridEjemplo.png" />
-    </div>-->
+                    <img src="../img/DataGridEjemplo.png" />
+                </div>-->
             </div>
             <div class="sidebar-right">
-                
+
                 <div class="aviso-adjuntos">
                     <h6>Archivos adjuntos</h6>
                     <hr />
@@ -249,61 +273,61 @@
                             </div>
                         </a>
                     </div>
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <div class="modal fade show" id="eFrimaModalLg" tabindex="-1" aria-labelledby="eFrimaModalLgLabel" style="display: none;" aria-modal="true" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title h4" id="eFrimaModalLgLabel">Firma tu notificación</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="work_area">
-                        <div class="box-login">
-                            <div id="idContenedorEfirma-registro" class="contenedorEfirma">
-                                <h3>Firma electrónica</h3>
-                                <div class="alert-acceso alert alert-danger " role="alert" id="idAlertAcceso" hidden=""></div>
-                                <div>
-                                    <div class="input-group has-validation mb-3">
-                                        <span class="input-group-text acceso-title-min-width">Certificado (.cer)</span>
-                                        <input class="form-control" type="text" placeholder="Ubicación del certificado" name="txtArchivo" id="txtArchivo" readonly="" />
-                                        <button type="button" class="btn btn-primary" id="btnArchivo1" name="btnArchivo1">Buscar</button>
-                                        <input type="file" class="displayNone" accept=".cer" id="file1" />
+        <div class="modal fade show" id="eFrimaModalLg" tabindex="-1" aria-labelledby="eFrimaModalLgLabel" style="display: none;" aria-modal="true" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title h4" id="eFrimaModalLgLabel">Firma tu notificación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="work_area">
+                            <div class="box-login">
+                                <div id="idContenedorEfirma-registro" class="contenedorEfirma">
+                                    <h3>Firma electrónica</h3>
+                                    <div class="alert-acceso alert alert-danger " role="alert" id="idAlertAcceso" hidden=""></div>
+                                    <div>
+                                        <div class="input-group has-validation mb-3">
+                                            <span class="input-group-text acceso-title-min-width">Certificado (.cer)</span>
+                                            <input class="form-control" type="text" placeholder="Ubicación del certificado" name="txtArchivo" id="txtArchivo" readonly="" />
+                                            <button type="button" class="btn btn-primary" id="btnArchivo1" name="btnArchivo1">Buscar</button>
+                                            <input type="file" class="displayNone" accept=".cer" id="file1" />
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text acceso-title-min-width">Clave privada (.key):</span>
+                                            <input class="form-control" id="txtFile2" name="txtFile2" type="text" placeholder="Ubicación de la llave privada" readonly="" />
+                                            <button type="button" class="btn btn-primary" name="btnFile2" id="btnFile2">Buscar</button>
+                                            <input type="file" class="displayNone" accept=".key" id="fileFile2" />
+                                        </div>
+                                        <div class="input-group has-validation mb-3">
+                                            <span class="input-group-text acceso-title-min-width">Contraseña de clave privada:</span>
+                                            <input class="form-control" id="File2Password" type="password" name="File2Password" placeholder="Contraseña" disabled="disabled" />
+                                        </div>
+                                        <div class="input-group has-validation mb-3">
+                                            <span class="input-group-text acceso-title-min-width">RFC:</span>
+                                            <input class="form-control" name="rfc" id="rfc" placeholder="RFC" type="text" disabled="disabled" />
+                                        </div>
                                     </div>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text acceso-title-min-width">Clave privada (.key):</span>
-                                        <input class="form-control" id="txtFile2" name="txtFile2" type="text" placeholder="Ubicación de la llave privada" readonly="" />
-                                        <button type="button" class="btn btn-primary" name="btnFile2" id="btnFile2">Buscar</button>
-                                        <input type="file" class="displayNone" accept=".key" id="fileFile2" />
+                                    <div class="inputAcceso">
+                                        <button class="btn btn-primary input-group" type="button" value="Enviar" id="idEnviar" name="Enviar" disabled="">Enviar</button>
                                     </div>
-                                    <div class="input-group has-validation mb-3">
-                                        <span class="input-group-text acceso-title-min-width">Contraseña de clave privada:</span>
-                                        <input class="form-control" id="File2Password" type="password" name="File2Password" placeholder="Contraseña" disabled="disabled" />
-                                    </div>
-                                    <div class="input-group has-validation mb-3">
-                                        <span class="input-group-text acceso-title-min-width">RFC:</span>
-                                        <input class="form-control" name="rfc" id="rfc" placeholder="RFC" type="text" disabled="disabled" />
-                                    </div>
-                                </div>
-                                <div class="inputAcceso">
-                                    <button class="btn btn-primary input-group" type="button" value="Enviar" id="idEnviar" name="Enviar" disabled="">Enviar</button>
                                 </div>
                             </div>
+                           
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
-
-
 </body>
 <script>
-    
     let btnArchivo = document.getElementById("btnArchivo1");
     let btnFile1 = document.getElementById("file1");
     let btnFile2 = document.getElementById("btnFile2");
@@ -339,7 +363,7 @@
         }
     }
 
-    
+
     let btn = document.querySelector("#clickBars");
     let navbar = document.querySelector(".navbar_dos");
 
@@ -355,7 +379,7 @@
 
     sidebar_left.classList.toggle("active");
     home.classList.toggle("active");
-    
+
     btnLeft.onclick = function () {
         sidebar_left.classList.toggle("active");
         home.classList.toggle("active");
@@ -367,9 +391,9 @@
         sidebar_left.classList.toggle("active");
         home.classList.toggle("active");
     }
-    
+
     let bntEnviar = document.getElementById("idEnviar")
-    
+
     bntEnviar.onclick = function () {
         var a = document.createElement('a');
         a.href = 'DetalleNotificacion.html';
@@ -382,27 +406,47 @@
     btnClose.onclick = function () {
         document.getElementById("eFrimaModalLg").style.display = "none";
     }
+    let btnAddMedio = document.getElementById("addMedio");
 
-    let btnContinuar = document.getElementById("idContinuar");
-    
-    btnContinuar.onclick = function () {
-        var a = document.createElement('a');
-        a.href = 'Buzon2.aspx';
-        a.target = '_self';
-        document.body.appendChild(a);
-        a.click();
+    btnAddMedio.onclick = function () {
+        let eleEdit = document.querySelector(".box-editar-medios");
+        eleEdit.classList.toggle("active");
+
+        let ele = document.querySelector(".nuevo-medio-contacto");
+        let btnConfirma = document.querySelector(".confirma-medio-contacto");
+
+        if (btnConfirma.style.display == "block") {
+            ele.style.display = "none";
+            btnConfirma.style.display = "none";
+            return;
+        }
+
+        if (ele.style.display == "none" || ele.style.display == "")
+            ele.style.display = "block";
+        else
+            ele.style.display = "none";
+        
+        btnConfirma.style.display = "none";
     }
 
-    let btnMedios = document.getElementById("edit_medios");
+    let btnEnviar = document.getElementById("idEnviar");
 
-    btnMedios.onclick = function () {
-        var a = document.createElement('a');
-        a.href = 'editaMediosDeContato.html';
-        a.target = '_self';
-        document.body.appendChild(a);
-        a.click();
+    btnEnviar.onclick = function () {
+        let ele = document.querySelector(".nuevo-medio-contacto");
+        ele.style.display = "none";
+        let btnConfirma = document.querySelector(".confirma-medio-contacto");
+        btnConfirma.style.display = "block";
+    }
+    btnEnviar = document.getElementById("idAceptar");
+
+    btnEnviar.onclick = function () {
+        let ele = document.querySelector(".nuevo-medio-contacto");
+        let btnConfirma = document.querySelector(".confirma-medio-contacto");
+        ele.style.display = "none";
+        btnConfirma.style.display = "none";
     }
 
-</script>
+
+    </script>
 
 </html>
